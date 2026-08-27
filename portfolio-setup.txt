@@ -1,0 +1,20 @@
+PORTFOLIO SETUP
+
+Recommended: one public Google Drive folder.
+
+WHY THIS WORKS:
+- Main website stays unchanged.
+- The portfolio opens as a separate page/folder.
+- Upload new files whenever you want.
+- Replace or delete samples whenever you want.
+- The website link stays the same as long as the folder URL stays the same.
+
+ONE-TIME WEBSITE EDIT:
+Find this line near the bottom of index.html:
+const PORTFOLIO_LIBRARY_URL = "";
+
+Paste your public portfolio folder/page URL between the quotation marks.
+
+
+Portfolio library connected:
+https://drive.google.com/drive/folders/11NKFAENCXJTEHPwaUWsQvUImErH18HzS
