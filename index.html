@@ -125,8 +125,12 @@ section{padding:90px 0}
 .price-note{margin-top:22px;color:#786b63;font-size:.88rem}
 
 /* TOOLS */
-.tools-row{display:flex;flex-wrap:wrap;gap:10px;margin-top:30px}
-.tool-chip{padding:9px 12px;border-bottom:1px solid #56463a;color:#d8cbc1;font-size:.88rem}
+.tools-row{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px}
+.tool-chip{padding:8px 11px;border-bottom:1px solid #56463a;color:#d8cbc1;font-size:.86rem}
+.tools-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:26px 34px;margin-top:38px}
+.tool-group{padding:0 0 24px;border-bottom:1px solid #312821}
+.tool-group h3{margin:0 0 8px;font-family:Georgia,"Times New Roman",serif;font-size:1.3rem;color:var(--text)}
+.tool-group p{margin:0;color:var(--muted);font-size:.96rem;max-width:600px}
 
 /* CONTACT */
 .contact-grid{display:grid;grid-template-columns:.86fr 1.14fr;gap:72px;align-items:start}
@@ -152,6 +156,7 @@ footer{padding:34px 0 44px;border-top:1px solid #2f2823;color:#978b82;font-size:
 
 @media(max-width:980px){
   .hero-grid,.services-layout,.experience-grid,.workflow-top,.portfolio-intro,.contact-grid{grid-template-columns:1fr}
+  .tools-grid{grid-template-columns:1fr}
   .hero{min-height:auto;padding-top:64px}
   .portrait-shell{max-width:560px}
   .metric-strip{grid-template-columns:repeat(2,1fr)}
@@ -314,10 +319,33 @@ footer{padding:34px 0 44px;border-top:1px solid #2f2823;color:#978b82;font-size:
 <section id="tools">
   <div class="wrap">
     <div class="section-number">Tools</div>
-    <h2 class="section-title" style="max-width:760px">Tools I can work with.</h2>
-    <p class="section-copy">These are platforms I have used for day-to-day administration, customer support, collaboration, documentation, and creative work. Where practical, I work within the systems a client already uses rather than forcing a new setup.</p>
-    <div class="tools-row">
-      <span class="tool-chip">Microsoft 365</span><span class="tool-chip">Google Workspace</span><span class="tool-chip">Salesforce</span><span class="tool-chip">Zendesk</span><span class="tool-chip">Monday.com</span><span class="tool-chip">Slack</span><span class="tool-chip">Microsoft Teams</span><span class="tool-chip">Zoom</span><span class="tool-chip">Canva</span><span class="tool-chip">Adobe Photoshop</span><span class="tool-chip">Adobe Illustrator</span><span class="tool-chip">Pixlr</span><span class="tool-chip">CapCut</span><span class="tool-chip">InShot</span>
+    <h2 class="section-title" style="max-width:760px">Tools & platforms.</h2>
+    <p class="section-copy">I use different platforms for different parts of the work — organizing information, communicating with clients and teams, tracking customer activity, managing tasks, and preparing documents or creative materials. I can work within an existing setup where practical, so a client does not have to change systems just to work with me.</p>
+
+    <div class="tools-grid">
+      <div class="tool-group">
+        <h3>Administration & documentation</h3>
+        <p>For email and calendar work, documents, spreadsheets, presentations, shared files, records, reporting, and day-to-day administrative support.</p>
+        <div class="tools-row"><span class="tool-chip">Microsoft 365</span><span class="tool-chip">Google Workspace</span></div>
+      </div>
+
+      <div class="tool-group">
+        <h3>Customer support & CRM</h3>
+        <p>For documenting customer interactions, maintaining records, tracking cases or tickets, following up on issues, and keeping customer-support activity organized.</p>
+        <div class="tools-row"><span class="tool-chip">Salesforce</span><span class="tool-chip">Zendesk</span></div>
+      </div>
+
+      <div class="tool-group">
+        <h3>Task management & communication</h3>
+        <p>For receiving assignments, tracking priorities and deadlines, sharing updates, coordinating handoffs, messaging, and joining client or team meetings.</p>
+        <div class="tools-row"><span class="tool-chip">Monday.com</span><span class="tool-chip">Slack</span><span class="tool-chip">Microsoft Teams</span><span class="tool-chip">Zoom</span></div>
+      </div>
+
+      <div class="tool-group">
+        <h3>Creative & content support</h3>
+        <p>For presentations, social and visual content, image editing, light branding support, short-form video editing, and other supporting creative materials.</p>
+        <div class="tools-row"><span class="tool-chip">Canva</span><span class="tool-chip">Adobe Photoshop</span><span class="tool-chip">Adobe Illustrator</span><span class="tool-chip">Pixlr</span><span class="tool-chip">CapCut</span><span class="tool-chip">InShot</span></div>
+      </div>
     </div>
   </div>
 </section>
@@ -328,7 +356,10 @@ footer{padding:34px 0 44px;border-top:1px solid #2f2823;color:#978b82;font-size:
       <div class="section-number">Contact</div>
       <h2 class="section-title">Have something you need off your plate?</h2>
       <p class="section-copy">Tell me what you're managing, where things are getting stuck, and what kind of support would make the work easier to keep moving.</p>
-      <div class="contact-details"><a class="contact-email" href="mailto:rochelleraevaldess@gmail.com">Email me: rochelleraevaldess@gmail.com</a></div>
+      <div class="contact-details">
+        <a class="btn gold" href="mailto:rochelleraevaldess@gmail.com?subject=VA%20support%20inquiry">Email / Contact Me</a>
+        <p class="form-help" style="margin-top:12px">Prefer email? This opens a new message addressed directly to me.</p>
+      </div>
     </div>
     <form class="form" onsubmit="sendMail(event)">
       <div class="form-field"><label class="form-label" for="name">Name</label><input id="name" type="text" placeholder="Your name" required></div>
