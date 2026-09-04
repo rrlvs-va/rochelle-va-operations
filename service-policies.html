@@ -1,0 +1,359 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Service Guidelines | Rochelle V. Silvestre</title>
+<meta name="description" content="Plain-language service guidelines for working with Rochelle V. Silvestre | Independent VA + Operations." />
+<style>
+:root{
+  --ink:#11100f;
+  --ink-2:#181512;
+  --cream:#f3eee7;
+  --paper:#faf7f2;
+  --text:#f7f1ea;
+  --dark-text:#2b2622;
+  --muted:#b9aca1;
+  --muted-dark:#6e625b;
+  --gold:#d1ab63;
+  --gold-deep:#aa7f39;
+  --blush:#cb8f96;
+  --line-dark:#332a24;
+  --line-light:#d8cec4;
+  --max:1180px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--ink);color:var(--text);font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;line-height:1.7}
+a{color:inherit;text-decoration:none}
+.wrap{width:min(var(--max),calc(100% - 40px));margin:auto}
+.serif{font-family:Georgia,"Times New Roman",serif}
+.eyebrow{text-transform:uppercase;letter-spacing:.16em;font-size:.72rem;font-weight:800;color:var(--blush)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:11px 17px;border-radius:999px;font-weight:750;border:1px solid transparent;transition:transform .18s ease,background .18s ease,border-color .18s ease}
+.btn:hover{transform:translateY(-1px)}
+.btn.gold{background:var(--gold);color:#17110d}
+.btn.outline{border-color:#5b4938;color:#f6eee6;background:transparent}
+
+nav{position:sticky;top:0;z-index:50;background:rgba(17,16,15,.9);backdrop-filter:blur(16px);border-bottom:1px solid rgba(255,255,255,.06)}
+.nav-inner{min-height:72px;display:flex;align-items:center;justify-content:space-between;gap:24px}
+.brand{display:flex;flex-direction:column;line-height:1.1}
+.brand strong{font-family:Georgia,"Times New Roman",serif;font-size:1.05rem;letter-spacing:.01em}
+.brand span{font-size:.72rem;color:var(--gold);letter-spacing:.12em;text-transform:uppercase;margin-top:5px}
+.nav-links{display:flex;align-items:center;gap:12px;color:#d3c8bf;font-size:.88rem;flex-wrap:wrap}
+
+.hero{padding:82px 0 66px;border-bottom:1px solid var(--line-dark)}
+.hero-grid{display:grid;grid-template-columns:1.12fr .88fr;gap:72px;align-items:end}
+.hero h1{font-family:Georgia,"Times New Roman",serif;font-size:clamp(3.5rem,7vw,6.6rem);font-weight:500;line-height:.94;letter-spacing:-.05em;margin:14px 0 22px}
+.hero h1 span{color:var(--gold)}
+.hero-copy{max-width:740px;color:var(--muted);font-size:1.04rem}
+.hero-meta{border-left:1px solid var(--line-dark);padding-left:30px;color:var(--muted);font-size:.9rem}
+.hero-meta strong{display:block;color:#fff;font-family:Georgia,"Times New Roman",serif;font-size:1.15rem;margin-bottom:8px}
+
+.summary{background:var(--cream);color:var(--dark-text);padding:52px 0}
+.summary-grid{display:grid;grid-template-columns:.72fr 1.28fr;gap:72px;align-items:start}
+.summary h2{font-family:Georgia,"Times New Roman",serif;font-size:clamp(2rem,3.4vw,3.4rem);font-weight:500;line-height:1.05;margin:8px 0 14px}
+.summary p{color:var(--muted-dark);margin:0}
+.summary-points{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));border-top:1px solid var(--line-light)}
+.summary-point{padding:20px 22px 20px 0;border-bottom:1px solid var(--line-light)}
+.summary-point:nth-child(odd){border-right:1px solid var(--line-light);padding-right:24px}
+.summary-point:nth-child(even){padding-left:24px}
+.summary-point strong{display:block;font-family:Georgia,"Times New Roman",serif;font-size:1.07rem;margin-bottom:5px}
+.summary-point span{display:block;color:var(--muted-dark);font-size:.91rem}
+
+.policy-shell{background:var(--paper);color:var(--dark-text);padding:78px 0 96px}
+.policy-grid{display:grid;grid-template-columns:260px minmax(0,1fr);gap:64px;align-items:start}
+.toc{position:sticky;top:94px;max-height:calc(100vh - 118px);overflow-y:auto;overscroll-behavior:contain;scrollbar-width:thin;scrollbar-color:#b9a48d transparent;border-top:1px solid var(--line-light);padding-right:12px}
+.toc::-webkit-scrollbar{width:6px}
+.toc::-webkit-scrollbar-thumb{background:#b9a48d;border-radius:999px}
+.toc::-webkit-scrollbar-track{background:transparent}
+.toc .toc-title{font-size:.72rem;text-transform:uppercase;letter-spacing:.14em;color:#8d7768;font-weight:800;padding:16px 0 10px;position:sticky;top:0;background:var(--paper);z-index:1}
+.toc a{display:block;padding:8px 0;color:#6d625a;font-size:.86rem}
+.toc a:hover{color:#2f2925}
+.policy-content{max-width:820px}
+.policy-section{scroll-margin-top:112px;padding:0;margin:0 0 44px}
+.policy-section:last-child{margin-bottom:0}
+.policy-section h2{font-family:Georgia,"Times New Roman",serif;font-weight:500;font-size:clamp(1.8rem,3vw,2.55rem);line-height:1.08;letter-spacing:-.025em;margin:0 0 17px;padding:0 0 11px;border-bottom:1px solid #cfc2b5;color:#2c2622}
+.policy-section h3{font-family:Georgia,"Times New Roman",serif;font-weight:500;font-size:1.25rem;margin:24px 0 8px}
+.policy-section p{color:#5f554e;margin:0 0 14px}
+.policy-section ul{margin:12px 0 16px;padding-left:20px;color:#5f554e}
+.policy-section li{margin:7px 0}
+.policy-note{background:#eee6dd;border-left:3px solid var(--gold-deep);padding:16px 18px;margin:20px 0;color:#574d46;font-size:.93rem}
+.policy-strong{font-weight:750;color:#332d29}
+.term-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px 22px;margin-top:18px;border-top:1px solid var(--line-light);padding-top:18px}
+.term-list p{margin:0;font-size:.92rem}
+.term-list strong{color:#332d29}
+.contact-card{position:relative;overflow:hidden;background:radial-gradient(circle at 13% 18%,rgba(203,143,150,.12),transparent 24%),radial-gradient(circle at 88% 78%,rgba(209,171,99,.13),transparent 28%),var(--ink);color:var(--text);padding:38px 30px;margin-top:22px;border:1px solid #6d5846;text-align:center}
+.contact-card:after{content:"";position:absolute;left:18%;right:18%;top:0;height:1px;background:linear-gradient(90deg,transparent,var(--gold),var(--blush),transparent)}
+.contact-card p{color:var(--muted);max-width:620px;margin:0 auto 20px}
+.contact-card .btn{margin-top:6px}
+
+
+.form{display:grid;gap:12px}
+.form input[type="text"],.form input[type="email"],.form input[type="tel"],.form textarea{width:100%;border:0;border-bottom:1px solid #baa999;background:transparent;color:#302923;padding:13px 2px;outline:none;border-radius:0}
+.form textarea{min-height:130px;resize:vertical}
+.form input[type="text"]:focus,.form input[type="email"]:focus,.form input[type="tel"]:focus,.form textarea:focus{border-bottom-color:#8d5e49}
+.form button{justify-self:start;margin-top:8px}
+.form-field{display:grid;gap:6px}
+.form-label{font-size:.78rem;font-weight:750;letter-spacing:.04em;color:#6e625b}
+.form-label .optional{font-weight:500;color:#988a80}
+.form-options{display:flex;flex-wrap:wrap;gap:10px 16px;padding:4px 0 8px}
+.form-option{display:inline-flex;align-items:center;gap:7px;color:#5e534c;font-size:.88rem;cursor:pointer}
+.form-option input{width:auto;margin:0;accent-color:#9d5962}
+.form-help{margin:0;color:#8a7b72;font-size:.78rem}
+
+footer{border-top:1px solid var(--line-dark);padding:30px 0;color:#a99c92;font-size:.86rem}
+.footer-inner{display:flex;justify-content:space-between;gap:30px;align-items:flex-end}
+.footer-inner strong{color:#fff}
+.footer-links{display:flex;gap:16px;flex-wrap:wrap}
+.footer-links a{color:#d8cbc1}
+
+@media (max-width:900px){
+  .hero-grid,.summary-grid,.policy-grid{grid-template-columns:1fr;gap:34px}
+  .hero-meta{border-left:0;border-top:1px solid var(--line-dark);padding:22px 0 0}
+  .toc{position:relative;top:auto;max-height:270px;overflow-y:auto;display:block;border:1px solid var(--line-light);padding:0 18px 12px;background:#f7f2ec}
+  .toc .toc-title{top:0;background:#f7f2ec;padding-top:14px}
+  .toc a{padding:7px 0}
+  .policy-section{scroll-margin-top:92px}
+  .term-list{grid-template-columns:1fr}
+}
+@media (max-width:620px){
+  .wrap{width:min(var(--max),calc(100% - 28px))}
+  .nav-links .secondary{display:none}
+  .hero{padding:58px 0 48px}
+  .hero h1{font-size:3.1rem}
+  .summary{padding:40px 0}
+  .summary-points{grid-template-columns:1fr}
+  .summary-point:nth-child(odd){border-right:0;padding-right:0}
+  .summary-point:nth-child(even){padding-left:0}
+  .policy-shell{padding:56px 0 72px}
+  .footer-inner{flex-direction:column;align-items:flex-start}
+}
+</style>
+</head>
+<body>
+<nav>
+  <div class="wrap nav-inner">
+    <a class="brand" href="index.html" aria-label="Back to Rochelle V. Silvestre website">
+      <strong>Rochelle V. Silvestre</strong>
+      <span>Independent VA + Operations</span>
+    </a>
+    <div class="nav-links">
+      <a class="secondary" href="index.html">Main website</a>
+      <a class="secondary" href="privacy.html">Privacy</a>
+      <a class="btn outline" href="#contact">Contact</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <h1>Service <span>Guidelines</span></h1>
+       <div class="eyebrow">On working together</div>
+      <p class="hero-copy">This page is for new, still-growing, and up-and-coming business owners who may be hiring support for the first time. It explains what I can help with, what I cannot take responsibility for, and what needs to be clear before we begin.</p>
+    </div>
+    <div class="hero-meta">
+      <strong>Last updated</strong>
+      September 4, 2026
+    </div>
+  </div>
+</header>
+
+<section class="summary">
+  <div class="wrap summary-grid">
+    <div>
+      <div class="eyebrow">At a glance</div>
+      <h2>Clear expectations, without the business jargon.</h2>
+      <p>You do not need to have everything perfectly organized before asking for help. But we do need enough clarity, access, and agreement to do the work responsibly.</p>
+    </div>
+    <div class="summary-points">
+      <div class="summary-point"><strong>I can help organize the mess</strong><span>Tasks, files, notes, follow-ups, trackers, simple processes, and day-to-day support.</span></div>
+      <div class="summary-point"><strong>You still make owner decisions</strong><span>I can prepare options and materials, but final business decisions stay with you.</span></div>
+      <div class="summary-point"><strong>Approval matters</strong><span>Anything sent, posted, priced, promised, or published under your business name should be approved by you.</span></div>
+      <div class="summary-point"><strong>Some work is off-limits</strong><span>No fake reviews, misleading claims, unsafe access, dishonest outreach, or licensed advice I am not qualified to give.</span></div>
+    </div>
+  </div>
+</section>
+
+<main class="policy-shell">
+  <div class="wrap policy-grid">
+    <aside class="toc" aria-label="Service policy sections">
+      <div class="toc-title">On this page</div>
+      <a href="#purpose">Purpose</a>
+      <a href="#terms">A few terms I may use</a>
+      <a href="#help">What I can help with</a>
+      <a href="#need">What I need from you</a>
+      <a href="#boundaries">Boundaries</a>
+      <a href="#approval">Approval before use</a>
+      <a href="#not-provide">What I do not provide</a>
+      <a href="#changes">Changes, timing & payments</a>
+      <a href="#access">Access & passwords</a>
+      <a href="#reviews">Reviews & portfolio</a>
+      <a href="#privacy-note">Privacy note</a>
+      <a href="#contact">Contact</a>
+    </aside>
+
+    <article class="policy-content">
+      <section class="policy-section" id="purpose">
+        <h2>Purpose</h2>
+        <p>Starting or running a business can feel messy, especially when you are still figuring out what to organize, what to delegate, and what should be handled first.</p>
+        <p>These service policies explain how I work with clients, especially people who are new to hiring a VA (Virtual Assistant) or operations support. They are meant to make expectations clear before work starts.</p>
+        <p>A proposal, written agreement, or agreed message thread may include more specific details for a particular project. If something is important, it should be written down before we rely on it.</p>
+        <div class="policy-note"><span class="policy-strong">In simple terms:</span> this page explains what I can help with, what I need from you, and where the limits are so we do not work from assumptions.</div>
+      </section>
+
+      <section class="policy-section" id="terms">
+        <h2>A few terms I may use</h2>
+        <p>I try to keep things simple, but a few work terms may still come up. On this page, this is what I mean:</p>
+        <div class="term-list">
+          <p><strong>VA</strong> means Virtual Assistant — support for admin, communication, organization, research, follow-ups, and similar work.</p>
+          <p><strong>CRM</strong> means Customer Relationship Management system — a tool for tracking customers, leads, notes, follow-ups, or deals.</p>
+          <p><strong>SOP</strong> means Standard Operating Procedure — a written step-by-step guide for doing a task.</p>
+          <p><strong>Scope</strong> means the work we agreed is included.</p>
+          <p><strong>Out of scope</strong> means work that is not included unless we agree to add it.</p>
+          <p><strong>Turnaround time</strong> means how long the task is expected to take.</p>
+          <p><strong>Rush work</strong> means work needed faster than the normal agreed timeline.</p>
+          <p><strong>Final approval</strong> means your confirmation that something is ready to send, post, publish, submit, or use.</p>
+        </div>
+      </section>
+
+      <section class="policy-section" id="help">
+        <h2>What I can help with</h2>
+        <p>I can help with practical support work that keeps your business moving. This may include admin support, scheduling, inbox help, file organization, research, note-taking, task tracking, follow-ups, customer or client messages, CRM updates, simple trackers, SOPs, basic reports, and other support tasks we agree on.</p>
+        <p>I can also help with workflow cleanup, which simply means making the work easier to track, repeat, organize, or hand off. This may include checklists, trackers, simple process notes, folder organization, status updates, and clearer task flows.</p>
+        <p>Creative and content support may include presentations, simple graphics, document formatting, light branding support, social content support, image editing, short-form video support, portfolio materials, and other supporting assets when they fit the work requested.</p>
+        <div class="policy-note"><span class="policy-strong">In simple terms:</span> I help organize the work, track what needs to happen, support communication, and keep things from falling through the cracks.</div>
+      </section>
+
+      <section class="policy-section" id="need">
+        <h2>What I need from you</h2>
+        <p>To do the work properly, I need clear instructions, necessary files, deadlines, priorities, access to the right tools, and timely feedback.</p>
+        <p>If the work involves your brand, customers, offers, pricing, refunds, products, services, or public claims, I need you to provide or approve the correct information.</p>
+        <p>You do not need to have everything perfectly organized before asking for help. Part of the work may be helping sort through what is scattered or unclear. But if a request is too vague, risky, missing key details, or not ready to start, I may need to ask questions first.</p>
+        <div class="policy-note"><span class="policy-strong">In simple terms:</span> I can do better work when I know what you need, when you need it, and what rules or details I should follow.</div>
+      </section>
+
+      <section class="policy-section" id="boundaries">
+        <h2>Boundaries</h2>
+        <p>I can help you organize information, compare options, prepare notes, draft materials, build checklists, and make things easier to review.</p>
+        <p>I cannot be the owner of your business for you. Final decisions about pricing, offers, contracts, refunds, hiring, taxes, legal requirements, customer promises, business strategy, and anything that affects your money, legal responsibilities, or reputation remain your responsibility.</p>
+        <p>If you are unsure what to do, I can help you lay out the information more clearly. For decisions that require professional advice, you may need to speak with the right licensed professional.</p>
+        <div class="policy-note"><span class="policy-strong">In simple terms:</span> I can help you see things more clearly, but I cannot make owner-level decisions for you.</div>
+      </section>
+
+      <section class="policy-section" id="approval">
+        <h2>Approval before use</h2>
+        <p>I can help draft, prepare, organize, format, schedule, or review materials. You are responsible for final approval before something is sent, posted, published, submitted, promised, or used publicly under your business name.</p>
+        <p>This includes emails, newsletters, social media posts, offers, prices, refunds, customer messages, ads, testimonials, website content, public announcements, forms, scripts, proposals, and other materials that represent your business.</p>
+        <p>If you ask me to send, publish, or use something without review, I may still ask for written approval first when the material involves public claims, money, customer commitments, legal wording, sensitive information, or anything that could affect your business reputation.</p>
+        <div class="policy-note"><span class="policy-strong">In simple terms:</span> I can prepare the work, but you need to approve anything that represents your business before it goes out.</div>
+      </section>
+
+      <section class="policy-section" id="not-provide">
+        <h2>What I do not provide</h2>
+        <p>I do not provide legal, tax, accounting, medical, financial, insurance, immigration, real-estate, or other licensed professional advice. I can help organize information or prepare admin materials, but the final professional review should come from someone qualified to give it.</p>
+        <p>I do not knowingly help with fake reviews, fake testimonials, misleading claims, impersonation, unauthorized access, deceptive outreach, plagiarism, misuse of private information, or anything that breaks laws, platform rules, privacy rules, or client-approved processes.</p>
+        <p>I also cannot guarantee sales, followers, leads, engagement, approvals, conversions, customer decisions, platform results, search ranking, business growth, or outcomes controlled by other people, platforms, markets, or systems.</p>
+        <div class="policy-note"><span class="policy-strong">In simple terms:</span> I can support your business, but I do not replace licensed professionals, help with dishonest work, or promise results I cannot control.</div>
+      </section>
+
+      <section class="policy-section" id="changes">
+        <h2>Changes, timing & payments</h2>
+        <p>Sometimes a task sounds simple at first but becomes bigger once we start. For example, a simple flyer may turn into copywriting, image selection, layout, revisions, caption writing, and formatting for different platforms.</p>
+        <p>If the work grows beyond what we first agreed, we may need to adjust the deadline, price, or priority list. Adding more work may mean adding more time or moving other tasks later.</p>
+        <p>Rates, payment timing, currency, billing method, and payment channel should be agreed before work begins. Payment account details are shared privately after the work setup is confirmed. Work may pause or be delayed if payment, onboarding, access, or approvals are not completed on time.</p>
+        <div class="policy-note"><span class="policy-strong">In simple terms:</span> more work, late feedback, missing access, or a change in direction can affect timing, cost, and what gets done first.</div>
+      </section>
+
+      <section class="policy-section" id="access">
+        <h2>Access & passwords</h2>
+        <p>If I need to work inside your email, CRM, calendar, cloud folder, project tool, website, social account, or other system, please give access through the proper method when possible.</p>
+        <p>Please do not send banking passwords, one-time passwords, full payment-card details, or private logins I do not need. If a platform allows you to add me as a user with limited access, that is usually better than sharing a main password.</p>
+        <p>If I do not have the access needed for a task, or if access is removed or changed, the work may be delayed or paused.</p>
+        <div class="policy-note"><span class="policy-strong">In simple terms:</span> give me the access needed to do the job, but do not send sensitive information casually.</div>
+      </section>
+
+      <section class="policy-section" id="reviews">
+        <h2>Reviews & portfolio</h2>
+        <p>If you choose to give a rating, review, recommendation, or testimonial, I may use it as business proof, portfolio material, or marketing content.</p>
+        <p>I may lightly format feedback so it fits my website or portfolio, but I will not intentionally change the meaning. If identifying details need to be limited, please say so before publication.</p>
+        <p>I do not intentionally publish private client information, confidential work, private messages, screenshots of non-public communications, or identifiable client materials without appropriate permission.</p>
+        <div class="policy-note"><span class="policy-strong">In simple terms:</span> I may share feedback you choose to give me, but I will not expose private client work or private conversations without permission.</div>
+      </section>
+
+      <section class="policy-section" id="privacy-note">
+        <h2>Privacy note</h2>
+        <p>Privacy, client data, AI-assisted tools, call or meeting recordings, social media interactions, external platforms, and payment-related information are addressed in my Privacy Policy.</p>
+        <p>This Service Policies page explains working expectations. The Privacy Policy explains how information may be handled.</p>
+        <div class="policy-note"><span class="policy-strong">In simple terms:</span> service boundaries are here. Privacy details are in the Privacy Policy.</div>
+      </section>
+
+      <section class="policy-section" id="contact">
+        <h2>Contact</h2>
+        <p>Use this form to tell me what you are trying to organize, what feels stuck, and what kind of support you think you need. It prepares an email to me using your email application.</p>
+        <p>You do not need to have everything perfectly sorted before reaching out. A clear starting point is enough.</p>
+        <div class="policy-note"><span class="policy-strong">In simple terms:</span> send the basic details first, and we can clarify the practical next step before starting.</div>
+
+        <div class="contact-card" style="text-align:left">
+          <div style="font-size:.78rem;letter-spacing:.08em;text-transform:uppercase;color:#d5b6a8;margin-bottom:9px;text-align:center">Clear expectations before the work starts</div>
+          <h3 style="margin:0 0 20px;font:500 2rem/1.1 Georgia,'Times New Roman',serif;color:#fff;text-align:center">Contact form</h3>
+          <div style="background:var(--paper);color:var(--dark-text);padding:26px;border:1px solid #6d5846">
+<form class="form" onsubmit="sendMail(event)">
+      <div class="form-field"><label class="form-label" for="name">Name</label><input id="name" type="text" placeholder="Your name" required></div>
+      <div class="form-field"><label class="form-label" for="company">Company / business name</label><input id="company" type="text" placeholder="Company / business name" required></div>
+      <div class="form-field"><label class="form-label" for="email">Email address</label><input id="email" type="email" placeholder="Your email address" required></div>
+      <div class="form-field"><label class="form-label" for="phone">Phone number <span class="optional">(optional)</span></label><input id="phone" type="tel" placeholder="Country code + phone number"><p class="form-help">If you provide a number, select any options that apply:</p><div class="form-options"><label class="form-option"><input type="checkbox" name="phoneChannel" value="Viber">Viber</label><label class="form-option"><input type="checkbox" name="phoneChannel" value="WhatsApp">WhatsApp</label><label class="form-option"><input type="checkbox" name="phoneChannel" value="Mobile call">Mobile</label></div></div>
+      <div class="form-field"><label class="form-label" for="message">What would you like help with?</label><textarea id="message" placeholder="Tell me what you need support with" required></textarea></div>
+      <div class="form-field"><div class="form-label">Preferred method of communication</div><div class="form-options"><label class="form-option"><input type="radio" name="preferredContact" value="Email" required>Email</label><label class="form-option"><input type="radio" name="preferredContact" value="Phone">Phone</label><label class="form-option"><input type="radio" name="preferredContact" value="Google Meet / Chat">Google Meet / Chat</label><label class="form-option"><input type="radio" name="preferredContact" value="Zoom">Zoom</label><label class="form-option"><input type="radio" name="preferredContact" value="MS Teams">MS Teams</label></div></div>
+      <button class="btn gold" type="submit">Send support inquiry</button>
+    </form>
+          </div>
+        </div>
+      </section>
+    </article>
+  </div>
+</main>
+
+<footer>
+  <div class="wrap footer-inner">
+    <div><strong>Rochelle V. Silvestre</strong><br>Independent VA + Operations<br><span style="font-size:.76rem">© 2026 Rochelle V. Silvestre · Site & portfolio maintained independently.</span></div>
+    <div class="footer-links"><a href="index.html">Main website</a><a href="privacy.html">Privacy</a><a href="#contact">Contact</a></div>
+  </div>
+</footer>
+<script>
+function sendMail(e){
+  e.preventDefault();
+  const businessEmail = 'rvs-va@protonmail.com';
+  const name = document.getElementById('name').value.trim();
+  const company = document.getElementById('company').value.trim();
+  const sender = document.getElementById('email').value.trim();
+  const phone = document.getElementById('phone').value.trim();
+  const message = document.getElementById('message').value.trim();
+  const phoneChannels = Array.from(document.querySelectorAll('input[name="phoneChannel"]:checked')).map(el => el.value);
+  const preferred = document.querySelector('input[name="preferredContact"]:checked');
+
+  if (!name || !company || !sender || !message || !preferred) {
+    alert('Please complete the required fields before sending your inquiry.');
+    return;
+  }
+  if ((preferred.value === 'Phone' || phoneChannels.length) && !phone) {
+    alert('Please add a phone number if you select phone, Viber, WhatsApp, or mobile contact.');
+    document.getElementById('phone').focus();
+    return;
+  }
+
+  const subject = encodeURIComponent('VA support inquiry from ' + name + ' — ' + company);
+  const body = encodeURIComponent(
+    'Name: ' + name + '\n' +
+    'Company / business: ' + company + '\n' +
+    'Email: ' + sender + '\n' +
+    'Phone: ' + (phone || 'Not provided') + '\n' +
+    'Phone options: ' + (phoneChannels.length ? phoneChannels.join(', ') : 'None selected') + '\n' +
+    'Preferred communication: ' + preferred.value + '\n\n' +
+    'Support needed:\n' + message
+  );
+  window.location.href = 'mailto:' + businessEmail + '?subject=' + subject + '&body=' + body;
+}
+</script>
+</body>
+</html>
