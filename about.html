@@ -122,6 +122,7 @@ footer{border-top:1px solid var(--line-dark);padding:30px 0;color:#a99c92;font-s
 
 @media(max-width:980px){
   .hero-bottom{grid-template-columns:1fr;gap:24px}
+  .hero-divider{display:none}
   .hero-meta{text-align:left;border-top:1px solid var(--line-dark);padding-top:18px}
   .card-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
   .mission-vision{grid-template-columns:1fr;gap:48px}
@@ -142,7 +143,6 @@ footer{border-top:1px solid var(--line-dark);padding:30px 0;color:#a99c92;font-s
   .hero h1{font-size:clamp(2.9rem,13vw,3.5rem);margin-bottom:22px}
   .hero-bottom{gap:18px}
   .hero-copy{font-size:.96rem;line-height:1.62}
-  .hero-divider{width:100%;height:1px;background:var(--line-dark)}
   .summary{padding:46px 0}
   .kicker-title{font-size:clamp(2.55rem,11vw,3.35rem)}
   .card-grid,.values-grid{grid-template-columns:1fr;gap:14px}
@@ -244,7 +244,7 @@ footer{border-top:1px solid var(--line-dark);padding:30px 0;color:#a99c92;font-s
     <h2 class="kicker-title">FAQ</h2>
     <p class="section-subtitle">Questions before working together.</p>
     <div class="faq-wrap">
-                  <details>
+      <details>
         <summary>What does Independent VA + Operations mean?</summary>
         <p>A VA, or Virtual Assistant, usually helps with remote administrative support such as scheduling, inbox support, follow-ups, research, documentation, and communication tasks.</p>
         <p>Operations support focuses more on how the work is organized and kept moving, such as trackers, CRM updates, simple workflows, process notes, task coordination, and back-office support. Together, the service is meant to help with both the task itself and the structure around the task.</p>
@@ -286,7 +286,6 @@ footer{border-top:1px solid var(--line-dark);padding:30px 0;color:#a99c92;font-s
         <p>Hourly support may be available depending on the work and budget. Installment arrangements may also be discussed if the full amount cannot be paid upfront, as long as the terms are clear before work begins. For some projects, a split payment may also be available, such as paying the first half before work begins and the remaining balance once the agreed work is completed. See the <a href="index.html#pricing">pricing section</a> for the starting point.</p>
       </details>
 
-
       <details>
         <summary>Can digital materials be sent, posted, or published for a client?</summary>
         <p>Yes, when that is part of the agreed virtual support work. This may include items such as emails, newsletters, social media posts, digital documents, forms, client updates, CRM notes, presentation files, or blog content prepared for online use.</p>
@@ -302,6 +301,9 @@ footer{border-top:1px solid var(--line-dark);padding:30px 0;color:#a99c92;font-s
         <summary>Where are the working boundaries explained?</summary>
         <p>The <a href="service-policies.html">Service Policies</a> explain what I can help with, what I need from clients, what requires approval, and what I do not provide. For further clarification, please review that page or use the contact form below.</p>
       </details>
+    </div>
+    <div style="margin-top:28px;display:flex;justify-content:center">
+      <a class="btn gold" href="faq.html">See more FAQs</a>
     </div>
   </div>
 </section>
@@ -329,7 +331,7 @@ footer{border-top:1px solid var(--line-dark);padding:30px 0;color:#a99c92;font-s
 <footer>
   <div class="wrap footer-inner">
     <div><strong>Rochelle V. Silvestre</strong><br>Independent VA + Operations<br><span style="font-size:.76rem">© 2026 Rochelle V. Silvestre · Site & portfolio maintained independently.</span></div>
-    <div class="footer-links"><a href="index.html">Main website</a><a href="service-policies.html">Service Policies</a><a href="privacy.html">Privacy</a><a href="#contact">Contact</a></div>
+    <div class="footer-links"><a href="index.html">Main website</a><a href="faq.html">FAQ</a><a href="service-policies.html">Service Policies</a><a href="privacy.html">Privacy</a><a href="#contact">Contact</a></div>
   </div>
 </footer>
 
