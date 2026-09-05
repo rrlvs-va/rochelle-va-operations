@@ -1,0 +1,64 @@
+name: One-time FAQ link patch
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/one-time-faq-link.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  patch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Add FAQ links to About page
+        shell: bash
+        run: |
+          python <<'PY'
+          from pathlib import Path
+
+          path = Path('about.html')
+          text = path.read_text(encoding='utf-8')
+
+          target = '''      <details>
+        <summary>Where are the working boundaries explained?</summary>
+        <p>The <a href="service-policies.html">Service Policies</a> explain what I can help with, what I need from clients, what requires approval, and what I do not provide. For further clarification, please review that page or use the contact form below.</p>
+      </details>
+    </div>'''
+
+          replacement = '''      <details>
+        <summary>Where are the working boundaries explained?</summary>
+        <p>The <a href="service-policies.html">Service Policies</a> explain what I can help with, what I need from clients, what requires approval, and what I do not provide. For further clarification, please review that page or use the contact form below.</p>
+      </details>
+    </div>
+    <div style="margin-top:28px;text-align:center">
+      <a class="btn gold" href="faq.html">See more FAQs</a>
+    </div>'''
+
+          if target not in text:
+              raise SystemExit('FAQ insertion point not found')
+          text = text.replace(target, replacement, 1)
+
+          footer_old = '<div class="footer-links"><a href="index.html">Main website</a><a href="service-policies.html">Service Policies</a><a href="privacy.html">Privacy</a><a href="#contact">Contact</a></div>'
+          footer_new = '<div class="footer-links"><a href="index.html">Main website</a><a href="faq.html">FAQ</a><a href="service-policies.html">Service Policies</a><a href="privacy.html">Privacy</a><a href="#contact">Contact</a></div>'
+          if footer_old in text:
+              text = text.replace(footer_old, footer_new, 1)
+
+          path.write_text(text, encoding='utf-8')
+          PY
+
+      - name: Commit About page update
+        shell: bash
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add about.html
+          git diff --cached --quiet && exit 0
+          git commit -m "Link About page to standalone FAQ"
+          git push
