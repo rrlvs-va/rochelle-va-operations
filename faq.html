@@ -1,0 +1,277 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Frequently Asked Questions | Rochelle V. Silvestre</title>
+<meta name="description" content="Frequently asked questions about working with Rochelle V. Silvestre for virtual assistant, administrative, customer support, CRM, research, and operations support." />
+<link rel="canonical" href="https://rrlvsva.wasmer.app/faq.html">
+<style>
+:root{
+  --ink:#11100f;
+  --cream:#f3eee7;
+  --paper:#faf7f2;
+  --text:#f7f1ea;
+  --dark-text:#2b2622;
+  --muted:#b9aca1;
+  --muted-dark:#6e625b;
+  --gold:#d1ab63;
+  --gold-deep:#aa7f39;
+  --blush:#cb8f96;
+  --line-dark:#332a24;
+  --line-light:#d8cec4;
+  --max:1180px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--ink);color:var(--text);font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;line-height:1.7}
+a{color:inherit;text-decoration:none}
+.wrap{width:min(var(--max),calc(100% - 40px));margin:auto}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:11px 17px;border-radius:999px;font-weight:750;border:1px solid transparent;transition:transform .18s ease,background .18s ease,border-color .18s ease}
+.btn:hover{transform:translateY(-1px)}
+.btn.gold{background:var(--gold);color:#17110d}
+.btn.outline{border-color:#5b4938;color:#f6eee6;background:transparent}
+
+nav{position:sticky;top:0;z-index:50;background:rgba(17,16,15,.9);backdrop-filter:blur(16px);border-bottom:1px solid rgba(255,255,255,.06)}
+.nav-inner{min-height:72px;display:flex;align-items:center;justify-content:space-between;gap:24px}
+.brand{display:flex;flex-direction:column;line-height:1.1}
+.brand strong{font-family:Georgia,"Times New Roman",serif;font-size:1.05rem;letter-spacing:.01em}
+.brand span{font-size:.72rem;color:var(--gold);letter-spacing:.12em;text-transform:uppercase;margin-top:5px}
+.nav-links{display:flex;align-items:center;gap:16px;color:#d3c8bf;font-size:.88rem;flex-wrap:wrap}
+.nav-links a:not(.btn),.footer-links a{position:relative}
+.nav-links a:not(.btn):after,.footer-links a:after{content:"";position:absolute;left:0;right:0;bottom:-3px;height:1px;background:currentColor;transform:scaleX(0);transform-origin:left;transition:transform .18s ease}
+.nav-links a:not(.btn):hover:after,.footer-links a:hover:after{transform:scaleX(1)}
+.menu-btn{display:none;width:44px;height:44px;align-items:center;justify-content:center;background:transparent;border:0;color:#fff;font-size:1.45rem;line-height:1;padding:0;cursor:pointer;border-radius:10px}
+.menu-btn:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+
+.hero{padding:78px 0 68px;border-bottom:1px solid var(--line-dark);text-align:center;position:relative;overflow:hidden}
+.hero:before{content:"";position:absolute;inset:auto 18% 0 18%;height:1px;background:linear-gradient(90deg,transparent,var(--gold),var(--blush),transparent);opacity:.72}
+.eyebrow{text-transform:uppercase;letter-spacing:.16em;font-size:.72rem;font-weight:800;color:var(--blush);margin-bottom:12px}
+.hero h1{font-family:Georgia,"Times New Roman",serif;font-size:clamp(3.4rem,7vw,6.4rem);font-weight:500;line-height:.94;letter-spacing:-.05em;margin:0 0 20px}
+.hero h1 span{color:var(--gold)}
+.hero-copy{max-width:760px;margin:0 auto;color:var(--muted);font-size:1.02rem}
+
+.faq-shell{background:var(--paper);color:var(--dark-text);padding:72px 0 88px}
+.faq-grid{display:grid;grid-template-columns:245px minmax(0,1fr);gap:62px;align-items:start}
+.toc{position:sticky;top:94px;max-height:calc(100vh - 118px);overflow-y:auto;border-top:1px solid var(--line-light);padding-right:12px;scrollbar-width:thin;scrollbar-color:#b9a48d transparent}
+.toc::-webkit-scrollbar{width:6px}
+.toc::-webkit-scrollbar-thumb{background:#b9a48d;border-radius:999px}
+.toc-title{font-size:.72rem;text-transform:uppercase;letter-spacing:.14em;color:#8d7768;font-weight:800;padding:16px 0 10px;position:sticky;top:0;background:var(--paper)}
+.toc a{display:block;padding:8px 0;color:#6d625a;font-size:.88rem}
+.toc a:hover{color:#2f2925}
+.faq-content{max-width:850px}
+.intro{margin-bottom:42px}
+.intro h2{font-family:Georgia,"Times New Roman",serif;font-size:clamp(2.2rem,4vw,3.8rem);font-weight:500;line-height:1;margin:0 0 12px;color:#2c2622}
+.intro p{margin:0;color:var(--muted-dark)}
+.faq-group{scroll-margin-top:102px;margin:0 0 48px}
+.faq-group:last-child{margin-bottom:0}
+.faq-group h3{font-family:Georgia,"Times New Roman",serif;font-size:1.65rem;font-weight:500;margin:0 0 12px;color:#2c2622;padding-bottom:10px;border-bottom:1px solid #cfc2b5}
+.faq-wrap{border-top:1px solid var(--line-light)}
+details{border-bottom:1px solid var(--line-light)}
+summary{list-style:none;cursor:pointer;padding:18px 8px 14px;font-weight:750;color:#2f2925;display:flex;align-items:center;justify-content:space-between;gap:18px}
+summary::-webkit-details-marker{display:none}
+summary:after{content:"+";font-size:1.3rem;font-weight:400;color:var(--gold-deep);flex:0 0 auto}
+details[open] summary:after{content:"–"}
+details p{margin:0;padding:0 8px 12px;color:#5f554e;font-size:.95rem}
+details ul{margin:0 0 12px 20px;padding-left:16px;color:#5f554e;font-size:.95rem}
+details li{margin:5px 0}
+details a{color:#5c4632;text-decoration:underline;text-underline-offset:3px}
+
+.contact-section{background:var(--ink);color:var(--text);padding:70px 0 82px;text-align:center}
+.contact-card{position:relative;overflow:hidden;background:radial-gradient(circle at 13% 18%,rgba(203,143,150,.12),transparent 24%),radial-gradient(circle at 88% 78%,rgba(209,171,99,.13),transparent 28%),var(--ink);padding:34px 28px;border:1px solid #6d5846;max-width:760px;margin:0 auto}
+.contact-card:after{content:"";position:absolute;left:18%;right:18%;top:0;height:1px;background:linear-gradient(90deg,transparent,var(--gold),var(--blush),transparent)}
+.contact-card h2{font-family:Georgia,"Times New Roman",serif;font-weight:500;font-size:clamp(2.1rem,4vw,3.4rem);margin:0 0 10px}
+.contact-card p{color:var(--muted);max-width:620px;margin:0 auto 22px}
+.contact-actions{display:flex;justify-content:center;gap:12px;flex-wrap:wrap}
+
+footer{border-top:1px solid var(--line-dark);padding:30px 0;color:#a99c92;font-size:.86rem}
+.footer-inner{display:flex;justify-content:space-between;gap:30px;align-items:flex-end}
+.footer-inner strong{color:#fff}
+.footer-links{display:flex;gap:16px;flex-wrap:wrap}
+.footer-links a{color:#d8cbc1}
+
+@media(max-width:900px){
+  .faq-grid{grid-template-columns:1fr;gap:30px}
+  .toc{position:relative;top:auto;max-height:220px;overflow-y:auto;border:1px solid var(--line-light);padding:0 16px 12px;background:#f7f2ec}
+  .toc-title{top:0;background:#f7f2ec;padding-top:14px}
+  .toc a{padding:7px 0}
+}
+@media(max-width:720px){
+  .wrap{width:min(var(--max),calc(100% - 28px))}
+  .nav-inner{min-height:66px;gap:10px}
+  .brand strong{font-size:1rem}
+  .brand span{font-size:.64rem;letter-spacing:.1em}
+  .menu-btn{display:flex;margin-left:auto}
+  .nav-links{position:absolute;left:0;right:0;top:66px;background:#13110f;border-bottom:1px solid #2e2722;padding:14px 18px 20px;display:none;flex-direction:column;align-items:center;text-align:center;gap:4px;z-index:60}
+  .nav-links.open{display:flex}
+  .nav-links a{width:min(320px,100%);min-height:44px;display:flex;align-items:center;justify-content:center;padding:10px 14px}
+  .nav-links .btn{width:auto;min-width:150px;margin-top:4px}
+  .hero{padding:44px 0 42px}
+  .hero:before{display:none}
+  .hero h1{font-size:clamp(3rem,13vw,3.8rem)}
+  .hero-copy{font-size:.95rem;line-height:1.62}
+  .faq-shell{padding:44px 0 60px}
+  .intro{margin-bottom:30px;text-align:center}
+  .faq-group{margin-bottom:38px;scroll-margin-top:80px}
+  .faq-group h3{font-size:1.45rem;text-align:center}
+  summary{padding:16px 4px 13px;line-height:1.4}
+  details p,details ul{font-size:.91rem}
+  .contact-section{padding:52px 0 60px}
+  .contact-card{padding:26px 18px}
+  .contact-actions{display:grid;grid-template-columns:1fr;width:100%}
+  .contact-actions .btn{width:100%}
+  .footer-inner{flex-direction:column;align-items:flex-start}
+}
+</style>
+</head>
+<body>
+<nav>
+  <div class="wrap nav-inner">
+    <a class="brand" href="index.html" aria-label="Back to Rochelle V. Silvestre website">
+      <strong>Rochelle V. Silvestre</strong>
+      <span>Independent VA + Operations</span>
+    </a>
+    <button class="menu-btn" type="button" aria-label="Toggle navigation" aria-expanded="false" onclick="toggleMobileMenu(this)">☰</button>
+    <div class="nav-links">
+      <a href="index.html">Main website</a>
+      <a href="about.html">About</a>
+      <a href="service-policies.html">Service Policies</a>
+      <a href="privacy.html">Privacy</a>
+      <a class="btn outline" href="#contact">Contact</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="eyebrow">Working together</div>
+    <h1>Frequently Asked <span>Questions</span></h1>
+    <p class="hero-copy">A fuller reference for common questions about fit, scope, communication, tools, availability, payments, privacy, and how support is handled. If something is not covered here, it can be clarified before work begins.</p>
+  </div>
+</header>
+
+<main class="faq-shell">
+  <div class="wrap faq-grid">
+    <aside class="toc" aria-label="FAQ categories">
+      <div class="toc-title">Browse questions</div>
+      <a href="#fit">About & fit</a>
+      <a href="#scope">Services & scope</a>
+      <a href="#working-style">Communication, schedule & tools</a>
+      <a href="#pricing">Pricing, trials & changes</a>
+      <a href="#privacy-delivery">Privacy, portfolio & delivery</a>
+    </aside>
+
+    <div class="faq-content">
+      <div class="intro">
+        <h2>Before we work together.</h2>
+        <p>The short FAQ on the About page covers the basics. This page keeps the fuller answers in one place so it can grow as useful questions come up.</p>
+      </div>
+
+      <section class="faq-group" id="fit">
+        <h3>About & fit</h3>
+        <div class="faq-wrap">
+          <details><summary>What does Independent VA + Operations mean?</summary><p>A VA, or Virtual Assistant, usually helps with remote administrative support such as scheduling, inbox support, follow-ups, research, documentation, and communication tasks. Operations support focuses more on how the work is organized and kept moving, such as trackers, CRM updates, simple workflows, process notes, task coordination, and back-office support. Together, the service is meant to help with both the task itself and the structure around it.</p></details>
+          <details><summary>How much professional experience do you have?</summary><p>I have approximately 18 years of professional work experience overall, beginning when I was 18. That is not meant to imply 18 years exclusively as a Virtual Assistant. My background spans customer support, administrative work, operations, research, documentation, CRM-related work, and practical business support that now informs the services I provide independently.</p></details>
+          <details><summary>Is this only for established businesses?</summary><p>No. The services can also fit new, still-growing, and up-and-coming businesses whose owners are learning how to delegate, organize priorities, and build steadier day-to-day systems.</p></details>
+          <details><summary>Do clients need everything organized before reaching out?</summary><p>No. Part of the support may involve helping organize scattered tasks, files, notes, customer follow-ups, trackers, or workflows that have not been fully documented yet. The important part is having enough context to understand what needs to happen first.</p></details>
+          <details><summary>Do you work with one-time projects as well as ongoing support?</summary><p>Yes. Support can be arranged hourly, as a defined project, or as an ongoing monthly retainer depending on the work, timeline, budget, and available capacity.</p></details>
+          <details><summary>How do we get started?</summary><p>Start by sharing what you need help with, what is currently getting stuck, any deadline or timing requirements, and the tools or systems involved. From there, I can clarify the scope, suggest a practical starting point, and confirm whether the work fits my current availability before anything begins.</p></details>
+        </div>
+      </section>
+
+      <section class="faq-group" id="scope">
+        <h3>Services & scope</h3>
+        <div class="faq-wrap">
+          <details><summary>What kind of support can be requested?</summary><p>Support may include administration, inbox and scheduling support, customer communication, CRM updates, research, reporting, trackers, documentation, workflow coordination, presentations, document formatting, and practical content or visual support. Specific tasks depend on the business, the agreed scope, and the tools available.</p></details>
+          <details><summary>Can this include customer support or CRM work?</summary><p>Yes. Support can include customer communication, account or order assistance, follow-ups, CRM notes, record updates, case or ticket documentation, lead tracking, billing or refund support within the client’s process, and internal handoffs when those tasks are part of the agreed scope.</p></details>
+          <details><summary>Can this include executive or administrative support?</summary><p>Yes. Depending on the arrangement, this can include inbox and calendar support, scheduling, meeting coordination, follow-ups, documents, presentations, research, task tracking, file organization, and other remote administrative work.</p></details>
+          <details><summary>Can this include creative or content support?</summary><p>Yes, when it fits the project. This may include simple graphics, presentation support, document formatting, social media content support, image editing, light branding support, and basic visual or layout work for agreed business materials.</p></details>
+          <details><summary>Can support include figuring out the next step?</summary><p>Yes. I can help organize information, ask clarifying questions, suggest practical next steps, and offer suggestions when appropriate. Final business decisions stay with the client.</p></details>
+          <details><summary>What happens if a task is outside the agreed scope?</summary><p>I will flag it rather than quietly treating it as included. We can decide whether it should replace another task, be added to the current scope, be quoted separately, or be scheduled for later. Additional work should be clear before it becomes billable work.</p></details>
+        </div>
+      </section>
+
+      <section class="faq-group" id="working-style">
+        <h3>Communication, schedule & tools</h3>
+        <div class="faq-wrap">
+          <details><summary>Do you work across different time zones?</summary><p>Yes. I am based in the Philippines and can support international clients. Most work is handled independently and asynchronously, so overlapping every working hour is usually unnecessary. Any required live overlap should be discussed before the engagement begins.</p></details>
+          <details><summary>How quickly do you respond to messages?</summary><p>My general working-day response standard is within 24 hours. Urgent-response expectations, recurring check-ins, or faster coverage should be agreed separately because availability depends on the client arrangement and current workload.</p></details>
+          <details><summary>Do you need to be online all day?</summary><p>No. My normal approach is async-first: the work is tracked, completed, documented, and updated without requiring constant live presence. If a role genuinely needs scheduled live coverage, that can be discussed as a separate requirement.</p></details>
+          <details><summary>What does async-first mean in practice?</summary><p>It means written context, clear tasks, documented updates, and practical follow-through are used whenever possible so progress does not depend on everyone being online at the same time. Calls and meetings are still available when they genuinely help.</p></details>
+          <details><summary>Are live meetings, calls, or scheduled coverage available?</summary><p>Yes, when needed and arranged in advance. Meetings, calls, onboarding sessions, reviews, or scheduled coverage can be planned around the agreed engagement. I do not assume that every task requires a meeting if it can be handled clearly in writing.</p></details>
+          <details><summary>Can you use a client’s existing tools and systems?</summary><p>Usually, yes. I can work within an existing setup where practical rather than requiring a client to change systems just to work with me. Access, permissions, documentation, and any required training should be provided when a platform or process is specific to the client.</p></details>
+          <details><summary>How much availability do you have?</summary><p>Capacity depends on current client commitments and the type of work being requested. The website currently gives 15–20 hours per week as a general reference depending on each client contract. Reserved availability is confirmed before work begins.</p></details>
+        </div>
+      </section>
+
+      <section class="faq-group" id="pricing">
+        <h3>Pricing, trials & changes</h3>
+        <div class="faq-wrap">
+          <details><summary>How does pricing work?</summary><p>Pricing depends on the type of work, scope, timeline, and level of support needed. The main website lists hourly support, monthly retainers, and project-based work as general starting points. Final terms are confirmed before work begins. See the <a href="index.html#pricing">pricing section</a> for current reference pricing.</p></details>
+          <details><summary>Can we start with a smaller trial run?</summary><p>Yes. When it makes sense, we can define a smaller paid trial with a clear scope, budget, and end point. This gives both sides a practical way to see how the working arrangement feels before deciding whether to continue with a larger project or ongoing support. A trial does not create an obligation to continue afterward.</p></details>
+          <details><summary>Are payment arrangements or split payments available?</summary><p>They may be, depending on the project. For some work, a split payment or clearly scheduled installment arrangement can be discussed in advance. Any payment schedule needs to be agreed before work begins rather than assumed after the fact.</p></details>
+          <details><summary>Do you offer refunds?</summary><p>Payments are generally non-refundable once work has begun, time has been reserved, onboarding or setup work has been completed, or deliverables have been provided. This also applies to paid trial work once the trial has started. Any unusual exception would need to be agreed in writing based on the specific circumstances.</p></details>
+          <details><summary>What happens if a project or retainer is cancelled?</summary><p>Cancellation terms depend on the arrangement and should be confirmed before work begins. Work already completed, time already used or reserved, and approved expenses remain payable. For ongoing arrangements, reasonable notice may be required so active tasks can be closed or handed over properly.</p></details>
+          <details><summary>How are revisions or changes handled?</summary><p>Reasonable revisions can be included when they are part of the agreed deliverable. If a revision changes the original direction, adds new requirements, or significantly expands the work, it may be treated as additional scope and discussed before more work is done.</p></details>
+        </div>
+      </section>
+
+      <section class="faq-group" id="privacy-delivery">
+        <h3>Privacy, portfolio & delivery</h3>
+        <div class="faq-wrap">
+          <details><summary>How do you handle confidential or sensitive information?</summary><p>I use client information only for legitimate work connected to the engagement, keep access limited to what is needed, and avoid unnecessary sharing or exposure of sensitive data. Clients should also provide access through appropriate permissions rather than sharing more information than the task requires. More detail is available in the <a href="privacy.html">Privacy Policy</a>.</p></details>
+          <details><summary>Can you work with more than one client at the same time?</summary><p>Yes. Unless a signed agreement specifically says otherwise, my work is intended to be independent and non-exclusive. I may support more than one client while protecting confidentiality, keeping information separate, avoiding conflicts of interest, and meeting the commitments I have accepted.</p></details>
+          <details><summary>Might work completed for a client appear in your portfolio?</summary><p>Potentially, but only in a responsible way. I may reference or display non-confidential work when it is appropriate and not restricted by a signed agreement, NDA, client instruction, or confidentiality concern. Client-identifying or sensitive information is not shared without permission. When needed, an example may be anonymized, sanitized, or reconstructed rather than showing private client material.</p></details>
+          <details><summary>Who owns the completed work?</summary><p>Ownership depends on the type of deliverable and the agreed terms. Client-specific final deliverables that have been fully paid for are generally intended for the client’s use, while my pre-existing templates, methods, general know-how, reusable systems, and independently developed materials remain mine unless we agree otherwise in writing.</p></details>
+          <details><summary>What happens at handoff or when an engagement ends?</summary><p>I can provide the agreed final files, relevant status notes, trackers, documentation, and a reasonable summary of outstanding items so the client can continue the work. Access should then be reviewed and removed where appropriate. The exact handoff depends on the scope and the systems involved.</p></details>
+        </div>
+      </section>
+    </div>
+  </div>
+</main>
+
+<section class="contact-section" id="contact">
+  <div class="wrap">
+    <div class="contact-card">
+      <h2>Still have a question?</h2>
+      <p>If the answer is not here, you can use the main contact form or review the Service Policies for more detail about working terms and boundaries.</p>
+      <div class="contact-actions">
+        <a class="btn gold" href="index.html#contact">Contact me</a>
+        <a class="btn outline" href="service-policies.html">Service Policies</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap footer-inner">
+    <div><strong>Rochelle V. Silvestre</strong><br>Independent VA + Operations<br><span style="font-size:.76rem">© 2026 Rochelle V. Silvestre · Site & portfolio maintained independently.</span></div>
+    <div class="footer-links"><a href="index.html">Main website</a><a href="about.html">About</a><a href="service-policies.html">Service Policies</a><a href="privacy.html">Privacy</a></div>
+  </div>
+</footer>
+
+<script>
+function toggleMobileMenu(button){
+  const nav = button.closest('.nav-inner').querySelector('.nav-links');
+  const isOpen = nav.classList.toggle('open');
+  button.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+}
+document.querySelectorAll('.nav-links a').forEach(function(link){
+  link.addEventListener('click', function(){
+    const nav = link.closest('.nav-links');
+    nav.classList.remove('open');
+    const button = nav.closest('.nav-inner')?.querySelector('.menu-btn');
+    if(button) button.setAttribute('aria-expanded','false');
+  });
+});
+document.addEventListener('keydown', function(event){
+  if(event.key !== 'Escape') return;
+  document.querySelectorAll('.nav-links.open').forEach(function(nav){
+    nav.classList.remove('open');
+    const button = nav.closest('.nav-inner')?.querySelector('.menu-btn');
+    if(button) button.setAttribute('aria-expanded','false');
+  });
+});
+</script>
+</body>
+</html>
