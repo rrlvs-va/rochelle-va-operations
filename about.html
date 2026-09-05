@@ -43,7 +43,7 @@ nav{position:sticky;top:0;z-index:50;background:rgba(17,16,15,.9);backdrop-filte
 .brand span{font-size:.72rem;color:var(--gold);letter-spacing:.12em;text-transform:uppercase;margin-top:5px}
 .nav-links{display:flex;align-items:center;gap:16px;color:#d3c8bf;font-size:.88rem;flex-wrap:wrap}
 
-.hero{padding:58px 0 64px;border-bottom:1px solid var(--line-dark);position:relative;overflow:hidden}
+.hero{padding:82px 0 72px;border-bottom:1px solid var(--line-dark);position:relative;overflow:hidden}
 .hero:before{content:"";position:absolute;inset:auto 14% 0 14%;height:1px;background:linear-gradient(90deg,transparent,var(--gold),var(--blush),transparent);opacity:.75}
 .hero h1{font-family:Georgia,"Times New Roman",serif;font-size:clamp(4rem,8vw,7rem);font-weight:500;line-height:.94;letter-spacing:-.05em;margin:0 0 32px;text-align:center}
 .hero h1 span{color:var(--gold)}
@@ -135,12 +135,6 @@ footer{border-top:1px solid var(--line-dark);padding:30px 0;color:#a99c92;font-s
   .statement-section,.values-section,.faq-section,.contact-section{padding:62px 0}
   .footer-inner{flex-direction:column;align-items:flex-start}
 }
-
-/* Navigation hover underline */
-.nav-links a:not(.btn):not(.nav-cta),.footer-links a,.footer-right a{position:relative}
-.nav-links a:not(.btn):not(.nav-cta)::after,.footer-links a::after,.footer-right a::after{content:"";position:absolute;left:0;right:0;bottom:-3px;height:1px;background:currentColor;transform:scaleX(0);transform-origin:left;transition:transform .18s ease}
-.nav-links a:not(.btn):not(.nav-cta):hover::after,.footer-links a:hover::after,.footer-right a:hover::after{transform:scaleX(1)}
-
 </style>
 </head>
 <body>
