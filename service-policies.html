@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>Service Guidelines | Rochelle V. Silvestre</title>
-<meta name="description" content="Plain-language service guidelines for working with Rochelle V. Silvestre | Independent VA + Operations." />
+<title>Service Policies | Rochelle V. Silvestre</title>
+<meta name="description" content="Plain-language service policies for working with Rochelle V. Silvestre | Independent VA + Operations." />
 <link rel="canonical" href="https://rrlvsva.wasmer.app/service-policies.html">
   <style>
 :root{
@@ -41,6 +41,8 @@ nav{position:sticky;top:0;z-index:50;background:rgba(17,16,15,.9);backdrop-filte
 .brand strong{font-family:Georgia,"Times New Roman",serif;font-size:1.05rem;letter-spacing:.01em}
 .brand span{font-size:.72rem;color:var(--gold);letter-spacing:.12em;text-transform:uppercase;margin-top:5px}
 .nav-links{display:flex;align-items:center;gap:12px;color:#d3c8bf;font-size:.88rem;flex-wrap:wrap}
+.menu-btn{display:none;width:44px;height:44px;align-items:center;justify-content:center;background:transparent;border:0;color:#fff;font-size:1.45rem;line-height:1;padding:0;cursor:pointer;border-radius:10px}
+.menu-btn:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
 
 .hero{padding:82px 0 66px;border-bottom:1px solid var(--line-dark)}
 .hero-grid{display:grid;grid-template-columns:1.12fr .88fr;gap:72px;align-items:end}
@@ -109,24 +111,42 @@ footer{border-top:1px solid var(--line-dark);padding:30px 0;color:#a99c92;font-s
 .footer-links a{color:#d8cbc1}
 
 @media (max-width:900px){
-  .hero-grid,.summary-grid,.policy-grid{grid-template-columns:1fr;gap:34px}
-  .hero-meta{border-left:0;border-top:1px solid var(--line-dark);padding:22px 0 0}
-  .toc{position:relative;top:auto;max-height:270px;overflow-y:auto;display:block;border:1px solid var(--line-light);padding:0 18px 12px;background:#f7f2ec}
+  .hero-grid,.summary-grid,.policy-grid{grid-template-columns:1fr;gap:30px}
+  .hero-meta{border-left:0;border-top:1px solid var(--line-dark);padding:20px 0 0}
+  .toc{position:relative;top:auto;max-height:250px;overflow-y:auto;display:block;border:1px solid var(--line-light);padding:0 16px 12px;background:#f7f2ec}
   .toc .toc-title{top:0;background:#f7f2ec;padding-top:14px}
   .toc a{padding:7px 0}
-  .policy-section{scroll-margin-top:92px}
+  .policy-section{scroll-margin-top:88px}
   .term-list{grid-template-columns:1fr}
 }
-@media (max-width:620px){
+@media (max-width:720px){
   .wrap{width:min(var(--max),calc(100% - 28px))}
-  .nav-links .secondary{display:none}
-  .hero{padding:58px 0 48px}
-  .hero h1{font-size:3.1rem}
-  .summary{padding:40px 0}
+  .nav-inner{min-height:66px;gap:10px}
+  .brand strong{font-size:1rem}
+  .brand span{font-size:.64rem;letter-spacing:.1em}
+  .menu-btn{display:flex;margin-left:auto}
+  .nav-links{position:absolute;left:0;right:0;top:66px;background:#13110f;border-bottom:1px solid #2e2722;padding:14px 18px 20px;display:none;flex-direction:column;align-items:center;text-align:center;gap:4px;z-index:60}
+  .nav-links.open{display:flex}
+  .nav-links .secondary{display:flex}
+  .nav-links a{width:min(320px,100%);min-height:44px;align-items:center;justify-content:center;padding:10px 14px}
+  .nav-links .btn{width:auto;min-width:150px;margin-top:4px}
+  .hero{padding:46px 0 42px}
+  .hero h1{font-size:clamp(2.8rem,12.5vw,3.35rem);margin-bottom:18px}
+  .hero-copy{font-size:.95rem;line-height:1.62}
+  .summary{padding:36px 0}
   .summary-points{grid-template-columns:1fr}
+  .summary-point{padding:15px 0}
   .summary-point:nth-child(odd){border-right:0;padding-right:0}
   .summary-point:nth-child(even){padding-left:0}
-  .policy-shell{padding:56px 0 72px}
+  .policy-shell{padding:44px 0 62px}
+  .policy-grid{gap:26px}
+  .toc{max-height:220px}
+  .policy-section{margin-bottom:34px;scroll-margin-top:80px}
+  .policy-section h2{font-size:1.8rem}
+  .policy-section h3{font-size:1.17rem}
+  .policy-section p,.policy-section li{font-size:.93rem}
+  .policy-note{padding:14px 15px}
+  .contact-card{padding:26px 18px}
   .footer-inner{flex-direction:column;align-items:flex-start}
 }
 
@@ -144,6 +164,7 @@ footer{border-top:1px solid var(--line-dark);padding:30px 0;color:#a99c92;font-s
       <strong>Rochelle V. Silvestre</strong>
       <span>Independent VA + Operations</span>
     </a>
+    <button class="menu-btn" type="button" aria-label="Toggle navigation" aria-expanded="false" onclick="toggleMobileMenu(this)">☰</button>
     <div class="nav-links">
       <a class="secondary" href="index.html">Main website</a>
       <a class="secondary" href="about.html">About</a>
@@ -156,7 +177,7 @@ footer{border-top:1px solid var(--line-dark);padding:30px 0;color:#a99c92;font-s
 <header class="hero">
   <div class="wrap hero-grid">
     <div>
-      <h1>Service <span>Guidelines</span></h1>
+      <h1>Service <span>Policies</span></h1>
        <div class="eyebrow">On working together</div>
       <p class="hero-copy">This page is for new, still-growing, and up-and-coming business owners who may be hiring support for the first time. It explains what I can help with, what I cannot take responsibility for, and what needs to be clear before we begin.</p>
     </div>
@@ -362,6 +383,32 @@ function sendMail(e){
   );
   window.location.href = 'mailto:' + businessEmail + '?subject=' + subject + '&body=' + body;
 }
+</script>
+
+<script id="mobile-nav-script">
+function toggleMobileMenu(button){
+  const nav = button.closest('.nav-inner').querySelector('.nav-links');
+  const isOpen = nav.classList.toggle('open');
+  button.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+}
+
+document.querySelectorAll('.nav-links a').forEach(function(link){
+  link.addEventListener('click', function(){
+    const nav = link.closest('.nav-links');
+    nav.classList.remove('open');
+    const button = nav.closest('.nav-inner')?.querySelector('.menu-btn');
+    if(button) button.setAttribute('aria-expanded', 'false');
+  });
+});
+
+document.addEventListener('keydown', function(event){
+  if(event.key !== 'Escape') return;
+  document.querySelectorAll('.nav-links.open').forEach(function(nav){
+    nav.classList.remove('open');
+    const button = nav.closest('.nav-inner')?.querySelector('.menu-btn');
+    if(button) button.setAttribute('aria-expanded', 'false');
+  });
+});
 </script>
 </body>
 </html>
