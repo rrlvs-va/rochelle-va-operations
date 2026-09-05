@@ -44,7 +44,7 @@ nav{position:sticky;top:0;z-index:50;background:rgba(17,16,15,.9);backdrop-filte
 .draftbar{background:#241e1a;border-bottom:1px solid #4a3a2e;color:#e7d9ce;font-size:.82rem;text-align:center;padding:8px 20px}
 .draftbar strong{color:var(--gold)}
 
-.hero{padding:82px 0 66px;border-bottom:1px solid var(--line-dark)}
+.hero{padding:58px 0 56px;border-bottom:1px solid var(--line-dark)}
 .hero-grid{display:grid;grid-template-columns:1.12fr .88fr;gap:72px;align-items:end}
 .hero h1{font-family:Georgia,"Times New Roman",serif;font-size:clamp(3.5rem,7vw,6.6rem);font-weight:500;line-height:.94;letter-spacing:-.05em;margin:14px 0 22px}
 .hero h1 span{color:var(--gold)}
@@ -91,6 +91,22 @@ nav{position:sticky;top:0;z-index:50;background:rgba(17,16,15,.9);backdrop-filte
 .contact-card p{color:var(--muted);max-width:620px;margin:0 auto 20px}
 .contact-card .btn{margin-top:6px}
 
+
+
+
+.form{display:grid;gap:12px}
+.form input[type="text"],.form input[type="email"],.form input[type="tel"],.form textarea{width:100%;border:0;border-bottom:1px solid #baa999;background:transparent;color:#302923;padding:13px 2px;outline:none;border-radius:0}
+.form textarea{min-height:130px;resize:vertical}
+.form input[type="text"]:focus,.form input[type="email"]:focus,.form input[type="tel"]:focus,.form textarea:focus{border-bottom-color:#8d5e49}
+.form button{justify-self:start;margin-top:8px}
+.form-field{display:grid;gap:6px}
+.form-label{font-size:.78rem;font-weight:750;letter-spacing:.04em;color:#6e625b}
+.form-label .optional{font-weight:500;color:#988a80}
+.form-options{display:flex;flex-wrap:wrap;gap:10px 16px;padding:4px 0 8px}
+.form-option{display:inline-flex;align-items:center;gap:7px;color:#5e534c;font-size:.88rem;cursor:pointer}
+.form-option input{width:auto;margin:0;accent-color:#9d5962}
+.form-help{margin:0;color:#8a7b72;font-size:.78rem}
+
 footer{border-top:1px solid var(--line-dark);padding:30px 0;color:#a99c92;font-size:.86rem}
 .footer-inner{display:flex;justify-content:space-between;gap:30px;align-items:flex-end}
 .footer-inner strong{color:#fff}
@@ -117,9 +133,16 @@ footer{border-top:1px solid var(--line-dark);padding:30px 0;color:#a99c92;font-s
   .policy-shell{padding:56px 0 72px}
   .footer-inner{flex-direction:column;align-items:flex-start}
 }
+
+/* Navigation hover underline */
+.nav-links a:not(.btn):not(.nav-cta),.footer-links a,.footer-right a{position:relative}
+.nav-links a:not(.btn):not(.nav-cta)::after,.footer-links a::after,.footer-right a::after{content:"";position:absolute;left:0;right:0;bottom:-3px;height:1px;background:currentColor;transform:scaleX(0);transform-origin:left;transition:transform .18s ease}
+.nav-links a:not(.btn):not(.nav-cta):hover::after,.footer-links a:hover::after,.footer-right a:hover::after{transform:scaleX(1)}
+
 </style>
 </head>
 <body>
+<nav>
   <div class="wrap nav-inner">
     <a class="brand" href="index.html" aria-label="Back to Rochelle V. Silvestre website">
       <strong>Rochelle V. Silvestre</strong>
@@ -127,7 +150,9 @@ footer{border-top:1px solid var(--line-dark);padding:30px 0;color:#a99c92;font-s
     </a>
     <div class="nav-links">
       <a class="secondary" href="index.html">Main website</a>
-      <a class="btn outline" href="index.html#contact">Contact</a>
+      <a class="secondary" href="about.html">About</a>
+      <a class="secondary" href="service-guidelines.html">Service Guidelines</a>
+      <a class="btn outline" href="#contact-privacy">Contact</a>
     </div>
   </div>
 </nav>
@@ -360,13 +385,20 @@ footer{border-top:1px solid var(--line-dark);padding:30px 0;color:#a99c92;font-s
       </section>
 
       <div id="contact-privacy" style="scroll-margin-top:112px">
-        <div class="contact-card">
-          <div style="font-size:.78rem;letter-spacing:.08em;text-transform:uppercase;color:#d5b6a8;margin-bottom:9px">Clear communication, even in the fine print</div>
-          <h3 style="margin:0 0 10px;font:500 2rem/1.1 Georgia,'Times New Roman',serif;color:#fff">Questions about your information?</h3>
-          <p>If you want to ask about this policy or make a privacy-related request, you can contact me directly. I will respond through the information you provide or through an agreed business channel.</p>
-          <div style="display:flex;justify-content:center;gap:10px;flex-wrap:wrap">
-            <a class="btn gold" href="mailto:rvs-va@protonmail.com?subject=Privacy%20question%20or%20request">Email / Contact Me</a>
-            <a class="btn outline" href="index.html">Back to main website</a>
+        <div class="contact-card" style="text-align:left">
+          <div style="font-size:.78rem;letter-spacing:.08em;text-transform:uppercase;color:#d5b6a8;margin-bottom:9px;text-align:center">Clear communication, even in the fine print</div>
+          <h3 style="margin:0 0 12px;font:500 2rem/1.1 Georgia,'Times New Roman',serif;color:#fff;text-align:center">Contact form</h3>
+          <p>If you want to ask about this policy or make a privacy-related request, use the form below. It prepares an email to me using your email application.</p>
+          <div style="background:var(--paper);color:var(--dark-text);padding:26px;border:1px solid #6d5846">
+<form class="form" onsubmit="sendMail(event)">
+      <div class="form-field"><label class="form-label" for="name">Name</label><input id="name" type="text" placeholder="Your name" required></div>
+      <div class="form-field"><label class="form-label" for="company">Company / business name</label><input id="company" type="text" placeholder="Company / business name" required></div>
+      <div class="form-field"><label class="form-label" for="email">Email address</label><input id="email" type="email" placeholder="Your email address" required></div>
+      <div class="form-field"><label class="form-label" for="phone">Phone number <span class="optional">(optional)</span></label><input id="phone" type="tel" placeholder="Country code + phone number"><p class="form-help">If you provide a number, select any options that apply:</p><div class="form-options"><label class="form-option"><input type="checkbox" name="phoneChannel" value="Viber">Viber</label><label class="form-option"><input type="checkbox" name="phoneChannel" value="WhatsApp">WhatsApp</label><label class="form-option"><input type="checkbox" name="phoneChannel" value="Mobile call">Mobile</label></div></div>
+      <div class="form-field"><label class="form-label" for="message">What would you like help with?</label><textarea id="message" placeholder="Tell me what you need support with" required></textarea></div>
+      <div class="form-field"><div class="form-label">Preferred method of communication</div><div class="form-options"><label class="form-option"><input type="radio" name="preferredContact" value="Email" required>Email</label><label class="form-option"><input type="radio" name="preferredContact" value="Phone">Phone</label><label class="form-option"><input type="radio" name="preferredContact" value="Google Meet / Chat">Google Meet / Chat</label><label class="form-option"><input type="radio" name="preferredContact" value="Zoom">Zoom</label><label class="form-option"><input type="radio" name="preferredContact" value="MS Teams">MS Teams</label></div></div>
+      <button class="btn gold" type="submit">Send support inquiry</button>
+    </form>
           </div>
         </div>
       </div>
@@ -377,8 +409,43 @@ footer{border-top:1px solid var(--line-dark);padding:30px 0;color:#a99c92;font-s
 <footer>
   <div class="wrap footer-inner">
     <div><strong>Rochelle V. Silvestre</strong><br>Independent VA + Operations<br><span style="font-size:.76rem">© 2026 Rochelle V. Silvestre · Site & portfolio maintained independently.</span></div>
-    <div class="footer-links"><a href="index.html">Main website</a><a href="index.html#contact">Contact</a></div>
+    <div class="footer-links"><a href="index.html">Main website</a><a href="about.html">About</a><a href="service-guidelines.html">Service Guidelines</a><a href="#contact-privacy">Contact</a></div>
   </div>
 </footer>
+<script>
+function sendMail(e){
+  e.preventDefault();
+  const businessEmail = 'rvs-va@protonmail.com';
+  const name = document.getElementById('name').value.trim();
+  const company = document.getElementById('company').value.trim();
+  const sender = document.getElementById('email').value.trim();
+  const phone = document.getElementById('phone').value.trim();
+  const message = document.getElementById('message').value.trim();
+  const phoneChannels = Array.from(document.querySelectorAll('input[name="phoneChannel"]:checked')).map(el => el.value);
+  const preferred = document.querySelector('input[name="preferredContact"]:checked');
+
+  if (!name || !company || !sender || !message || !preferred) {
+    alert('Please complete the required fields before sending your inquiry.');
+    return;
+  }
+  if ((preferred.value === 'Phone' || phoneChannels.length) && !phone) {
+    alert('Please add a phone number if you select phone, Viber, WhatsApp, or mobile contact.');
+    document.getElementById('phone').focus();
+    return;
+  }
+
+  const subject = encodeURIComponent('VA support inquiry from ' + name + ' — ' + company);
+  const body = encodeURIComponent(
+    'Name: ' + name + '\n' +
+    'Company / business: ' + company + '\n' +
+    'Email: ' + sender + '\n' +
+    'Phone: ' + (phone || 'Not provided') + '\n' +
+    'Phone options: ' + (phoneChannels.length ? phoneChannels.join(', ') : 'None selected') + '\n' +
+    'Preferred communication: ' + preferred.value + '\n\n' +
+    'Support needed:\n' + message
+  );
+  window.location.href = 'mailto:' + businessEmail + '?subject=' + subject + '&body=' + body;
+}
+</script>
 </body>
 </html>
