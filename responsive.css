@@ -4,7 +4,10 @@
    Tablet + Mobile
    ========================================================= */
 
-/* ---------- GENERAL SAFETY ---------- */
+
+/* =========================================================
+   GENERAL SAFETY
+   ========================================================= */
 
 html,
 body {
@@ -15,6 +18,11 @@ body {
 img {
   max-width: 100%;
 }
+
+
+/* =========================================================
+   TABLET
+   ========================================================= */
 
 @media (max-width: 980px) {
 
@@ -47,6 +55,7 @@ img {
   .footer-inner {
     gap: 20px;
   }
+
 }
 
 
@@ -77,7 +86,7 @@ img {
 
 
   /* =======================================================
-     SHARED MOBILE NAV
+     SHARED MOBILE NAVIGATION
      ======================================================= */
 
   .nav-inner {
@@ -114,7 +123,7 @@ img {
   }
 
 
-  /* HERO */
+  /* HOME — HERO */
 
   .page-home .hero {
     min-height: auto;
@@ -144,7 +153,7 @@ img {
   }
 
 
-  /* HERO BUTTONS */
+  /* HOME — HERO BUTTONS */
 
   .page-home .hero-actions {
     display: grid;
@@ -162,7 +171,7 @@ img {
   }
 
 
-  /* METRICS */
+  /* HOME — METRICS */
 
   .page-home .metric-strip {
     margin-top: 28px;
@@ -183,7 +192,7 @@ img {
   }
 
 
-  /* PORTRAIT */
+  /* HOME — PORTRAIT */
 
   .page-home .portrait-shell {
     max-width: 320px;
@@ -195,7 +204,7 @@ img {
     max-width: 290px;
     box-shadow:
       0 0 0 10px var(--ink),
-      0 0 0 11px rgba(209,171,99,.42);
+      0 0 0 11px rgba(209, 171, 99, .42);
   }
 
   .page-home .portrait-caption {
@@ -206,7 +215,7 @@ img {
   }
 
 
-  /* ALL HOME SECTIONS */
+  /* HOME — GENERAL SECTION SPACING */
 
   .page-home section {
     padding: 56px 0;
@@ -218,7 +227,7 @@ img {
   }
 
 
-  /* SERVICES */
+  /* HOME — SERVICES */
 
   .page-home .services-layout {
     gap: 28px;
@@ -250,7 +259,7 @@ img {
   }
 
 
-  /* EXPERIENCE */
+  /* HOME — EXPERIENCE */
 
   .page-home .experience-grid {
     gap: 28px;
@@ -276,7 +285,7 @@ img {
   }
 
 
-  /* HOW I WORK */
+  /* HOME — HOW I WORK */
 
   .page-home .workflow-top {
     gap: 24px;
@@ -308,10 +317,12 @@ img {
   }
 
 
-  /* PORTFOLIO
-     This is the important repair.
-     Removes the current 48px text column.
-  */
+  /* =======================================================
+     HOME — PORTFOLIO
+
+     IMPORTANT:
+     This fixes the broken narrow 48px column seen on mobile.
+     ======================================================= */
 
   .page-home .portfolio-intro {
     gap: 24px;
@@ -359,7 +370,7 @@ img {
   }
 
 
-  /* PRICING */
+  /* HOME — PRICING */
 
   .page-home .pricing-grid {
     margin-top: 30px;
@@ -386,7 +397,7 @@ img {
   }
 
 
-  /* TOOLS */
+  /* HOME — TOOLS */
 
   .page-home .tools-grid {
     grid-template-columns: 1fr;
@@ -423,7 +434,7 @@ img {
   }
 
 
-  /* REVIEWS */
+  /* HOME — REVIEWS */
 
   .page-home .reviews-layout {
     gap: 26px;
@@ -454,7 +465,7 @@ img {
   }
 
 
-  /* CONTACT */
+  /* HOME — CONTACT */
 
   .page-home .contact-grid {
     gap: 28px;
@@ -487,7 +498,6 @@ img {
 
   /* =======================================================
      ABOUT PAGE
-     Conservative mobile cleanup.
      ======================================================= */
 
   .page-about .nav-inner {
@@ -497,10 +507,6 @@ img {
     padding: 0 !important;
   }
 
-  /*
-    On mobile, keep the header simple.
-    Full site links remain available in the footer.
-  */
   .page-about .nav-links a:not(.btn) {
     display: none;
   }
@@ -571,104 +577,134 @@ img {
      SERVICE POLICIES + PRIVACY
      ======================================================= */
 
-  .page-policy .nav-inner {
+  .page-service-policies .nav-inner,
+  .page-privacy .nav-inner {
     min-height: 64px;
   }
 
-  .page-policy .nav-links .secondary {
+  .page-service-policies .nav-links .secondary,
+  .page-privacy .nav-links .secondary {
     display: none;
   }
 
-  .page-policy .hero {
+  .page-service-policies .hero,
+  .page-privacy .hero {
     padding: 44px 0 40px;
   }
 
-  .page-policy .hero h1 {
+  .page-service-policies .hero h1,
+  .page-privacy .hero h1 {
     font-size: clamp(2.8rem, 12vw, 3.5rem);
     margin-bottom: 18px;
   }
 
-  .page-policy .hero-grid {
+  .page-service-policies .hero-grid,
+  .page-privacy .hero-grid {
     gap: 22px;
   }
 
-  .page-policy .hero-meta {
+  .page-service-policies .hero-meta,
+  .page-privacy .hero-meta {
     padding-top: 16px;
   }
 
-  .page-policy .summary {
+  .page-service-policies .summary,
+  .page-privacy .summary {
     padding: 38px 0;
   }
 
-  .page-policy .summary-grid {
+  .page-service-policies .summary-grid,
+  .page-privacy .summary-grid {
     gap: 26px;
   }
 
-  .page-policy .summary-points {
+  .page-service-policies .summary-points,
+  .page-privacy .summary-points {
     grid-template-columns: 1fr;
   }
 
-  .page-policy .summary-point {
+  .page-service-policies .summary-point,
+  .page-privacy .summary-point {
     padding: 16px 0;
   }
 
-  .page-policy .summary-point:nth-child(odd),
-  .page-policy .summary-point:nth-child(even) {
+  .page-service-policies .summary-point:nth-child(odd),
+  .page-service-policies .summary-point:nth-child(even),
+  .page-privacy .summary-point:nth-child(odd),
+  .page-privacy .summary-point:nth-child(even) {
     padding-left: 0;
     padding-right: 0;
     border-right: 0;
   }
 
-  .page-policy .policy-shell {
+  .page-service-policies .policy-shell,
+  .page-privacy .policy-shell {
     padding: 44px 0 62px;
   }
 
-  .page-policy .policy-grid {
+  .page-service-policies .policy-grid,
+  .page-privacy .policy-grid {
+    grid-template-columns: 1fr;
     gap: 30px;
   }
 
   /*
-    Mobile table of contents stays browseable
-    instead of becoming an endless page header.
+    The contents box remains scrollable on mobile,
+    so users can browse sections without an endless list.
   */
-  .page-policy .toc {
+
+  .page-service-policies .toc,
+  .page-privacy .toc {
+    position: relative;
+    top: auto;
     max-height: 220px;
+    overflow-y: auto;
     padding: 0 16px 10px;
   }
 
-  .page-policy .toc a {
+  .page-service-policies .toc a,
+  .page-privacy .toc a {
     padding: 7px 0;
     line-height: 1.4;
   }
 
-  .page-policy .policy-section {
+  .page-service-policies .policy-section,
+  .page-privacy .policy-section {
     margin-bottom: 34px;
     scroll-margin-top: 82px;
   }
 
-  .page-policy .policy-section h2 {
+  .page-service-policies .policy-section h2,
+  .page-privacy .policy-section h2 {
     font-size: 1.8rem;
   }
 
-  .page-policy .policy-section h3 {
+  .page-service-policies .policy-section h3,
+  .page-privacy .policy-section h3 {
     font-size: 1.18rem;
   }
 
-  .page-policy .policy-section p,
-  .page-policy .policy-section li {
+  .page-service-policies .policy-section p,
+  .page-service-policies .policy-section li,
+  .page-privacy .policy-section p,
+  .page-privacy .policy-section li {
     font-size: .93rem;
   }
 
-  .page-policy .policy-note {
+  .page-service-policies .policy-note,
+  .page-privacy .policy-note {
     padding: 14px 15px;
   }
 
-  .page-policy .rights-grid,
-  .page-policy .term-list {
+  .page-service-policies .rights-grid,
+  .page-service-policies .term-list,
+  .page-privacy .rights-grid,
+  .page-privacy .term-list {
     grid-template-columns: 1fr;
   }
 
-  .page-policy .contact-card {
+  .page-service-policies .contact-card,
+  .page-privacy .contact-card {
     padding: 28px 18px;
   }
 
@@ -690,9 +726,6 @@ img {
     gap: 28px;
   }
 
-  /*
-    Category browser, like the policy pages.
-  */
   .page-faq .faq-toc {
     position: relative;
     top: auto;
@@ -722,4 +755,5 @@ img {
   .footer-links {
     gap: 12px 16px;
   }
+
 }
