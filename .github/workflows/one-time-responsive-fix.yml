@@ -1,4 +1,4 @@
-name: One-time responsive repair
+name: One-time responsive repair cleanup
 
 on:
   push:
@@ -7,26 +7,8 @@ on:
     paths:
       - .github/workflows/one-time-responsive-fix.yml
 
-permissions:
-  contents: write
-
 jobs:
-  repair:
+  cleanup:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
-      - name: Apply responsive fixes
-        run: python scripts/responsive_fix.py
-      - name: Commit responsive fixes
-        run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add index.html about.html service-policies.html privacy.html
-          if git diff --cached --quiet; then
-            echo "No changes to commit"
-          else
-            git commit -m "Fix mobile responsiveness and navigation"
-            git push origin main
-          fi
+      - run: echo "Responsive repair complete"
