@@ -41,7 +41,7 @@ nav{position:sticky;top:0;z-index:50;background:rgba(17,16,15,.9);backdrop-filte
 .brand span{font-size:.72rem;color:var(--gold);letter-spacing:.12em;text-transform:uppercase;margin-top:5px}
 .nav-links{display:flex;align-items:center;gap:12px;color:#d3c8bf;font-size:.88rem;flex-wrap:wrap}
 
-.hero{padding:82px 0 66px;border-bottom:1px solid var(--line-dark)}
+.hero{padding:58px 0 56px;border-bottom:1px solid var(--line-dark)}
 .hero-grid{display:grid;grid-template-columns:1.12fr .88fr;gap:72px;align-items:end}
 .hero h1{font-family:Georgia,"Times New Roman",serif;font-size:clamp(3.5rem,7vw,6.6rem);font-weight:500;line-height:.94;letter-spacing:-.05em;margin:14px 0 22px}
 .hero h1 span{color:var(--gold)}
@@ -128,6 +128,12 @@ footer{border-top:1px solid var(--line-dark);padding:30px 0;color:#a99c92;font-s
   .policy-shell{padding:56px 0 72px}
   .footer-inner{flex-direction:column;align-items:flex-start}
 }
+
+/* Navigation hover underline */
+.nav-links a:not(.btn):not(.nav-cta),.footer-links a,.footer-right a{position:relative}
+.nav-links a:not(.btn):not(.nav-cta)::after,.footer-links a::after,.footer-right a::after{content:"";position:absolute;left:0;right:0;bottom:-3px;height:1px;background:currentColor;transform:scaleX(0);transform-origin:left;transition:transform .18s ease}
+.nav-links a:not(.btn):not(.nav-cta):hover::after,.footer-links a:hover::after,.footer-right a:hover::after{transform:scaleX(1)}
+
 </style>
 </head>
 <body>
@@ -139,6 +145,7 @@ footer{border-top:1px solid var(--line-dark);padding:30px 0;color:#a99c92;font-s
     </a>
     <div class="nav-links">
       <a class="secondary" href="index.html">Main website</a>
+      <a class="secondary" href="about.html">About</a>
       <a class="secondary" href="privacy.html">Privacy</a>
       <a class="btn outline" href="#contact">Contact</a>
     </div>
@@ -317,7 +324,7 @@ footer{border-top:1px solid var(--line-dark);padding:30px 0;color:#a99c92;font-s
 <footer>
   <div class="wrap footer-inner">
     <div><strong>Rochelle V. Silvestre</strong><br>Independent VA + Operations<br><span style="font-size:.76rem">© 2026 Rochelle V. Silvestre · Site & portfolio maintained independently.</span></div>
-    <div class="footer-links"><a href="index.html">Main website</a><a href="privacy.html">Privacy</a><a href="#contact">Contact</a></div>
+    <div class="footer-links"><a href="index.html">Main website</a><a href="about.html">About</a><a href="privacy.html">Privacy</a><a href="#contact">Contact</a></div>
   </div>
 </footer>
 <script>
