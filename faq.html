@@ -71,12 +71,12 @@ details[open] summary:after{content:"–"}
 details p{margin:0;padding:0 8px 12px;color:#5f554e;font-size:.95rem}
 details a{color:#5c4632;text-decoration:underline;text-underline-offset:3px}
 
-.contact-section{background:var(--ink);color:var(--text);padding:70px 0 82px;text-align:center}
-.contact-section h2{font-family:Georgia,"Times New Roman",serif;font-weight:500;font-size:clamp(2.6rem,5vw,4.3rem);margin:0 0 10px}
-.contact-copy{max-width:680px;margin:0 auto 28px;color:var(--muted)}
-.contact-card{position:relative;overflow:hidden;background:radial-gradient(circle at 13% 18%,rgba(203,143,150,.12),transparent 24%),radial-gradient(circle at 88% 78%,rgba(209,171,99,.13),transparent 28%),var(--ink);color:var(--text);padding:34px 28px;border:1px solid #6d5846;max-width:860px;margin:0 auto;text-align:left}
+.contact-card{position:relative;overflow:hidden;background:radial-gradient(circle at 13% 18%,rgba(203,143,150,.12),transparent 24%),radial-gradient(circle at 88% 78%,rgba(209,171,99,.13),transparent 28%),var(--ink);color:var(--text);padding:38px 30px;margin-top:22px;border:1px solid #6d5846;text-align:center}
 .contact-card:after{content:"";position:absolute;left:18%;right:18%;top:0;height:1px;background:linear-gradient(90deg,transparent,var(--gold),var(--blush),transparent)}
-.form-shell{background:var(--paper);color:var(--dark);padding:26px;border:1px solid #6d5846}
+.contact-kicker{font-size:.78rem;letter-spacing:.08em;text-transform:uppercase;color:#d5b6a8;margin-bottom:9px;text-align:center}
+.contact-card h3{margin:0 0 12px;font:500 2rem/1.1 Georgia,"Times New Roman",serif;color:#fff;text-align:center}
+.contact-card>p{color:var(--muted);max-width:620px;margin:0 auto 22px}
+.form-shell{background:var(--paper);color:var(--dark);padding:26px;border:1px solid #6d5846;text-align:left}
 .form{display:grid;gap:12px}
 .form input[type="text"],.form input[type="email"],.form input[type="tel"],.form textarea{width:100%;border:0;border-bottom:1px solid #baa999;background:transparent;color:#302923;padding:13px 2px;outline:none;border-radius:0}
 .form textarea{min-height:130px;resize:vertical}
@@ -121,8 +121,8 @@ footer{border-top:1px solid var(--line-dark);padding:30px 0;color:#a99c92;font-s
   .faq-group h2{font-size:1.45rem;text-align:center}
   summary{padding:16px 4px 13px;line-height:1.4}
   details p{font-size:.91rem}
-  .contact-section{padding:52px 0 60px}
-  .contact-card{padding:18px}
+  .contact-card{padding:26px 18px}
+  .contact-card h3{font-size:1.8rem}
   .form-shell{padding:20px 14px}
   .form button{width:100%;justify-self:stretch}
   .footer-inner{flex-direction:column;align-items:flex-start}
@@ -240,29 +240,29 @@ footer{border-top:1px solid var(--line-dark);padding:30px 0;color:#a99c92;font-s
           <details id="handoff"><summary>What happens at handoff or when an engagement ends?</summary><p>I can provide agreed final files, status notes, trackers, documentation, and a reasonable summary of outstanding items. Access should then be reviewed and removed where appropriate.</p></details>
         </div>
       </section>
+
+      <section class="faq-group" id="contact">
+        <h2>Contact</h2>
+        <div class="contact-card">
+          <div class="contact-kicker">Questions not covered above</div>
+          <h3>Contact form</h3>
+          <p>If your question is not listed here, reaching out is the best way to clarify what you need and whether it fits the support I provide. The form below prepares an email using your email application.</p>
+          <div class="form-shell">
+            <form class="form" onsubmit="sendMail(event)">
+              <div class="form-field"><label class="form-label" for="name">Name</label><input id="name" type="text" placeholder="Your name" required></div>
+              <div class="form-field"><label class="form-label" for="company">Company / business name</label><input id="company" type="text" placeholder="Company / business name" required></div>
+              <div class="form-field"><label class="form-label" for="email">Email address</label><input id="email" type="email" placeholder="Your email address" required></div>
+              <div class="form-field"><label class="form-label" for="phone">Phone number <span class="optional">(optional)</span></label><input id="phone" type="tel" placeholder="Country code + phone number"><p class="form-help">If you provide a number, select any options that apply:</p><div class="form-options"><label class="form-option"><input type="checkbox" name="phoneChannel" value="Viber">Viber</label><label class="form-option"><input type="checkbox" name="phoneChannel" value="WhatsApp">WhatsApp</label><label class="form-option"><input type="checkbox" name="phoneChannel" value="Mobile call">Mobile</label></div></div>
+              <div class="form-field"><label class="form-label" for="message">What would you like to ask?</label><textarea id="message" placeholder="Tell me what you would like to clarify" required></textarea></div>
+              <div class="form-field"><div class="form-label">Preferred method of communication</div><div class="form-options"><label class="form-option"><input type="radio" name="preferredContact" value="Email" required>Email</label><label class="form-option"><input type="radio" name="preferredContact" value="Phone">Phone</label><label class="form-option"><input type="radio" name="preferredContact" value="Google Meet / Chat">Google Meet / Chat</label><label class="form-option"><input type="radio" name="preferredContact" value="Zoom">Zoom</label><label class="form-option"><input type="radio" name="preferredContact" value="MS Teams">MS Teams</label></div></div>
+              <button class="btn gold" type="submit">Send question</button>
+            </form>
+          </div>
+        </div>
+      </section>
     </div>
   </div>
 </main>
-
-<section class="contact-section" id="contact">
-  <div class="wrap">
-    <h2>Contact</h2>
-    <p class="contact-copy">If your question is not listed here, reaching out is the best way to clarify what you need and whether it fits the support I provide.</p>
-    <div class="contact-card">
-      <div class="form-shell">
-        <form class="form" onsubmit="sendMail(event)">
-          <div class="form-field"><label class="form-label" for="name">Name</label><input id="name" type="text" placeholder="Your name" required></div>
-          <div class="form-field"><label class="form-label" for="company">Company / business name</label><input id="company" type="text" placeholder="Company / business name" required></div>
-          <div class="form-field"><label class="form-label" for="email">Email address</label><input id="email" type="email" placeholder="Your email address" required></div>
-          <div class="form-field"><label class="form-label" for="phone">Phone number <span class="optional">(optional)</span></label><input id="phone" type="tel" placeholder="Country code + phone number"><p class="form-help">If you provide a number, select any options that apply:</p><div class="form-options"><label class="form-option"><input type="checkbox" name="phoneChannel" value="Viber">Viber</label><label class="form-option"><input type="checkbox" name="phoneChannel" value="WhatsApp">WhatsApp</label><label class="form-option"><input type="checkbox" name="phoneChannel" value="Mobile call">Mobile</label></div></div>
-          <div class="form-field"><label class="form-label" for="message">What would you like to ask?</label><textarea id="message" placeholder="Tell me what you would like to clarify" required></textarea></div>
-          <div class="form-field"><div class="form-label">Preferred method of communication</div><div class="form-options"><label class="form-option"><input type="radio" name="preferredContact" value="Email" required>Email</label><label class="form-option"><input type="radio" name="preferredContact" value="Phone">Phone</label><label class="form-option"><input type="radio" name="preferredContact" value="Google Meet / Chat">Google Meet / Chat</label><label class="form-option"><input type="radio" name="preferredContact" value="Zoom">Zoom</label><label class="form-option"><input type="radio" name="preferredContact" value="MS Teams">MS Teams</label></div></div>
-          <button class="btn gold" type="submit">Send question</button>
-        </form>
-      </div>
-    </div>
-  </div>
-</section>
 
 <footer>
   <div class="wrap footer-inner">
