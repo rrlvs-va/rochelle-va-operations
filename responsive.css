@@ -113,41 +113,41 @@ img {
      HOME PAGE
      ======================================================= */
 
-  .page-home .nav-links {
+  .page-index .nav-links {
     top: 64px;
     padding: 14px 16px;
   }
 
-  .page-home .menu-btn {
+  .page-index .menu-btn {
     padding: 6px;
   }
 
 
   /* HOME — HERO */
 
-  .page-home .hero {
+  .page-index .hero {
     min-height: auto;
     padding: 38px 0 46px !important;
   }
 
-  .page-home .hero-grid {
+  .page-index .hero-grid {
     gap: 34px;
   }
 
-  .page-home .hero h1 {
+  .page-index .hero h1 {
     font-size: clamp(3rem, 12.5vw, 3.8rem);
     line-height: .95;
     margin: 12px 0 16px;
     letter-spacing: -.045em;
   }
 
-  .page-home .hero-sub {
+  .page-index .hero-sub {
     font-size: 1.28rem;
     line-height: 1.25;
     margin-bottom: 14px;
   }
 
-  .page-home .hero-copy {
+  .page-index .hero-copy {
     font-size: .96rem;
     line-height: 1.65;
   }
@@ -155,38 +155,38 @@ img {
 
   /* HOME — HERO BUTTONS */
 
-  .page-home .hero-actions {
+  .page-index .hero-actions {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 10px;
     margin-top: 22px;
   }
 
-  .page-home .hero-actions .btn {
+  .page-index .hero-actions .btn {
     width: 100%;
   }
 
-  .page-home .hero-actions .btn:first-child {
+  .page-index .hero-actions .btn:first-child {
     grid-column: 1 / -1;
   }
 
 
   /* HOME — METRICS */
 
-  .page-home .metric-strip {
+  .page-index .metric-strip {
     margin-top: 28px;
     grid-template-columns: 1fr;
   }
 
-  .page-home .metric-item {
+  .page-index .metric-item {
     padding: 14px 0;
   }
 
-  .page-home .metric-item strong {
+  .page-index .metric-item strong {
     font-size: .94rem;
   }
 
-  .page-home .metric-item span {
+  .page-index .metric-item span {
     font-size: .78rem;
     line-height: 1.5;
   }
@@ -194,20 +194,20 @@ img {
 
   /* HOME — PORTRAIT */
 
-  .page-home .portrait-shell {
+  .page-index .portrait-shell {
     max-width: 320px;
     padding: 12px 16px 0;
     margin: 12px auto 0;
   }
 
-  .page-home .portrait {
+  .page-index .portrait {
     max-width: 290px;
     box-shadow:
       0 0 0 10px var(--ink),
       0 0 0 11px rgba(209, 171, 99, .42);
   }
 
-  .page-home .portrait-caption {
+  .page-index .portrait-caption {
     max-width: 290px;
     margin-top: 24px;
     gap: 14px;
@@ -217,11 +217,11 @@ img {
 
   /* HOME — GENERAL SECTION SPACING */
 
-  .page-home section {
+  .page-index section {
     padding: 56px 0;
   }
 
-  .page-home .section-copy {
+  .page-index .section-copy {
     font-size: .96rem;
     line-height: 1.65;
   }
@@ -229,57 +229,57 @@ img {
 
   /* HOME — SERVICES */
 
-  .page-home .services-layout {
+  .page-index .services-layout {
     gap: 28px;
   }
 
-  .page-home .service-row {
+  .page-index .service-row {
     grid-template-columns: 34px 1fr;
     gap: 10px 12px;
     padding: 18px 0;
   }
 
-  .page-home .service-row h3 {
+  .page-index .service-row h3 {
     font-size: 1.25rem;
   }
 
-  .page-home .service-row p {
+  .page-index .service-row p {
     font-size: .91rem;
     line-height: 1.55;
   }
 
-  .page-home .service-row .tag {
+  .page-index .service-row .tag {
     grid-column: 2;
     padding-top: 0;
     font-size: .68rem;
   }
 
-  .page-home .services-section-link {
+  .page-index .services-section-link {
     margin-top: 22px;
   }
 
 
   /* HOME — EXPERIENCE */
 
-  .page-home .experience-grid {
+  .page-index .experience-grid {
     gap: 28px;
   }
 
-  .page-home .timeline-item {
+  .page-index .timeline-item {
     grid-template-columns: 1fr;
     gap: 5px;
     padding: 18px 0;
   }
 
-  .page-home .timeline-item .years {
+  .page-index .timeline-item .years {
     font-size: .94rem;
   }
 
-  .page-home .timeline-item h3 {
+  .page-index .timeline-item h3 {
     font-size: 1rem;
   }
 
-  .page-home .timeline-item p {
+  .page-index .timeline-item p {
     font-size: .91rem;
     line-height: 1.6;
   }
@@ -287,32 +287,32 @@ img {
 
   /* HOME — HOW I WORK */
 
-  .page-home .workflow-top {
+  .page-index .workflow-top {
     gap: 24px;
     align-items: start;
   }
 
-  .page-home .workflow-steps {
+  .page-index .workflow-steps {
     grid-template-columns: 1fr;
     margin-top: 28px;
   }
 
-  .page-home .workflow-step {
+  .page-index .workflow-step {
     padding: 21px 0;
     border-right: 0;
   }
 
-  .page-home .workflow-step h3 {
+  .page-index .workflow-step h3 {
     font-size: 1.38rem;
     margin: 0 0 8px;
   }
 
-  .page-home .workflow-step p {
+  .page-index .workflow-step p {
     font-size: .91rem;
     line-height: 1.55;
   }
 
-  .page-home .workflow-privacy-link {
+  .page-index .workflow-privacy-link {
     margin-top: 22px;
   }
 
@@ -324,16 +324,16 @@ img {
      This fixes the broken narrow 48px column seen on mobile.
      ======================================================= */
 
-  .page-home .portfolio-intro {
+  .page-index .portfolio-intro {
     gap: 24px;
     align-items: start;
   }
 
-  .page-home .portfolio-list {
+  .page-index .portfolio-list {
     margin-top: 28px;
   }
 
-  .page-home .portfolio-item {
+  .page-index .portfolio-item {
     display: grid;
     grid-template-columns: 1fr !important;
     gap: 7px;
@@ -341,57 +341,57 @@ img {
     padding: 22px 0;
   }
 
-  .page-home .portfolio-item h3 {
+  .page-index .portfolio-item h3 {
     font-size: 1.4rem;
     line-height: 1.08;
   }
 
-  .page-home .portfolio-item p {
+  .page-index .portfolio-item p {
     width: 100%;
     max-width: none;
     font-size: .91rem;
     line-height: 1.6;
   }
 
-  .page-home .portfolio-item .type {
+  .page-index .portfolio-item .type {
     grid-column: auto !important;
     text-align: left;
     margin-top: 7px;
     font-size: .69rem;
   }
 
-  .page-home .portfolio-cta {
+  .page-index .portfolio-cta {
     justify-content: stretch;
     margin-top: 24px;
   }
 
-  .page-home .portfolio-cta .btn {
+  .page-index .portfolio-cta .btn {
     width: 100%;
   }
 
 
   /* HOME — PRICING */
 
-  .page-home .pricing-grid {
+  .page-index .pricing-grid {
     margin-top: 30px;
   }
 
-  .page-home .price-panel {
+  .page-index .price-panel {
     min-height: 0;
     padding: 25px 18px;
   }
 
-  .page-home .price-panel .price {
+  .page-index .price-panel .price {
     font-size: 2.1rem;
     margin: 12px 0;
   }
 
-  .page-home .price-panel p {
+  .page-index .price-panel p {
     font-size: .92rem;
     line-height: 1.55;
   }
 
-  .page-home .price-note {
+  .page-index .price-note {
     font-size: .84rem;
     line-height: 1.55;
   }
@@ -399,35 +399,35 @@ img {
 
   /* HOME — TOOLS */
 
-  .page-home .tools-grid {
+  .page-index .tools-grid {
     grid-template-columns: 1fr;
     gap: 22px;
     margin-top: 28px;
   }
 
-  .page-home .tool-group {
+  .page-index .tool-group {
     padding-bottom: 20px;
   }
 
-  .page-home .tool-group h3 {
+  .page-index .tool-group h3 {
     font-size: 1.3rem;
   }
 
-  .page-home .tool-group p {
+  .page-index .tool-group p {
     font-size: .92rem;
     line-height: 1.6;
   }
 
-  .page-home .tools-row {
+  .page-index .tools-row {
     gap: 8px 12px;
   }
 
-  .page-home .tool-chip {
+  .page-index .tool-chip {
     padding: 7px 8px;
     font-size: .8rem;
   }
 
-  .page-home .tools-disclaimer {
+  .page-index .tools-disclaimer {
     margin-top: 22px;
     padding-top: 16px;
     font-size: .85rem;
@@ -436,30 +436,30 @@ img {
 
   /* HOME — REVIEWS */
 
-  .page-home .reviews-layout {
+  .page-index .reviews-layout {
     gap: 26px;
   }
 
-  .page-home .review-card {
+  .page-index .review-card {
     padding: 22px 0;
   }
 
-  .page-home .review-avatar {
+  .page-index .review-avatar {
     width: 50px;
     height: 50px;
   }
 
-  .page-home .review-rating {
+  .page-index .review-rating {
     font-size: 2rem;
     gap: 7px;
   }
 
-  .page-home .review-quote {
+  .page-index .review-quote {
     font-size: 1.35rem;
     line-height: 1.3;
   }
 
-  .page-home .review-note {
+  .page-index .review-note {
     font-size: .78rem;
     line-height: 1.55;
   }
@@ -467,31 +467,31 @@ img {
 
   /* HOME — CONTACT */
 
-  .page-home .contact-grid {
+  .page-index .contact-grid {
     gap: 28px;
   }
 
-  .page-home .contact-details {
+  .page-index .contact-details {
     margin-top: 22px;
   }
 
-  .page-home .form {
+  .page-index .form {
     gap: 14px;
   }
 
-  .page-home .form-options {
+  .page-index .form-options {
     gap: 10px 14px;
   }
 
-  .page-home .form-option {
+  .page-index .form-option {
     font-size: .84rem;
   }
 
-  .page-home .form textarea {
+  .page-index .form textarea {
     min-height: 110px;
   }
 
-  .page-home .form button {
+  .page-index .form button {
     width: 100%;
   }
 
