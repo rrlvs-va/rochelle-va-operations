@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://rrlvsva.wasmer.app/sitemap.xml
