@@ -43,7 +43,7 @@ nav{position:sticky;top:0;z-index:50;background:rgba(17,16,15,.9);backdrop-filte
 .brand span{font-size:.72rem;color:var(--gold);letter-spacing:.12em;text-transform:uppercase;margin-top:5px}
 .nav-links{display:flex;align-items:center;gap:16px;color:#d3c8bf;font-size:.88rem;flex-wrap:wrap}
 
-.hero{padding:82px 0 72px;border-bottom:1px solid var(--line-dark);position:relative;overflow:hidden}
+.hero{padding:58px 0 64px;border-bottom:1px solid var(--line-dark);position:relative;overflow:hidden}
 .hero:before{content:"";position:absolute;inset:auto 14% 0 14%;height:1px;background:linear-gradient(90deg,transparent,var(--gold),var(--blush),transparent);opacity:.75}
 .hero h1{font-family:Georgia,"Times New Roman",serif;font-size:clamp(4rem,8vw,7rem);font-weight:500;line-height:.94;letter-spacing:-.05em;margin:0 0 32px;text-align:center}
 .hero h1 span{color:var(--gold)}
@@ -65,7 +65,7 @@ nav{position:sticky;top:0;z-index:50;background:rgba(17,16,15,.9);backdrop-filte
 .info-card span{display:block;color:#5f554e;font-size:.9rem;line-height:1.55}
 
 .statement-section{background:radial-gradient(circle at 15% 18%,rgba(203,143,150,.11),transparent 27%),radial-gradient(circle at 86% 76%,rgba(209,171,99,.12),transparent 30%),var(--ink);color:var(--text);border-top:1px solid var(--line-dark);border-bottom:1px solid var(--line-dark);padding:88px 0}
-.-vision{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:56px;text-align:center}
+.mission-vision{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:56px;text-align:center}
 .statement{padding:12px 24px}
 .statement h2{font-family:Georgia,"Times New Roman",serif;font-size:clamp(3rem,5.6vw,5.2rem);font-weight:500;line-height:.95;letter-spacing:-.05em;margin:0 0 16px;color:#fff}
 .statement-sub{font-family:Georgia,"Times New Roman",serif;font-size:clamp(1.15rem,2vw,1.55rem);font-weight:500;color:var(--gold);line-height:1.15;margin:0 0 20px}
@@ -135,6 +135,12 @@ footer{border-top:1px solid var(--line-dark);padding:30px 0;color:#a99c92;font-s
   .statement-section,.values-section,.faq-section,.contact-section{padding:62px 0}
   .footer-inner{flex-direction:column;align-items:flex-start}
 }
+
+/* Navigation hover underline */
+.nav-links a:not(.btn):not(.nav-cta),.footer-links a,.footer-right a{position:relative}
+.nav-links a:not(.btn):not(.nav-cta)::after,.footer-links a::after,.footer-right a::after{content:"";position:absolute;left:0;right:0;bottom:-3px;height:1px;background:currentColor;transform:scaleX(0);transform-origin:left;transition:transform .18s ease}
+.nav-links a:not(.btn):not(.nav-cta):hover::after,.footer-links a:hover::after,.footer-right a:hover::after{transform:scaleX(1)}
+
 </style>
 </head>
 <body>
@@ -186,7 +192,7 @@ footer{border-top:1px solid var(--line-dark);padding:30px 0;color:#a99c92;font-s
       <article class="statement">
         <h2>Mission</h2>
         <div class="statement-sub">Make the work easier to manage.</div>
-        <p>My mission is to provide reliable, thoughtful virtual assistance and operations support for new, still-growing, and up-and-coming businesses that need steadier help behind the scenes. The work is meant to make support feel more approachable, especially for business owners who are still learning how to delegate, organize, and manage daily operations. I want to help bring clearer systems, calmer communication, organized follow-through, and a more respectful working process where clients can ask for help without feeling behind, disorganized, or unprepared simply because their business is still growing.</p>
+        <p>My mission is to provide reliable, thoughtful virtual assistance and operations support for new, still-growing, and up-and-coming businesses that need steadier help behind the scenes. The work is meant to bring clearer systems, calmer communication, organized follow-through, and a more respectful way to ask for support without making business owners feel behind, disorganized, or unprepared simply because their business is still growing.</p>
       </article>
 
       <div class="statement-divider"></div>
