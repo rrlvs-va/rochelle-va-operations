@@ -1,0 +1,4 @@
+kind: wasmer.io/App.v0
+name: rochelle-va-inquiries
+owner: rrlvs-va
+package: .
