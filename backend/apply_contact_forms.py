@@ -27,6 +27,12 @@ COPY_REPLACEMENTS = {
     "privacy.html": {
         "It prepares an email to me using your email application.":
             "Your privacy question or request will be sent securely to my client requests inbox for review.",
+        "Contact details are received when you decide to email me or prepare an inquiry through the website.":
+            "Contact details are received only when you decide to email me or submit an inquiry through the website.",
+        "The website inquiry form does not save your answers to a website database. It prepares an email in your email application so you can send the inquiry directly to me. Once sent, that message may remain in your email provider and in my email account as normal business correspondence.":
+            "The website inquiry form sends the information you enter through a secure server-side endpoint hosted on Wasmer. The endpoint creates a private inquiry record in my Notion Client Requests Inbox so I can review and respond. The Notion integration credential is stored server-side and is not included in the public website code.",
+        "Inquiry emails, proposals, contracts, payment records, project records, and client correspondence may be kept for as long as there is a reasonable business, contractual, tax, accounting, dispute-resolution, or legal reason to keep them.":
+            "Inquiry records and emails, proposals, contracts, payment records, project records, and client correspondence may be kept for as long as there is a reasonable business, contractual, tax, accounting, dispute-resolution, or legal reason to keep them.",
     },
 }
 
