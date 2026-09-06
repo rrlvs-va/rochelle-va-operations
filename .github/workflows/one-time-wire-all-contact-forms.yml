@@ -34,3 +34,5 @@ jobs:
           git add index.html about.html faq.html service-policies.html privacy.html
           git commit -m "Route all website contact forms to Notion endpoint"
           git push origin HEAD:main
+
+# rerun after fixing the contact-form wiring helper
