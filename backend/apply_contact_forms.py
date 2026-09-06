@@ -52,7 +52,7 @@ def normalize_endpoint(value: str) -> str:
 
 
 def add_name_attribute(text: str, field_id: str, field_name: str) -> str:
-    pattern = re.compile(rf'(<(?:input|textarea)\b[^>]*\bid="{re.escape(field_id)}"\b)([^>]*>)')
+    pattern = re.compile(rf'(<(?:input|textarea)\b[^>]*\bid="{re.escape(field_id)}")([^>]*>)')
 
     def repl(match: re.Match[str]) -> str:
         before, after = match.group(1), match.group(2)
