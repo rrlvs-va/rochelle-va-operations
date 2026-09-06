@@ -24,6 +24,10 @@ COPY_REPLACEMENTS = {
         "It will prepare an email in your email app for you to review and send.":
             "Your question will be sent securely to my client requests inbox for review.",
     },
+    "service-policies.html": {
+        "It prepares an email to me using your email application.":
+            "Your inquiry will be sent securely to my client requests inbox for review.",
+    },
     "privacy.html": {
         "It prepares an email to me using your email application.":
             "Your privacy question or request will be sent securely to my client requests inbox for review.",
@@ -70,32 +74,35 @@ def add_name_attribute(text: str, field_id: str, field_name: str) -> str:
 def update_file(path: Path, source: str, endpoint: str) -> bool:
     text = path.read_text(encoding="utf-8")
     original = text
+    already_wired = bool(
+        re.search(r'<form\b[^>]*method=["\']post["\']', text, re.IGNORECASE)
+        and 'name="source"' in text
+        and f'value="{source}"' in text
+    )
 
-    if FORM_TAG not in text:
-        # Already wired forms are allowed when rerunning the script.
-        if re.search(r'<form\b[^>]*method=["\']post["\']', text, re.IGNORECASE) and 'name="source"' in text:
-            return False
+    if FORM_TAG in text:
+        action = f"{endpoint}/api/inquiry"
+        replacement = (
+            f'<form class="form" action="{action}" method="POST">\n'
+            f'      <input type="hidden" name="source" value="{source}">\n'
+            '      <div aria-hidden="true" style="position:absolute;left:-10000px;top:auto;width:1px;height:1px;overflow:hidden">\n'
+            '        <label>Leave this field empty <input type="text" name="website" tabindex="-1" autocomplete="off"></label>\n'
+            '      </div>'
+        )
+        text = text.replace(FORM_TAG, replacement, 1)
+
+        for field_id, field_name in (
+            ("name", "name"),
+            ("company", "company"),
+            ("email", "email"),
+            ("phone", "phone"),
+            ("message", "message"),
+        ):
+            text = add_name_attribute(text, field_id, field_name)
+    elif not already_wired:
         raise RuntimeError(f"Expected contact form was not found in {path.name}")
 
-    action = f"{endpoint}/api/inquiry"
-    replacement = (
-        f'<form class="form" action="{action}" method="POST">\n'
-        f'      <input type="hidden" name="source" value="{source}">\n'
-        '      <div aria-hidden="true" style="position:absolute;left:-10000px;top:auto;width:1px;height:1px;overflow:hidden">\n'
-        '        <label>Leave this field empty <input type="text" name="website" tabindex="-1" autocomplete="off"></label>\n'
-        '      </div>'
-    )
-    text = text.replace(FORM_TAG, replacement, 1)
-
-    for field_id, field_name in (
-        ("name", "name"),
-        ("company", "company"),
-        ("email", "email"),
-        ("phone", "phone"),
-        ("message", "message"),
-    ):
-        text = add_name_attribute(text, field_id, field_name)
-
+    # Remove the old mailto submit handler even from forms that were wired earlier.
     text = SENDMAIL_SCRIPT.sub("\n", text, count=1)
 
     for old, new in COPY_REPLACEMENTS.get(path.name, {}).items():
