@@ -1,11 +1,10 @@
 import os
 import re
 from typing import Iterable
-from urllib.parse import urlencode
 
 import httpx
 from fastapi import FastAPI, Request
-from fastapi.responses import HTMLResponse, JSONResponse, RedirectResponse
+from fastapi.responses import HTMLResponse, JSONResponse
 
 app = FastAPI(title="RVS Website Inquiry Endpoint", docs_url=None, redoc_url=None)
 
@@ -120,6 +119,17 @@ def success_page(return_url: str) -> HTMLResponse:
     )
 
 
+def request_is_from_site(request: Request) -> bool:
+    origin = (request.headers.get("origin") or "").rstrip("/")
+    referer = request.headers.get("referer") or ""
+    if origin:
+        return origin == SITE_ORIGIN
+    if referer:
+        return referer.startswith(SITE_ORIGIN + "/") or referer == SITE_ORIGIN
+    # Some privacy-focused clients omit both headers. Other validation still applies.
+    return True
+
+
 @app.get("/health")
 async def health() -> JSONResponse:
     configured = bool(os.environ.get("NOTION_TOKEN"))
@@ -128,6 +138,9 @@ async def health() -> JSONResponse:
 
 @app.post("/api/inquiry")
 async def submit_inquiry(request: Request):
+    if not request_is_from_site(request):
+        return form_error("This form submission was not accepted.", SITE_ORIGIN, 403)
+
     content_length = request.headers.get("content-length")
     if content_length:
         try:
