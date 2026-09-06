@@ -73,7 +73,7 @@ def update_file(path: Path, source: str, endpoint: str) -> bool:
 
     if FORM_TAG not in text:
         # Already wired forms are allowed when rerunning the script.
-        if 'method="POST"' in text and 'name="source"' in text:
+        if re.search(r'<form\b[^>]*method=["\']post["\']', text, re.IGNORECASE) and 'name="source"' in text:
             return False
         raise RuntimeError(f"Expected contact form was not found in {path.name}")
 
