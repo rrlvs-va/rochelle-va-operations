@@ -4,7 +4,7 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
 <title>About Rochelle V. Silvestre | Virtual Assistant & Operations Support</title>
-<meta name="description" content="Learn about Rochelle V. Silvestre&#39;s approach to virtual assistant and operations support for growing businesses, founders, and remote teams." />
+<meta name="description" content="Virtual assistant and operations support built around clear systems, dependable follow-through, stewardship, and a faith-led, people-centered approach." />
 <link rel="canonical" href="https://rrlvsva.wasmer.app/about.html">
 <style>
 :root{
@@ -47,10 +47,10 @@ nav{position:sticky;top:0;z-index:50;background:rgba(17,16,15,.9);backdrop-filte
 .menu-btn{display:none;width:44px;height:44px;align-items:center;justify-content:center;background:transparent;border:0;color:#fff;font-size:1.45rem;line-height:1;padding:0;cursor:pointer;border-radius:10px}
 .menu-btn:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
 
-
 .hero{padding:82px 0 72px;border-bottom:1px solid var(--line-dark);position:relative;overflow:hidden}
 .hero:before{content:"";position:absolute;inset:auto 14% 0 14%;height:1px;background:linear-gradient(90deg,transparent,var(--gold),var(--blush),transparent);opacity:.75}
 .hero h1{font-family:Georgia,"Times New Roman",serif;font-size:clamp(4rem,8vw,7rem);font-weight:500;line-height:.94;letter-spacing:-.05em;margin:0 0 32px;text-align:center}
+.hero h1 span{color:var(--gold)}
 .hero-bottom{display:grid;grid-template-columns:minmax(0,1fr) 1px 175px;gap:22px;align-items:start;max-width:880px;margin:0 auto}
 .hero-copy{max-width:690px;color:var(--muted);font-size:1.05rem;margin:0;text-align:left}
 .hero-divider{width:1px;align-self:stretch;background:var(--line-dark)}
@@ -116,7 +116,10 @@ details a{color:#5c4632;text-decoration:underline;text-underline-offset:3px}
 .contact-section .section-subtitle{color:var(--muted)}
 .contact-card{position:relative;overflow:hidden;background:radial-gradient(circle at 13% 18%,rgba(203,143,150,.12),transparent 24%),radial-gradient(circle at 88% 78%,rgba(209,171,99,.13),transparent 28%),var(--ink);color:var(--text);padding:38px 30px;margin:34px auto 0;border:1px solid #6d5846;text-align:left;max-width:860px}
 .contact-card:after{content:"";position:absolute;left:18%;right:18%;top:0;height:1px;background:linear-gradient(90deg,transparent,var(--gold),var(--blush),transparent)}
+.contact-card h3{margin:0 0 10px;font:500 2rem/1.1 Georgia,"Times New Roman",serif;color:#fff;text-align:center}
 .contact-card-copy{max-width:620px;margin:0 auto 24px;color:var(--muted);font-size:.94rem;line-height:1.6;text-align:center}
+.contact-kicker{font-size:.78rem;letter-spacing:.08em;text-transform:uppercase;color:#d5b6a8;margin-bottom:9px;text-align:center}
+
 .form{display:grid;gap:12px}
 .form input[type="text"],.form input[type="email"],.form input[type="tel"],.form textarea{width:100%;border:0;border-bottom:1px solid #baa999;background:transparent;color:#302923;padding:13px 2px;outline:none;border-radius:0}
 .form textarea{min-height:130px;resize:vertical}
@@ -134,7 +137,7 @@ footer{border-top:1px solid var(--line-dark);padding:30px 0;color:#a99c92;font-s
 .footer-inner{display:flex;justify-content:space-between;gap:30px;align-items:flex-end}
 .footer-inner strong{color:#fff}
 .footer-links{display:flex;gap:16px;flex-wrap:wrap}
-.footer-links a{color:#d8cbc1}
+.footer-links a{color:#d8cbc1;position:relative}
 
 @media(max-width:980px){
   .hero-bottom{grid-template-columns:1fr;gap:24px}
@@ -147,7 +150,6 @@ footer{border-top:1px solid var(--line-dark);padding:30px 0;color:#a99c92;font-s
 }
 @media(max-width:720px){
   .wrap{width:min(var(--max),calc(100% - 28px))}
-
   .nav-inner{min-height:66px;align-items:center;flex-direction:row;padding:0;gap:10px}
   .brand strong{font-size:1rem}
   .brand span{font-size:.64rem;letter-spacing:.1em}
@@ -422,33 +424,6 @@ function sendMail(e){
   );
   window.location.href = 'mailto:' + businessEmail + '?subject=' + subject + '&body=' + body;
 }
-</script>
-
-
-<script id="mobile-nav-script">
-function toggleMobileMenu(button){
-  const nav = button.closest('.nav-inner').querySelector('.nav-links');
-  const isOpen = nav.classList.toggle('open');
-  button.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
-}
-
-document.querySelectorAll('.nav-links a').forEach(function(link){
-  link.addEventListener('click', function(){
-    const nav = link.closest('.nav-links');
-    nav.classList.remove('open');
-    const button = nav.closest('.nav-inner')?.querySelector('.menu-btn');
-    if(button) button.setAttribute('aria-expanded', 'false');
-  });
-});
-
-document.addEventListener('keydown', function(event){
-  if(event.key !== 'Escape') return;
-  document.querySelectorAll('.nav-links.open').forEach(function(nav){
-    nav.classList.remove('open');
-    const button = nav.closest('.nav-inner')?.querySelector('.menu-btn');
-    if(button) button.setAttribute('aria-expanded', 'false');
-  });
-});
 </script>
 
 </body>
