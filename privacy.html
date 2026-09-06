@@ -208,7 +208,7 @@ footer{border-top:1px solid var(--line-dark);padding:30px 0;color:#a99c92;font-s
       <div class="summary-point"><strong>No advertising trackers added by me</strong><span>No Meta Pixel, behavioral ad tags, session-recording tools, or similar tracking technologies are intentionally installed on this website.</span></div>
       <div class="summary-point"><strong>No visitor profiling</strong><span>I do not use this website to build profiles about individual visitors or follow them across other websites.</span></div>
       <div class="summary-point"><strong>No sale of personal information</strong><span>I do not sell personal information or share it for cross-context behavioral advertising.</span></div>
-      <div class="summary-point"><strong>You choose when to contact me</strong><span>Contact details are received when you decide to email me or prepare an inquiry through the website.</span></div>
+      <div class="summary-point"><strong>You choose when to contact me</strong><span>Contact details are received only when you decide to email me or submit an inquiry through the website.</span></div>
     </div>
   </div>
 </section>
@@ -263,7 +263,7 @@ footer{border-top:1px solid var(--line-dark);padding:30px 0;color:#a99c92;font-s
       <section class="policy-section" id="inquiries">
         <h2>Contact inquiries</h2>
         <p>If you contact me, you may provide your name, company or business name, email address, optional phone number, preferred communication method, and whatever information you include in your message.</p>
-        <p>The website inquiry form does not save your answers to a website database. It prepares an email in your email application so you can send the inquiry directly to me. Once sent, that message may remain in your email provider and in my email account as normal business correspondence.</p>
+        <p>The website inquiry form sends the information you enter through a secure server-side endpoint hosted on Wasmer. The endpoint creates a private inquiry record in my Notion Client Requests Inbox so I can review and respond. The Notion integration credential is stored server-side and is not included in the public website code.</p>
         <p>Please do not send passwords, login credentials, full payment-card details, medical records, government identification numbers, or other highly sensitive records through the public inquiry form. If sensitive information is needed for an engagement, we can agree on a more appropriate way to share it.</p>
       </section>
 
@@ -341,7 +341,7 @@ footer{border-top:1px solid var(--line-dark);padding:30px 0;color:#a99c92;font-s
       <section class="policy-section" id="retention">
         <h2>Retention</h2>
         <p>I do not keep website visitor profiles because I do not create them.</p>
-        <p>Inquiry emails, proposals, contracts, payment records, project records, and client correspondence may be kept for as long as there is a reasonable business, contractual, tax, accounting, dispute-resolution, or legal reason to keep them.</p>
+        <p>Inquiry records and emails, proposals, contracts, payment records, project records, and client correspondence may be kept for as long as there is a reasonable business, contractual, tax, accounting, dispute-resolution, or legal reason to keep them.</p>
         <p>A client's own systems and chosen platforms may use different retention, backup, deletion, access, and security practices from mine. I do not control those systems and cannot guarantee what a client or independent platform keeps outside the accounts, devices, or records under my control. I remain responsible for how I handle information within my control and for the obligations I accept in the relevant agreement, subject to applicable law.</p>
       </section>
 
@@ -410,14 +410,18 @@ footer{border-top:1px solid var(--line-dark);padding:30px 0;color:#a99c92;font-s
         <div class="contact-card" style="text-align:left">
           <div style="font-size:.78rem;letter-spacing:.08em;text-transform:uppercase;color:#d5b6a8;margin-bottom:9px;text-align:center">Clear communication, even in the fine print</div>
           <h3 style="margin:0 0 12px;font:500 2rem/1.1 Georgia,'Times New Roman',serif;color:#fff;text-align:center">Contact form</h3>
-          <p>If you want to ask about this policy or make a privacy-related request, use the form below. It prepares an email to me using your email application.</p>
+          <p>If you want to ask about this policy or make a privacy-related request, use the form below. Your privacy question or request will be sent securely to my client requests inbox for review.</p>
           <div style="background:var(--paper);color:var(--dark-text);padding:26px;border:1px solid #6d5846">
-<form class="form" onsubmit="sendMail(event)">
-      <div class="form-field"><label class="form-label" for="name">Name</label><input id="name" type="text" placeholder="Your name" required></div>
-      <div class="form-field"><label class="form-label" for="company">Company / business name</label><input id="company" type="text" placeholder="Company / business name" required></div>
-      <div class="form-field"><label class="form-label" for="email">Email address</label><input id="email" type="email" placeholder="Your email address" required></div>
-      <div class="form-field"><label class="form-label" for="phone">Phone number <span class="optional">(optional)</span></label><input id="phone" type="tel" placeholder="Country code + phone number"><p class="form-help">If you provide a number, select any options that apply:</p><div class="form-options"><label class="form-option"><input type="checkbox" name="phoneChannel" value="Viber">Viber</label><label class="form-option"><input type="checkbox" name="phoneChannel" value="WhatsApp">WhatsApp</label><label class="form-option"><input type="checkbox" name="phoneChannel" value="Mobile call">Mobile</label></div></div>
-      <div class="form-field"><label class="form-label" for="message">What would you like help with?</label><textarea id="message" placeholder="Tell me what you need support with" required></textarea></div>
+<form class="form" action="https://rochelle-va-inquiries.wasmer.app/api/inquiry" method="POST">
+      <input type="hidden" name="source" value="privacy">
+      <div aria-hidden="true" style="position:absolute;left:-10000px;top:auto;width:1px;height:1px;overflow:hidden">
+        <label>Leave this field empty <input type="text" name="website" tabindex="-1" autocomplete="off"></label>
+      </div>
+      <div class="form-field"><label class="form-label" for="name">Name</label><input id="name" name="name" type="text" placeholder="Your name" required></div>
+      <div class="form-field"><label class="form-label" for="company">Company / business name</label><input id="company" name="company" type="text" placeholder="Company / business name" required></div>
+      <div class="form-field"><label class="form-label" for="email">Email address</label><input id="email" name="email" type="email" placeholder="Your email address" required></div>
+      <div class="form-field"><label class="form-label" for="phone">Phone number <span class="optional">(optional)</span></label><input id="phone" name="phone" type="tel" placeholder="Country code + phone number"><p class="form-help">If you provide a number, select any options that apply:</p><div class="form-options"><label class="form-option"><input type="checkbox" name="phoneChannel" value="Viber">Viber</label><label class="form-option"><input type="checkbox" name="phoneChannel" value="WhatsApp">WhatsApp</label><label class="form-option"><input type="checkbox" name="phoneChannel" value="Mobile call">Mobile</label></div></div>
+      <div class="form-field"><label class="form-label" for="message">What would you like help with?</label><textarea id="message" name="message" placeholder="Tell me what you need support with" required></textarea></div>
       <div class="form-field"><div class="form-label">Preferred method of communication</div><div class="form-options"><label class="form-option"><input type="radio" name="preferredContact" value="Email" required>Email</label><label class="form-option"><input type="radio" name="preferredContact" value="Phone">Phone</label><label class="form-option"><input type="radio" name="preferredContact" value="Google Meet / Chat">Google Meet / Chat</label><label class="form-option"><input type="radio" name="preferredContact" value="Zoom">Zoom</label><label class="form-option"><input type="radio" name="preferredContact" value="MS Teams">MS Teams</label></div></div>
       <button class="btn gold" type="submit">Send support inquiry</button>
     </form>
@@ -434,42 +438,6 @@ footer{border-top:1px solid var(--line-dark);padding:30px 0;color:#a99c92;font-s
     <div class="footer-links"><a href="index.html">Main website</a><a href="about.html">About</a><a href="service-policies.html">Service Policies</a><a href="#contact-privacy">Contact</a></div>
   </div>
 </footer>
-<script>
-function sendMail(e){
-  e.preventDefault();
-  const businessEmail = 'rvs-va@protonmail.com';
-  const name = document.getElementById('name').value.trim();
-  const company = document.getElementById('company').value.trim();
-  const sender = document.getElementById('email').value.trim();
-  const phone = document.getElementById('phone').value.trim();
-  const message = document.getElementById('message').value.trim();
-  const phoneChannels = Array.from(document.querySelectorAll('input[name="phoneChannel"]:checked')).map(el => el.value);
-  const preferred = document.querySelector('input[name="preferredContact"]:checked');
-
-  if (!name || !company || !sender || !message || !preferred) {
-    alert('Please complete the required fields before sending your inquiry.');
-    return;
-  }
-  if ((preferred.value === 'Phone' || phoneChannels.length) && !phone) {
-    alert('Please add a phone number if you select phone, Viber, WhatsApp, or mobile contact.');
-    document.getElementById('phone').focus();
-    return;
-  }
-
-  const subject = encodeURIComponent('VA support inquiry from ' + name + ' — ' + company);
-  const body = encodeURIComponent(
-    'Name: ' + name + '\n' +
-    'Company / business: ' + company + '\n' +
-    'Email: ' + sender + '\n' +
-    'Phone: ' + (phone || 'Not provided') + '\n' +
-    'Phone options: ' + (phoneChannels.length ? phoneChannels.join(', ') : 'None selected') + '\n' +
-    'Preferred communication: ' + preferred.value + '\n\n' +
-    'Support needed:\n' + message
-  );
-  window.location.href = 'mailto:' + businessEmail + '?subject=' + subject + '&body=' + body;
-}
-</script>
-
 <script id="mobile-nav-script">
 function toggleMobileMenu(button){
   const nav = button.closest('.nav-inner').querySelector('.nav-links');

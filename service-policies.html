@@ -326,12 +326,16 @@ footer{border-top:1px solid var(--line-dark);padding:30px 0;color:#a99c92;font-s
           <div style="font-size:.78rem;letter-spacing:.08em;text-transform:uppercase;color:#d5b6a8;margin-bottom:9px;text-align:center">Clear expectations before the work starts</div>
           <h3 style="margin:0 0 20px;font:500 2rem/1.1 Georgia,'Times New Roman',serif;color:#fff;text-align:center">Contact form</h3>
           <div style="background:var(--paper);color:var(--dark-text);padding:26px;border:1px solid #6d5846">
-            <form class="form" onsubmit="sendMail(event)">
-              <div class="form-field"><label class="form-label" for="name">Name</label><input id="name" type="text" placeholder="Your name" required></div>
-              <div class="form-field"><label class="form-label" for="company">Company / business name</label><input id="company" type="text" placeholder="Company / business name" required></div>
-              <div class="form-field"><label class="form-label" for="email">Email address</label><input id="email" type="email" placeholder="Your email address" required></div>
-              <div class="form-field"><label class="form-label" for="phone">Phone number <span class="optional">(optional)</span></label><input id="phone" type="tel" placeholder="Country code + phone number"><p class="form-help">If you provide a number, select any options that apply:</p><div class="form-options"><label class="form-option"><input type="checkbox" name="phoneChannel" value="Viber">Viber</label><label class="form-option"><input type="checkbox" name="phoneChannel" value="WhatsApp">WhatsApp</label><label class="form-option"><input type="checkbox" name="phoneChannel" value="Mobile call">Mobile</label></div></div>
-              <div class="form-field"><label class="form-label" for="message">What would you like help with?</label><textarea id="message" placeholder="Tell me what you need support with" required></textarea></div>
+            <form class="form" action="https://rochelle-va-inquiries.wasmer.app/api/inquiry" method="POST">
+      <input type="hidden" name="source" value="service-policies">
+      <div aria-hidden="true" style="position:absolute;left:-10000px;top:auto;width:1px;height:1px;overflow:hidden">
+        <label>Leave this field empty <input type="text" name="website" tabindex="-1" autocomplete="off"></label>
+      </div>
+              <div class="form-field"><label class="form-label" for="name">Name</label><input id="name" name="name" type="text" placeholder="Your name" required></div>
+              <div class="form-field"><label class="form-label" for="company">Company / business name</label><input id="company" name="company" type="text" placeholder="Company / business name" required></div>
+              <div class="form-field"><label class="form-label" for="email">Email address</label><input id="email" name="email" type="email" placeholder="Your email address" required></div>
+              <div class="form-field"><label class="form-label" for="phone">Phone number <span class="optional">(optional)</span></label><input id="phone" name="phone" type="tel" placeholder="Country code + phone number"><p class="form-help">If you provide a number, select any options that apply:</p><div class="form-options"><label class="form-option"><input type="checkbox" name="phoneChannel" value="Viber">Viber</label><label class="form-option"><input type="checkbox" name="phoneChannel" value="WhatsApp">WhatsApp</label><label class="form-option"><input type="checkbox" name="phoneChannel" value="Mobile call">Mobile</label></div></div>
+              <div class="form-field"><label class="form-label" for="message">What would you like help with?</label><textarea id="message" name="message" placeholder="Tell me what you need support with" required></textarea></div>
               <div class="form-field"><div class="form-label">Preferred method of communication</div><div class="form-options"><label class="form-option"><input type="radio" name="preferredContact" value="Email" required>Email</label><label class="form-option"><input type="radio" name="preferredContact" value="Phone">Phone</label><label class="form-option"><input type="radio" name="preferredContact" value="Google Meet / Chat">Google Meet / Chat</label><label class="form-option"><input type="radio" name="preferredContact" value="Zoom">Zoom</label><label class="form-option"><input type="radio" name="preferredContact" value="MS Teams">MS Teams</label></div></div>
               <button class="btn gold" type="submit">Send support inquiry</button>
             </form>
@@ -348,39 +352,6 @@ footer{border-top:1px solid var(--line-dark);padding:30px 0;color:#a99c92;font-s
     <div class="footer-links"><a href="index.html">Main website</a><a href="about.html">About</a><a href="privacy.html">Privacy</a><a href="#contact">Contact</a></div>
   </div>
 </footer>
-<script>
-function sendMail(e){
-  e.preventDefault();
-  const businessEmail = 'rvs-va@protonmail.com';
-  const name = document.getElementById('name').value.trim();
-  const company = document.getElementById('company').value.trim();
-  const sender = document.getElementById('email').value.trim();
-  const phone = document.getElementById('phone').value.trim();
-  const message = document.getElementById('message').value.trim();
-  const phoneChannels = Array.from(document.querySelectorAll('input[name="phoneChannel"]:checked')).map(el => el.value);
-  const preferred = document.querySelector('input[name="preferredContact"]:checked');
-  if (!name || !company || !sender || !message || !preferred) {
-    alert('Please complete the required fields before sending your inquiry.');
-    return;
-  }
-  if ((preferred.value === 'Phone' || phoneChannels.length) && !phone) {
-    alert('Please add a phone number if you select phone, Viber, WhatsApp, or mobile contact.');
-    document.getElementById('phone').focus();
-    return;
-  }
-  const subject = encodeURIComponent('VA support inquiry from ' + name + ' — ' + company);
-  const body = encodeURIComponent(
-    'Name: ' + name + '\n' +
-    'Company / business: ' + company + '\n' +
-    'Email: ' + sender + '\n' +
-    'Phone: ' + (phone || 'Not provided') + '\n' +
-    'Phone options: ' + (phoneChannels.length ? phoneChannels.join(', ') : 'None selected') + '\n' +
-    'Preferred communication: ' + preferred.value + '\n\n' +
-    'Support needed:\n' + message
-  );
-  window.location.href = 'mailto:' + businessEmail + '?subject=' + subject + '&body=' + body;
-}
-</script>
 <script id="mobile-nav-script">
 function toggleMobileMenu(button){
   const nav = button.closest('.nav-inner').querySelector('.nav-links');
