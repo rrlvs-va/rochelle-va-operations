@@ -1,0 +1,4 @@
+kind: wasmer.io/App.v0
+name: <choose-a-unique-contact-app-name>
+owner: <your-wasmer-namespace>
+package: .
