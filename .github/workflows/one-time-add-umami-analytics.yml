@@ -1,0 +1,85 @@
+name: One-time add Umami analytics
+
+on:
+  push:
+    paths:
+      - '.github/workflows/one-time-add-umami-analytics.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  add-analytics:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Add Umami tracking and update privacy disclosure
+        shell: bash
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+
+          tracking = '<script defer src="https://cloud.umami.is/script.js" data-website-id="4d20ec6e-67e3-44fc-acd3-5c53bfd78c80"></script>'
+          pages = [
+              Path('index.html'),
+              Path('about.html'),
+              Path('faq.html'),
+              Path('service-policies.html'),
+              Path('privacy.html'),
+          ]
+
+          for path in pages:
+              text = path.read_text(encoding='utf-8')
+              if tracking not in text:
+                  if '</head>' not in text:
+                      raise RuntimeError(f'{path}: closing </head> tag not found')
+                  text = text.replace('</head>', f'  {tracking}\n</head>', 1)
+              path.write_text(text, encoding='utf-8')
+
+          # Preserve the deliberate distinction: the navigation/file link is
+          # "Service Policies", while the page itself is "Service Guidelines".
+          service = Path('service-policies.html').read_text(encoding='utf-8')
+          if '<title>Service Guidelines | Rochelle V. Silvestre</title>' not in service:
+              raise RuntimeError('Service Guidelines page title changed unexpectedly')
+          if '<h1>Service <span>Guidelines</span></h1>' not in service:
+              raise RuntimeError('Service Guidelines page heading changed unexpectedly')
+
+          privacy_path = Path('privacy.html')
+          privacy = privacy_path.read_text(encoding='utf-8')
+
+          replacements = {
+              'September 4, 2026<br><br>\n      <strong>Previous Revision</strong>\n      August 28, 2026':
+              'September 7, 2026<br><br>\n      <strong>Previous Revision</strong>\n      September 4, 2026',
+
+              'This website is intentionally simple. It is not built around advertising profiles, behavioral analytics, or collecting information about people who are simply browsing.':
+              'This website is intentionally simple. I use privacy-focused analytics to understand general website use and improve the site, without building advertising profiles or identifying individual visitors.',
+
+              '<div class="summary-point"><strong>No advertising trackers added by me</strong><span>No Meta Pixel, behavioral ad tags, session-recording tools, or similar tracking technologies are intentionally installed on this website.</span></div>':
+              '<div class="summary-point"><strong>Privacy-focused analytics</strong><span>I use Umami Analytics for basic website statistics and selected interaction events. Umami does not use cookies or track visitors across websites.</span></div>',
+
+              '<p>I do not intentionally add non-essential advertising cookies, analytics pixels, behavioral tracking tools, or session-recording software to this website.</p>\n        <p>I do not use this website to follow you across other websites, build advertising audiences, or create behavioral profiles.</p>\n        <p>A hosting provider, browser, email application, or external platform may use its own essential technology or technical logs. Those systems are outside the website code I personally maintain. If I later add analytics, advertising technology, or another tracking feature, this policy should be updated to explain that change.</p>':
+              '<p>I use Umami Analytics to understand general website traffic and selected interactions, such as page views, referral sources, browser and operating system, device type, country-level location, and events such as clicks on selected website buttons.</p>\n        <p>Umami does not use cookies, does not track visitors across websites, and does not store personally identifiable information for this analytics setup. An IP address may be used temporarily to derive anonymous session and location information, but Umami states that the IP address itself is not stored.</p>\n        <p>My Umami Cloud account uses the United States data region. I use these statistics for internal website improvement and to understand which content and pages are useful. I do not use this website to build advertising audiences, create behavioral profiles, or follow visitors across other websites.</p>\n        <p>I do not intentionally add Meta Pixel, behavioral advertising tags, or session-recording software to this website. A hosting provider, browser, email application, or other external platform may still use its own essential technology or technical logs outside the website code I personally maintain.</p>'
+          }
+
+          for old, new in replacements.items():
+              if old not in privacy:
+                  raise RuntimeError(f'privacy.html: expected text not found:\n{old[:120]}')
+              privacy = privacy.replace(old, new, 1)
+
+          privacy_path.write_text(privacy, encoding='utf-8')
+          PY
+
+      - name: Commit website analytics changes
+        shell: bash
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add index.html about.html faq.html service-policies.html privacy.html
+          if git diff --cached --quiet; then
+            echo "No changes to commit."
+          else
+            git commit -m "Add privacy-focused Umami analytics"
+            git push
+          fi
