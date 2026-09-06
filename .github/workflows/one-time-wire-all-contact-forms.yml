@@ -35,4 +35,4 @@ jobs:
           git commit -m "Route all website contact forms to Notion endpoint"
           git push origin HEAD:main
 
-# final cleanup run: remove obsolete mailto form handlers and stale form copy
+# cleanup run: route standalone contact buttons to the onsite forms
