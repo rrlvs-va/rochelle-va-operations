@@ -16,6 +16,12 @@ SOURCES = {
 }
 
 COPY_REPLACEMENTS = {
+    "index.html": {
+        '<a class="btn gold" href="mailto:rvs-va@protonmail.com?subject=VA%20support%20inquiry">Email / Contact Me</a>':
+            '<a class="btn gold" href="#contact-form">Contact form</a>',
+        '<p class="form-help" style="margin-top:12px">Prefer email? This opens a new message addressed directly to me.</p>':
+            '<p class="form-help" style="margin-top:12px">Use the form to send your inquiry securely to my client requests inbox.</p>',
+    },
     "about.html": {
         "It will open your email app with the details ready to send.":
             "Your inquiry will be sent securely to my client requests inbox for review.",
@@ -29,6 +35,8 @@ COPY_REPLACEMENTS = {
             "Your inquiry will be sent securely to my client requests inbox for review.",
     },
     "privacy.html": {
+        '<a class="btn gold" href="mailto:rvs-va@protonmail.com?subject=Privacy%20question%20or%20request">Email / Contact Me</a>':
+            '<a class="btn gold" href="#contact-privacy">Contact form</a>',
         "It prepares an email to me using your email application.":
             "Your privacy question or request will be sent securely to my client requests inbox for review.",
         "Contact details are received when you decide to email me or prepare an inquiry through the website.":
@@ -101,6 +109,13 @@ def update_file(path: Path, source: str, endpoint: str) -> bool:
             text = add_name_attribute(text, field_id, field_name)
     elif not already_wired:
         raise RuntimeError(f"Expected contact form was not found in {path.name}")
+
+    # Give the homepage button an exact form target instead of merely jumping to the section.
+    if path.name == "index.html":
+        wired_form = f'<form class="form" action="{endpoint}/api/inquiry" method="POST">'
+        wired_form_with_id = f'<form id="contact-form" class="form" action="{endpoint}/api/inquiry" method="POST">'
+        if 'id="contact-form"' not in text and wired_form in text:
+            text = text.replace(wired_form, wired_form_with_id, 1)
 
     # Remove the old mailto submit handler even from forms that were wired earlier.
     text = SENDMAIL_SCRIPT.sub("\n", text, count=1)
