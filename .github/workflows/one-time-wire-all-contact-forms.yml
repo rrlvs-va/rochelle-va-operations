@@ -35,4 +35,4 @@ jobs:
           git commit -m "Route all website contact forms to Notion endpoint"
           git push origin HEAD:main
 
-# rerun after fixing the contact-form wiring helper
+# rerun after making the helper tolerate already-wired forms
