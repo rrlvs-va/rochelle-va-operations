@@ -522,11 +522,11 @@ footer{padding:34px 0 44px;border-top:1px solid #2f2823;color:#978b82;font-size:
       <h2 class="section-title">Have something you need off your plate?</h2>
       <p class="section-copy">Tell me what you're managing, where things are getting stuck, and what kind of support would make the work easier to keep moving.</p>
       <div class="contact-details">
-        <a class="btn gold" href="mailto:rvs-va@protonmail.com?subject=VA%20support%20inquiry">Email / Contact Me</a>
-        <p class="form-help" style="margin-top:12px">Prefer email? This opens a new message addressed directly to me.</p>
+        <a class="btn gold" href="#contact-form">Contact form</a>
+        <p class="form-help" style="margin-top:12px">Use the form to send your inquiry securely to my client requests inbox.</p>
       </div>
     </div>
-    <form class="form" action="https://rochelle-va-inquiries.wasmer.app/api/inquiry" method="POST">
+    <form id="contact-form" class="form" action="https://rochelle-va-inquiries.wasmer.app/api/inquiry" method="POST">
       <input type="hidden" name="source" value="homepage">
       <div aria-hidden="true" style="position:absolute;left:-10000px;top:auto;width:1px;height:1px;overflow:hidden">
         <label>Leave this field empty <input type="text" name="website" tabindex="-1" autocomplete="off"></label>
