@@ -1,0 +1,102 @@
+name: One-time add Blog to site navigation
+
+on:
+  push:
+    paths:
+      - '.github/workflows/one-time-add-blog-navigation.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  update-navigation:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Add Blog to site navigation
+        shell: bash
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+
+          BLOG = "experiments/blog-cms-preview/"
+
+          def replace_once(path, old, new):
+              p = Path(path)
+              text = p.read_text(encoding="utf-8")
+              if old not in text:
+                  raise SystemExit(f"Expected navigation marker not found in {path}: {old!r}")
+              p.write_text(text.replace(old, new, 1), encoding="utf-8")
+
+          # Homepage: add Blog to the top navigation and footer.
+          replace_once(
+              "index.html",
+              '      <a class="nav-cta" href="#contact">Contact</a>',
+              f'      <a href="{BLOG}">Blog</a>\n      <a class="nav-cta" href="#contact">Contact</a>',
+          )
+          replace_once(
+              "index.html",
+              '      <a href="privacy.html" style="display:inline-block;margin-top:8px;margin-right:12px;color:#d7b36a;border-bottom:1px solid rgba(215,179,106,.45);">Privacy</a>',
+              f'      <a href="{BLOG}" style="display:inline-block;margin-top:8px;margin-right:12px;color:#d7b36a;border-bottom:1px solid rgba(215,179,106,.45);">Blog</a>\n      <a href="privacy.html" style="display:inline-block;margin-top:8px;margin-right:12px;color:#d7b36a;border-bottom:1px solid rgba(215,179,106,.45);">Privacy</a>',
+          )
+
+          # About page.
+          replace_once(
+              "about.html",
+              '      <a class="btn outline" href="#contact">Contact</a>',
+              f'      <a class="secondary" href="{BLOG}">Blog</a>\n      <a class="btn outline" href="#contact">Contact</a>',
+          )
+          replace_once(
+              "about.html",
+              '<a href="privacy.html">Privacy</a>',
+              f'<a href="{BLOG}">Blog</a><a href="privacy.html">Privacy</a>',
+          )
+
+          # FAQ page.
+          replace_once(
+              "faq.html",
+              '      <a class="btn outline" href="#contact">Contact</a>',
+              f'      <a href="{BLOG}">Blog</a>\n      <a class="btn outline" href="#contact">Contact</a>',
+          )
+          replace_once(
+              "faq.html",
+              '<a href="privacy.html">Privacy</a>',
+              f'<a href="{BLOG}">Blog</a><a href="privacy.html">Privacy</a>',
+          )
+
+          # Service Policies / Service Guidelines page.
+          replace_once(
+              "service-policies.html",
+              '      <a class="btn outline" href="#contact">Contact</a>',
+              f'      <a class="secondary" href="{BLOG}">Blog</a>\n      <a class="btn outline" href="#contact">Contact</a>',
+          )
+          replace_once(
+              "service-policies.html",
+              '<a href="privacy.html">Privacy</a>',
+              f'<a href="{BLOG}">Blog</a><a href="privacy.html">Privacy</a>',
+          )
+
+          # Privacy page.
+          replace_once(
+              "privacy.html",
+              '      <a class="btn outline" href="#contact-privacy">Contact</a>',
+              f'      <a class="secondary" href="{BLOG}">Blog</a>\n      <a class="btn outline" href="#contact-privacy">Contact</a>',
+          )
+          replace_once(
+              "privacy.html",
+              '<a href="service-policies.html">Service Policies</a><a href="#contact-privacy">Contact</a>',
+              f'<a href="service-policies.html">Service Policies</a><a href="{BLOG}">Blog</a><a href="#contact-privacy">Contact</a>',
+          )
+          PY
+
+      - name: Commit navigation update and remove one-time workflow
+        shell: bash
+        run: |
+          rm -f .github/workflows/one-time-add-blog-navigation.yml
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add index.html about.html faq.html service-policies.html privacy.html .github/workflows/one-time-add-blog-navigation.yml
+          git commit -m "Add Blog to site navigation"
+          git push
