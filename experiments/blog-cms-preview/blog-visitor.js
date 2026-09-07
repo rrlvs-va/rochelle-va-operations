@@ -159,7 +159,7 @@
       <div class="tre-welcome-panel">
         <button class="tre-welcome-close" type="button" aria-label="Close welcome">×</button>
         <div class="tre-welcome-eyebrow">Welcome to the Blog</div>
-        <h2 class="tre-welcome-title" id="tre-welcome-title">The Rochelle <span>Edit</span></h2>
+        <h2 class="tre-welcome-title" id="tre-welcome-title">The <span>Rochelle</span> Edit</h2>
         <p class="tre-welcome-copy hello">Thanks for stopping by!</p>
         <p class="tre-welcome-copy">This space is a growing collection of published thoughts, practical ideas, and resources by Rochelle V. Silvestre.</p>
         <div class="tre-welcome-actions">
