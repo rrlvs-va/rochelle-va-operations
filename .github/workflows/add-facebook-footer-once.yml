@@ -1,0 +1,81 @@
+name: One-time Facebook footer update
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/add-facebook-footer-once.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  update-facebook:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out main
+        uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+
+      - name: Add Facebook to footer socials
+        shell: bash
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import re
+
+          pages = [
+              Path('index.html'),
+              Path('about.html'),
+              Path('faq.html'),
+              Path('service-policies.html'),
+              Path('privacy.html'),
+              Path('blog/index.html'),
+              Path('blog/archive.html'),
+              Path('blog/article.html'),
+          ]
+
+          facebook = 'https://www.facebook.com/rrlvsva'
+
+          for path in pages:
+              if not path.exists():
+                  continue
+              text = path.read_text(encoding='utf-8')
+              footer_match = re.search(r'<footer\b.*?</footer>', text, flags=re.S | re.I)
+              if not footer_match:
+                  continue
+              footer = footer_match.group(0)
+              if facebook in footer:
+                  continue
+
+              contact = re.search(r'<a\b[^>]*>Contact</a>', footer, flags=re.I)
+              if not contact:
+                  continue
+
+              if 'footer-right' in footer:
+                  style = ' style="display:inline-block;margin-top:8px;margin-right:12px;color:#d7b36a;border-bottom:1px solid rgba(215,179,106,.45);"'
+                  link = f'<a href="{facebook}" target="_blank" rel="noopener noreferrer"{style}>Facebook</a>\n      '
+              else:
+                  link = f'<a href="{facebook}" target="_blank" rel="noopener noreferrer">Facebook</a>'
+
+              footer = footer[:contact.start()] + link + footer[contact.start():]
+              text = text[:footer_match.start()] + footer + text[footer_match.end():]
+              path.write_text(text, encoding='utf-8')
+          PY
+
+          rm -f .github/workflows/add-facebook-footer-once.yml
+
+      - name: Commit Facebook footer links
+        shell: bash
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          if git diff --cached --quiet; then
+            echo "No changes needed."
+            exit 0
+          fi
+          git commit -m "Add Facebook to footer socials"
+          git push origin HEAD:main
