@@ -5,6 +5,8 @@
   const VISIT_TRACK_KEY = 'theRochelleEditVisitTracked';
   const UMAMI_WEBSITE_ID = '4d20ec6e-67e3-44fc-acd3-5c53bfd78c80';
   const UMAMI_SCRIPT = 'https://cloud.umami.is/script.js';
+  const query = new URLSearchParams(window.location.search);
+  const forceWelcomePreview = query.get('welcome') === 'preview';
 
   function safeGet(storage, key) {
     try { return storage.getItem(key); } catch (_) { return null; }
@@ -17,7 +19,7 @@
   const hadWelcome = safeGet(window.localStorage, WELCOME_KEY) === '1';
   const visitorType = hadWelcome ? 'returning' : 'first';
 
-  if (!hadWelcome) {
+  if (!hadWelcome && !forceWelcomePreview) {
     safeSet(window.localStorage, WELCOME_KEY, '1');
   }
 
@@ -142,7 +144,7 @@
   }
 
   function showWelcome() {
-    if (hadWelcome) return;
+    if (hadWelcome && !forceWelcomePreview) return;
 
     injectWelcomeStyles();
     const previousOverflow = document.body.style.overflow;
