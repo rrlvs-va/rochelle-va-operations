@@ -5,6 +5,7 @@
   const VISIT_TRACK_KEY = 'theRochelleEditVisitTracked';
   const UMAMI_WEBSITE_ID = '4d20ec6e-67e3-44fc-acd3-5c53bfd78c80';
   const UMAMI_SCRIPT = 'https://cloud.umami.is/script.js';
+  const ADMIN_URL = 'https://rochelle-va-inquiries.wasmer.app/admin';
   const query = new URLSearchParams(window.location.search);
   const forceWelcomePreview = query.get('welcome') === 'preview';
 
@@ -27,6 +28,34 @@
     const path = window.location.pathname.toLowerCase();
     if (path.endsWith('/article.html') || path.endsWith('article.html')) return 'article';
     return 'blog-home';
+  }
+
+  function addAdminSignInLink() {
+    const nav = document.querySelector('.nav-links');
+    if (!nav || nav.querySelector('.tre-admin-signin')) return;
+
+    if (!document.getElementById('tre-admin-signin-style')) {
+      const style = document.createElement('style');
+      style.id = 'tre-admin-signin-style';
+      style.textContent = `
+        .tre-admin-signin{display:inline-flex;align-items:center;justify-content:center;padding:8px 12px;border:1px solid rgba(203,143,150,.42);border-radius:999px;color:#e5d4d7!important;font-size:.8rem;line-height:1.1;transition:background .18s ease,border-color .18s ease,color .18s ease,transform .18s ease}
+        .tre-admin-signin:hover,.tre-admin-signin:focus-visible{background:#28211d;border-color:#d1ab63;color:#fff!important;transform:translateY(-1px);outline:none}
+      `;
+      document.head.appendChild(style);
+    }
+
+    const link = document.createElement('a');
+    link.className = 'tre-admin-signin nav-cta';
+    link.href = ADMIN_URL;
+    link.rel = 'nofollow';
+    link.textContent = 'Sign in';
+    link.setAttribute('aria-label', 'Sign in to The Rochelle Edit admin');
+
+    const contact = Array.from(nav.querySelectorAll('a')).find(function (item) {
+      return item.textContent.trim().toLowerCase() === 'contact';
+    });
+    if (contact) nav.insertBefore(link, contact);
+    else nav.appendChild(link);
   }
 
   function withUmami(callback) {
@@ -200,6 +229,7 @@
   }
 
   function init() {
+    addAdminSignInLink();
     trackBlogVisit();
     trackReaderSignal();
     showWelcome();
