@@ -4,12 +4,12 @@ load("//anybuild/tools:python.bzl", "python_build", "python_config", "python_ser
 config = python_config(
     schema = 1,
     commands = {
-        "start": "uvicorn app:app --host 0.0.0.0 --port $PORT",
+        "start": "uvicorn app_v2:app --host 0.0.0.0 --port $PORT",
     },
     python_framework = "fastapi",
     python_server = "uvicorn",
-    asgi_application = "app:app",
-    python_main_file = "app.py",
+    asgi_application = "app_v2:app",
+    python_main_file = "app_v2.py",
     python_version = "3.13",
     uv_version = "0.8.15",
 )
