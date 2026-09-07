@@ -6,7 +6,7 @@ from urllib.parse import quote
 
 import httpx
 from fastapi import Request
-from fastapi.responses import HTMLResponse
+from fastapi.responses import HTMLResponse, RedirectResponse
 
 from app import app, module, _authorized_admin_session
 
@@ -46,6 +46,10 @@ def _verification_token(reference: str, page_id: str, email: str) -> str:
 
 def _verify_url(token: str) -> str:
     return f"{module.BACKEND_ORIGIN}/verify/inquiry?token={quote(token, safe='')}"
+
+
+def _continue_url(token: str) -> str:
+    return f"{module.BACKEND_ORIGIN}/continue/whatsapp?token={quote(token, safe='')}"
 
 
 def _whatsapp_url(reference: str) -> str:
@@ -221,10 +225,35 @@ async def verify_inquiry(request: Request):
     if response.status_code != 200:
         return _page("Verification unavailable", "<p>Your inquiry could not be verified right now. Please try again shortly.</p>")
 
-    whatsapp = _whatsapp_url(reference)
     body = (
         "<p>Your email verification is complete.</p>"
         f"<p>Your inquiry reference is <code>{escape(reference)}</code>.</p>"
         "<p>Your inquiry is already recorded, so you won't need to repeat the details when you continue on WhatsApp.</p>"
     )
-    return _page("Email verified", body, whatsapp, "Continue on WhatsApp")
+    return _page("Email verified", body, _continue_url(token), "Continue on WhatsApp")
+
+
+@app.get("/continue/whatsapp")
+async def continue_whatsapp(request: Request):
+    token = request.query_params.get("token", "")
+    payload = module._verify_payload(token)
+    if not payload or payload.get("kind") != "inquiry-email":
+        return _page("Link invalid", "<p>This WhatsApp continuation link is invalid or has expired.</p>")
+
+    reference = str(payload.get("ref", "")).strip()
+    page_id = str(payload.get("page_id", "")).strip()
+    if not reference or not page_id:
+        return _page("Link invalid", "<p>This WhatsApp continuation link is incomplete.</p>")
+
+    if os.environ.get("NOTION_TOKEN", "").strip():
+        try:
+            async with httpx.AsyncClient(timeout=8.0) as client:
+                await client.patch(
+                    f"{NOTION_PAGE_URL}/{page_id}",
+                    headers=_notion_headers(),
+                    json={"properties": {"WhatsApp Continued": {"checkbox": True}}},
+                )
+        except httpx.HTTPError:
+            pass
+
+    return RedirectResponse(_whatsapp_url(reference), status_code=302, headers={"Cache-Control": "no-store"})
