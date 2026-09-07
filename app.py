@@ -25,13 +25,13 @@ app = module.app
 module.SOURCE_CONFIG["blog"] = {
     "label": "Website — Blog",
     "request_type": "Other",
-    "page_url": f"{module.SITE_ORIGIN}/experiments/blog-cms-preview/article.html",
-    "return_url": f"{module.SITE_ORIGIN}/experiments/blog-cms-preview/article.html#contact",
+    "page_url": f"{module.SITE_ORIGIN}/blog/article.html",
+    "return_url": f"{module.SITE_ORIGIN}/blog/article.html#contact",
 }
 
 PUBLISH_REPO = "rrlvs-va/rochelle-va-operations"
 PUBLISH_BRANCH = "main"
-MANIFEST_PATH = "experiments/blog-cms-preview/articles.json"
+MANIFEST_PATH = "blog/articles.json"
 MANIFEST_RAW_URL = f"https://raw.githubusercontent.com/{PUBLISH_REPO}/{PUBLISH_BRANCH}/{MANIFEST_PATH}"
 GITHUB_CONTENTS_URL = f"https://api.github.com/repos/{PUBLISH_REPO}/contents/{MANIFEST_PATH}"
 
