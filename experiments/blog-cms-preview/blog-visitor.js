@@ -117,20 +117,26 @@
   function injectWelcomeStyles() {
     const style = document.createElement('style');
     style.textContent = `
-      .tre-welcome{position:fixed;right:22px;bottom:22px;z-index:9999;width:min(390px,calc(100vw - 28px));background:#181512;color:#f7f1ea;border:1px solid #5a4738;box-shadow:0 18px 50px rgba(0,0,0,.34);padding:23px 22px 20px;opacity:0;transform:translateY(14px);pointer-events:none;transition:opacity .22s ease,transform .22s ease;font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
-      .tre-welcome.show{opacity:1;transform:translateY(0);pointer-events:auto}
-      .tre-welcome:before{content:"";position:absolute;left:22px;right:22px;top:0;height:1px;background:linear-gradient(90deg,transparent,#d1ab63,#cb8f96,transparent)}
-      .tre-welcome-close{position:absolute;top:10px;right:11px;width:34px;height:34px;border:0;background:transparent;color:#b9aca1;font-size:1.3rem;cursor:pointer;border-radius:50%}
+      .tre-welcome{position:fixed;inset:0;z-index:9999;display:grid;place-items:center;padding:24px;background:rgba(9,8,7,.68);backdrop-filter:blur(7px);opacity:0;pointer-events:none;transition:opacity .22s ease;font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+      .tre-welcome.show{opacity:1;pointer-events:auto}
+      .tre-welcome-panel{position:relative;width:min(620px,100%);max-height:min(84vh,720px);overflow:auto;background:radial-gradient(circle at 14% 14%,rgba(203,143,150,.10),transparent 28%),radial-gradient(circle at 88% 82%,rgba(209,171,99,.10),transparent 32%),#181512;color:#f7f1ea;border:1px solid #5a4738;box-shadow:0 28px 80px rgba(0,0,0,.48);padding:42px 42px 36px;text-align:center;transform:translateY(14px) scale(.985);transition:transform .22s ease}
+      .tre-welcome.show .tre-welcome-panel{transform:translateY(0) scale(1)}
+      .tre-welcome-panel:before{content:"";position:absolute;left:54px;right:54px;top:0;height:1px;background:linear-gradient(90deg,transparent,#d1ab63,#cb8f96,transparent)}
+      .tre-welcome-close{position:absolute;top:13px;right:14px;width:38px;height:38px;border:0;background:transparent;color:#b9aca1;font-size:1.45rem;cursor:pointer;border-radius:50%}
       .tre-welcome-close:hover,.tre-welcome-close:focus-visible{color:#fff;background:#27211d;outline:none}
-      .tre-welcome-eyebrow{text-transform:uppercase;letter-spacing:.15em;font-size:.68rem;font-weight:800;color:#cb8f96;margin:0 36px 8px 0}
-      .tre-welcome-title{font:500 2rem/1.05 Georgia,"Times New Roman",serif;margin:0 34px 11px 0;color:#f7f1ea}
-      .tre-welcome-copy{margin:0;color:#c2b5ab;font-size:.9rem;line-height:1.58}
-      .tre-welcome-actions{display:flex;align-items:center;gap:14px;margin-top:17px;flex-wrap:wrap}
-      .tre-welcome-primary{border:0;border-radius:999px;background:#d1ab63;color:#17110d;padding:9px 14px;font-weight:800;cursor:pointer}
-      .tre-welcome-link{color:#d9c6b4;font-size:.8rem;text-decoration:none;border-bottom:1px solid rgba(217,198,180,.35)}
+      .tre-welcome-eyebrow{text-transform:uppercase;letter-spacing:.16em;font-size:.7rem;font-weight:800;color:#cb8f96;margin:0 36px 10px}
+      .tre-welcome-title{font:500 clamp(2.45rem,6vw,3.7rem)/1 Georgia,"Times New Roman",serif;margin:0 auto 22px;color:#f7f1ea;letter-spacing:-.035em}
+      .tre-welcome-copy{margin:0 auto;color:#c9bbb0;font-size:1rem;line-height:1.7;max-width:500px}
+      .tre-welcome-copy + .tre-welcome-copy{margin-top:8px}
+      .tre-welcome-copy.hello{color:#f0e5dc;font-weight:750}
+      .tre-welcome-actions{display:flex;align-items:center;justify-content:center;gap:16px;margin-top:26px;flex-wrap:wrap}
+      .tre-welcome-primary{border:0;border-radius:999px;background:#d1ab63;color:#17110d;padding:11px 17px;font-weight:800;cursor:pointer}
+      .tre-welcome-primary:hover,.tre-welcome-primary:focus-visible{filter:brightness(1.05);outline:2px solid rgba(209,171,99,.4);outline-offset:3px}
+      .tre-welcome-link{color:#d9c6b4;font-size:.82rem;text-decoration:none;border-bottom:1px solid rgba(217,198,180,.35)}
       .tre-welcome-link:hover{color:#fff}
-      @media(max-width:620px){.tre-welcome{right:14px;bottom:14px;padding:21px 19px 18px}.tre-welcome-title{font-size:1.72rem}}
-      @media(prefers-reduced-motion:reduce){.tre-welcome{transition:none}}
+      @media(max-width:620px){.tre-welcome{padding:16px}.tre-welcome-panel{width:100%;max-height:84vh;padding:36px 22px 28px}.tre-welcome-panel:before{left:32px;right:32px}.tre-welcome-title{font-size:clamp(2.2rem,11vw,3rem);margin-bottom:18px}.tre-welcome-copy{font-size:.94rem}.tre-welcome-actions{margin-top:22px}}
+      @media(max-height:560px){.tre-welcome{align-items:start;overflow:auto}.tre-welcome-panel{margin:auto 0;max-height:none}}
+      @media(prefers-reduced-motion:reduce){.tre-welcome,.tre-welcome-panel{transition:none}}
     `;
     document.head.appendChild(style);
   }
@@ -139,32 +145,44 @@
     if (hadWelcome) return;
 
     injectWelcomeStyles();
+    const previousOverflow = document.body.style.overflow;
+    const previousFocus = document.activeElement;
     const box = document.createElement('aside');
     box.className = 'tre-welcome';
     box.setAttribute('role', 'dialog');
+    box.setAttribute('aria-modal', 'true');
     box.setAttribute('aria-labelledby', 'tre-welcome-title');
     box.innerHTML = `
-      <button class="tre-welcome-close" type="button" aria-label="Close welcome">×</button>
-      <div class="tre-welcome-eyebrow">The Rochelle Edit</div>
-      <h2 class="tre-welcome-title" id="tre-welcome-title">Welcome to the Blog</h2>
-      <p class="tre-welcome-copy">Thanks for stopping by. This is a place for notes, ideas, and whatever feels worth putting into words.</p>
-      <div class="tre-welcome-actions">
-        <button class="tre-welcome-primary" type="button">Start reading</button>
-        <a class="tre-welcome-link" href="../../privacy.html">Privacy</a>
+      <div class="tre-welcome-panel">
+        <button class="tre-welcome-close" type="button" aria-label="Close welcome">×</button>
+        <div class="tre-welcome-eyebrow">The Rochelle Edit</div>
+        <h2 class="tre-welcome-title" id="tre-welcome-title">Welcome to the Blog</h2>
+        <p class="tre-welcome-copy hello">Thanks for stopping by!</p>
+        <p class="tre-welcome-copy">This space is a growing collection of published thoughts, practical ideas, and resources by Rochelle V. Silvestre.</p>
+        <div class="tre-welcome-actions">
+          <button class="tre-welcome-primary" type="button">Start reading</button>
+          <a class="tre-welcome-link" href="../../privacy.html">Privacy</a>
+        </div>
       </div>
     `;
 
     document.body.appendChild(box);
+    document.body.style.overflow = 'hidden';
     const closeButton = box.querySelector('.tre-welcome-close');
     const primaryButton = box.querySelector('.tre-welcome-primary');
 
     function closeWelcome() {
       box.classList.remove('show');
+      document.body.style.overflow = previousOverflow;
+      if (previousFocus && typeof previousFocus.focus === 'function') previousFocus.focus();
       window.setTimeout(function () { box.remove(); }, 230);
     }
 
     closeButton.addEventListener('click', closeWelcome);
     primaryButton.addEventListener('click', closeWelcome);
+    box.addEventListener('click', function (event) {
+      if (event.target === box) closeWelcome();
+    });
     document.addEventListener('keydown', function onKeydown(event) {
       if (event.key === 'Escape' && document.body.contains(box)) {
         closeWelcome();
@@ -174,6 +192,7 @@
 
     window.setTimeout(function () {
       box.classList.add('show');
+      closeButton.focus();
     }, 650);
   }
 
