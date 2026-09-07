@@ -315,13 +315,21 @@ footer{padding:34px 0 44px;border-top:1px solid #2f2823;color:#978b82;font-size:
 
 /* Tighten hero spacing below nav */
 .hero{padding-top:72px!important}
+
+/* SITE LOGO */
+.brand.site-branding{flex-direction:row;align-items:center;gap:10px}
+.brand-copy{display:flex;flex-direction:column;line-height:1.1;min-width:0}
+.site-logo{width:44px;height:44px;object-fit:contain;flex:0 0 auto;display:block}
+.footer-brand{display:flex;align-items:center;gap:12px}
+.footer-logo{width:58px;height:58px;object-fit:contain;flex:0 0 auto;display:block}
+@media(max-width:720px){.site-logo{width:38px;height:38px}.footer-logo{width:50px;height:50px}.footer-brand{align-items:flex-start}}
 </style>
   <script defer src="https://cloud.umami.is/script.js" data-website-id="4d20ec6e-67e3-44fc-acd3-5c53bfd78c80"></script>
 </head>
 <body>
 <nav>
   <div class="wrap nav-inner">
-    <a class="brand" href="#top"><strong>Rochelle V. Silvestre</strong><span>Independent VA + Operations</span></a>
+    <a class="brand site-branding" href="#top"><img class="site-logo" src="assets/rochelle-v-silvestre-logo.png" alt="" width="128" height="128" decoding="async"><div class="brand-copy"><strong>Rochelle V. Silvestre</strong><span>Independent VA + Operations</span></div></a>
     <button class="menu-btn" type="button" aria-label="Toggle navigation" aria-expanded="false" onclick="toggleMobileMenu(this)">☰</button>
     <div class="nav-links">
       <a href="#services">Services</a>
@@ -538,7 +546,7 @@ footer{padding:34px 0 44px;border-top:1px solid #2f2823;color:#978b82;font-size:
 
 <footer>
   <div class="wrap footer-inner">
-    <div><strong>Rochelle V. Silvestre</strong><br>Independent VA + Operations<br><span style="font-size:.76rem">© 2026 Rochelle V. Silvestre · Site & portfolio maintained independently.</span></div>
+    <div class="footer-brand"><img class="footer-logo" src="assets/rochelle-v-silvestre-logo.png" alt="Rochelle V. Silvestre — VA + Operations logo" width="128" height="128" loading="lazy" decoding="async"><div><strong>Rochelle V. Silvestre</strong><br>Independent VA + Operations<br><span style="font-size:.76rem">© 2026 Rochelle V. Silvestre · Site & portfolio maintained independently.</span></div></div>
     <div class="footer-right">Reliable, flexible support. Clear communication and dependable follow-through.<br>
       <a href="about.html" style="display:inline-block;margin-top:8px;margin-right:12px;color:#d7b36a;border-bottom:1px solid rgba(215,179,106,.45);">About</a>
       <a href="service-policies.html" style="display:inline-block;margin-top:8px;margin-right:12px;color:#d7b36a;border-bottom:1px solid rgba(215,179,106,.45);">Service Policies</a>
