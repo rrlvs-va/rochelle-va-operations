@@ -28,10 +28,16 @@
   }
 
   function withUmami(callback) {
-    if (window.umami && typeof window.umami.track === 'function') {
+    let completed = false;
+
+    function invokeOnce() {
+      if (completed || !window.umami || typeof window.umami.track !== 'function') return false;
+      completed = true;
       callback();
-      return;
+      return true;
     }
+
+    if (invokeOnce()) return;
 
     let script = document.querySelector('script[data-rochelle-umami="true"]') ||
       document.querySelector('script[data-website-id="' + UMAMI_WEBSITE_ID + '"]');
@@ -46,28 +52,18 @@
       document.head.appendChild(script);
     }
 
-    const runWhenReady = function () {
+    function runWhenReady() {
       let attempts = 0;
       const timer = window.setInterval(function () {
         attempts += 1;
-        if (window.umami && typeof window.umami.track === 'function') {
-          window.clearInterval(timer);
-          callback();
-        } else if (attempts >= 30) {
+        if (invokeOnce() || attempts >= 30) {
           window.clearInterval(timer);
         }
       }, 200);
-    };
-
-    if (script.dataset.rochelleLoaded === 'true') {
-      runWhenReady();
-    } else {
-      script.addEventListener('load', function () {
-        script.dataset.rochelleLoaded = 'true';
-        runWhenReady();
-      }, { once: true });
-      window.setTimeout(runWhenReady, 500);
     }
+
+    script.addEventListener('load', runWhenReady, { once: true });
+    window.setTimeout(runWhenReady, 500);
   }
 
   function trackBlogVisit() {
