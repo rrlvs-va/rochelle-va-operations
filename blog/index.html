@@ -33,13 +33,14 @@ footer{padding:30px 0;color:#a99c92;font-size:.84rem;border-top:1px solid var(--
 const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const fmt=d=>{if(!d)return '';const x=new Date(d+'T00:00:00');return x.toLocaleDateString('en-US',{month:'long',day:'numeric',year:'numeric'});};
 const coverPath=a=>{const p=String(a&&a.cover_image||'');return /^uploads\/[A-Za-z0-9._-]+\.(?:jpe?g|png|webp)$/i.test(p)?p:'';};
+const coverPosition=a=>{const x=Math.min(100,Math.max(0,Number(a&&a.cover_position_x)||50));const y=Math.min(100,Math.max(0,Number(a&&a.cover_position_y)||50));return x+'% '+y+'%';};
 async function loadArticles(){
   const posts=document.getElementById('posts'), previous=document.getElementById('archiveList');
   try{
     const r=await fetch('articles.json?cb='+Date.now(),{cache:'no-store'});if(!r.ok)throw new Error('load');
     const data=await r.json();const items=(data.articles||[]).filter(a=>a.status==='published').sort((a,b)=>String(b.publish_date).localeCompare(String(a.publish_date)));
     if(!items.length){posts.innerHTML='<div class="empty">No articles are published yet.</div>';previous.innerHTML='<div class="empty">No previous posts yet.</div>';return;}
-    const latest=items[0], cover=coverPath(latest);posts.innerHTML=`<a class="card" href="article.html?slug=${encodeURIComponent(latest.slug)}"><div class="cover${cover?' has-image':''}">${cover?`<img src="${esc(cover)}" alt="" loading="eager">`:''}</div><div class="card-body"><div class="meta">${esc(fmt(latest.publish_date))} · ${esc(latest.author||'Rochelle V. Silvestre')}</div><h2>${esc(latest.title)}</h2><p>${esc(latest.excerpt||'')}</p><div class="read">Read article <span>→</span></div></div></a>`;
+    const latest=items[0], cover=coverPath(latest);posts.innerHTML=`<a class="card" href="article.html?slug=${encodeURIComponent(latest.slug)}"><div class="cover${cover?' has-image':''}">${cover?`<img src="${esc(cover)}" alt="" loading="eager" style="object-position:${coverPosition(latest)}">`:''}</div><div class="card-body"><div class="meta">${esc(fmt(latest.publish_date))} · ${esc(latest.author||'Rochelle V. Silvestre')}</div><h2>${esc(latest.title)}</h2><p>${esc(latest.excerpt||'')}</p><div class="read">Read article <span>→</span></div></div></a>`;
     const older=items.slice(1,6);if(!older.length){previous.innerHTML='<div class="empty">When a newer post is published, earlier posts will appear here and remain available in the full archive.</div>';return;}
     const years={};older.forEach(a=>{const y=(a.publish_date||'').slice(0,4)||'Other';(years[y]||(years[y]=[])).push(a);});
     previous.innerHTML=Object.keys(years).sort().reverse().map(y=>`<div class="archive-year"><strong>${esc(y)}</strong><div class="archive-links">${years[y].map(a=>`<a href="article.html?slug=${encodeURIComponent(a.slug)}">${esc(fmt(a.publish_date))} — ${esc(a.title)}</a>`).join('')}</div></div>`).join('');
