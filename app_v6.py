@@ -107,8 +107,6 @@ async def _save_article_v2(request: Request, status: str):
     if not ok:
         return JSONResponse({"detail": detail}, status_code=502)
 
-    # Return the final state explicitly so the editor never has to guess whether
-    # GitHub accepted the status transition.
     return JSONResponse({"ok": True, "slug": slug, "status": status, "article": payload})
 
 
@@ -120,3 +118,44 @@ async def admin_article_save_draft_v6(request: Request):
 @app.post("/admin/api/articles/save-publish-v2")
 async def admin_article_publish_v6(request: Request):
     return await _save_article_v2(request, "published")
+
+
+@app.post("/admin/api/articles/{slug}/safe-status")
+async def admin_article_safe_status(slug: str, request: Request):
+    _, error = await blog_backend._mutation_context(request)
+    if error:
+        return error
+
+    body = await request.json()
+    expected = str(body.get("expected_status", ""))
+    new_status = str(body.get("status", ""))
+    allowed = {"draft", "published", "unpublished", "trash"}
+    if expected not in allowed or new_status not in allowed:
+        return JSONResponse({"detail": "Invalid article status."}, status_code=400)
+
+    data = await blog_backend._read_manifest()
+    match = next((a for a in data.get("articles", []) if a.get("slug") == slug), None)
+    if not match:
+        return JSONResponse({"detail": "Article not found. The list may be out of date."}, status_code=404)
+
+    current = str(match.get("status", ""))
+    if current != expected:
+        return JSONResponse(
+            {
+                "detail": f"This screen showed the article as {expected}, but the latest saved state is {current}. Nothing was changed; the list will refresh.",
+                "current_status": current,
+            },
+            status_code=409,
+        )
+
+    if new_status == "trash" and current != "trash":
+        match["trashed_from"] = current
+    elif current == "trash" and new_status != "trash":
+        match.pop("trashed_from", None)
+
+    match["status"] = new_status
+    match["updated_at"] = time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime())
+    ok, detail = await blog_backend._write_manifest(data, f"Blog: set {slug} to {new_status}")
+    if not ok:
+        return JSONResponse({"detail": detail}, status_code=502)
+    return JSONResponse({"ok": True, "slug": slug, "status": new_status})
