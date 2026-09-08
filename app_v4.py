@@ -7,12 +7,16 @@ import app as blog_backend
 from app_v3 import app
 
 
-def _position(value: object) -> int:
+def _position(value: object):
     try:
-        number = int(value)
+        number = float(value)
     except (TypeError, ValueError):
         return 50
-    return min(max(number, 0), 100)
+    number = min(max(number, 0), 100)
+    # Existing public templates historically use a falsy fallback for zero.
+    # Keep an intentional far-edge crop effectively at zero rather than
+    # allowing it to be interpreted as the 50% default.
+    return 0.01 if number == 0 else number
 
 
 async def _save_article(request: Request, status: str):
