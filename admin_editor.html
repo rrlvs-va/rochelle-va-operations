@@ -1,16 +1,308 @@
 <!doctype html>
-<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow,noarchive"><title>The Rochelle Edit Admin | Rochelle V. Silvestre</title>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow,noarchive">
+<title>The Rochelle Edit Admin | Rochelle V. Silvestre</title>
 <style>
-:root{--ink:#11100f;--panel:#201b18;--paper:#faf7f2;--text:#f7f1ea;--muted:#b9aca1;--gold:#d1ab63;--blush:#cb8f96;--line:#3b312a;--dark:#2b2622}*{box-sizing:border-box}body{margin:0;background:#0e0d0c;color:var(--text);font-family:Inter,system-ui,sans-serif}button,input,textarea{font:inherit}.shell{min-height:100vh;display:grid;grid-template-columns:240px 1fr}.sidebar{border-right:1px solid var(--line);background:#151311;padding:26px 18px;position:sticky;top:0;height:100vh}.brand{font:500 1.16rem Georgia,serif;margin-bottom:5px}.sub{color:var(--gold);text-transform:uppercase;letter-spacing:.12em;font-size:.68rem}.nav{display:grid;gap:5px;margin-top:28px}.nav a{color:#c8bdb4;text-decoration:none;padding:10px 11px;border-radius:8px;font-size:.88rem;transition:.18s}.nav a.active,.nav a:hover,.nav a:focus-visible{background:#28211d;color:#fff;outline:none;transform:translateX(2px)}.account{position:absolute;left:18px;right:18px;bottom:20px;border-top:1px solid var(--line);padding-top:16px;font-size:.8rem;color:#b5a69b}.account strong{color:#f1e7de}.signout{margin-top:11px;border:1px solid #5a493c;background:transparent;color:#d8cbc1;border-radius:999px;padding:7px 11px;cursor:pointer}.main{min-width:0}.topbar{min-height:68px;border-bottom:1px solid var(--line);background:#12100f;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:0 26px;position:sticky;top:0;z-index:5}.topbar strong{font:500 1.08rem Georgia,serif}.actions{display:flex;gap:8px;flex-wrap:wrap}.btn{border:1px solid #5a493c;background:transparent;color:#eee4dc;border-radius:999px;padding:9px 14px;cursor:pointer;font-weight:750;font-size:.82rem;transition:.18s}.btn:hover,.btn:focus-visible{background:#28211d;border-color:var(--gold);color:#fff;transform:translateY(-1px);outline:none}.btn.gold{background:var(--gold);border-color:var(--gold);color:#17110d}.workspace{display:grid;grid-template-columns:minmax(0,1fr) minmax(360px,.82fr);min-height:calc(100vh - 68px)}.editor{padding:28px;border-right:1px solid var(--line);background:#141210}.preview{padding:28px;background:#191613;overflow:auto}.section-label{text-transform:uppercase;letter-spacing:.14em;color:var(--blush);font-size:.68rem;font-weight:800;margin-bottom:18px}.grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}.field{display:grid;gap:7px;margin-bottom:15px}.field.full{grid-column:1/-1}.field label{font-size:.78rem;color:#cabdb4;font-weight:700}.field input,.field textarea{width:100%;border:1px solid #493c33;background:#1c1815;color:#fff;padding:11px 12px;border-radius:8px;outline:none}.field input:focus,.field textarea:focus{border-color:#9c7b4f}.field textarea{min-height:250px;resize:vertical;line-height:1.55}.help{font-size:.72rem;color:#8f8177}.preview-card{background:var(--paper);color:var(--dark);border:1px solid #d8cec4;overflow:hidden}.preview-cover{aspect-ratio:16/9;background:linear-gradient(135deg,#1d1916,#3b2a24 60%,#8f6268);display:grid;place-items:center;color:#eadcd2;font-size:.82rem}.preview-body{padding:24px}.preview-meta{text-transform:uppercase;letter-spacing:.1em;color:#8a7467;font-size:.7rem;font-weight:800}.preview-title{font:500 2rem/1.05 Georgia,serif;margin:10px 0 12px}.preview-excerpt{color:#685c54;line-height:1.6;font-size:.92rem}.preview-article{margin-top:18px;padding-top:18px;border-top:1px solid #ded3c8;color:#51463f;line-height:1.7;white-space:pre-wrap}.notice{margin:0 0 18px;padding:12px 14px;border:1px solid #4c3e34;color:#b9aca1;background:#171412;font-size:.82rem}.notice.good{border-color:#49604a}.notice.bad{border-color:#754b4e}
-@media(max-width:1080px){.workspace{grid-template-columns:1fr}.editor{border-right:0;border-bottom:1px solid var(--line)}.sidebar{display:none}.shell{grid-template-columns:1fr}}@media(max-width:620px){.topbar{padding:12px 14px;align-items:flex-start;flex-direction:column}.actions{width:100%}.actions .btn{flex:1}.editor,.preview{padding:18px}.grid{grid-template-columns:1fr}.field.full{grid-column:auto}}
-</style></head><body><div class="shell"><aside class="sidebar"><div class="brand">The Rochelle Edit</div><div class="sub">Admin</div><nav class="nav"><a class="active" href="/admin/editor">New article</a><a href="/admin/articles">Articles</a><a href="__SITE_ORIGIN__/blog/">View blog</a><a href="__SITE_ORIGIN__/">Main website</a></nav><div class="account">Signed in<br><strong>Rochelle V. Silvestre</strong><form method="post" action="/logout"><button class="signout" type="submit">Sign out</button></form></div></aside><main class="main"><div class="topbar"><strong id="heading">New article</strong><div class="actions"><button class="btn" type="button" onclick="saveDraft()">Save draft</button><button class="btn" type="button" onclick="document.getElementById('previewPane').scrollIntoView({behavior:'smooth'})">Preview</button><button class="btn gold" type="button" onclick="publishArticle()">Publish</button></div></div><div class="workspace"><section class="editor"><div class="notice" id="notice">Checking publishing connection…</div><div class="section-label">Article details</div><div class="grid"><div class="field full"><label for="title">Title</label><input id="title" oninput="syncPreview();suggestSlug()"></div><div class="field"><label for="category">Category</label><input id="category" placeholder="Add or create a category" oninput="syncPreview()"></div><div class="field"><label for="date">Publish date</label><input id="date" type="date" oninput="syncPreview()"></div><div class="field full"><label for="slug">URL slug</label><input id="slug"><div class="help">Used in the article URL.</div></div><div class="field full"><label for="excerpt">Excerpt</label><textarea id="excerpt" style="min-height:100px" oninput="syncPreview()"></textarea></div><div class="field full"><label for="body">Article body</label><textarea id="body" oninput="syncPreview()"></textarea><div class="help">Blank lines become separate paragraphs on the public article page.</div></div></div></section><aside class="preview" id="previewPane"><div class="section-label">Live editor preview</div><article class="preview-card"><div class="preview-cover">Cover image area</div><div class="preview-body"><div class="preview-meta" id="metaPreview"></div><h1 class="preview-title" id="titlePreview">Untitled article</h1><p class="preview-excerpt" id="excerptPreview"></p><div class="preview-article" id="bodyPreview"></div></div></article></aside></div></main></div>
+:root{--ink:#11100f;--panel:#201b18;--paper:#faf7f2;--text:#f7f1ea;--muted:#b9aca1;--gold:#d1ab63;--blush:#cb8f96;--line:#3b312a;--dark:#2b2622}
+*{box-sizing:border-box}
+body{margin:0;background:#0e0d0c;color:var(--text);font-family:Inter,system-ui,sans-serif}
+button,input,textarea{font:inherit}
+.shell{min-height:100vh;display:grid;grid-template-columns:240px 1fr}
+.sidebar{border-right:1px solid var(--line);background:#151311;padding:26px 18px;position:sticky;top:0;height:100vh}
+.brand{font:500 1.16rem Georgia,serif;margin-bottom:5px}
+.sub{color:var(--gold);text-transform:uppercase;letter-spacing:.12em;font-size:.68rem}
+.nav{display:grid;gap:5px;margin-top:28px}
+.nav a{color:#c8bdb4;text-decoration:none;padding:10px 11px;border-radius:8px;font-size:.88rem;transition:.18s}
+.nav a.active,.nav a:hover,.nav a:focus-visible{background:#28211d;color:#fff;outline:none;transform:translateX(2px)}
+.account{position:absolute;left:18px;right:18px;bottom:20px;border-top:1px solid var(--line);padding-top:16px;font-size:.8rem;color:#b5a69b}
+.account strong{color:#f1e7de}
+.signout{margin-top:11px;border:1px solid #5a493c;background:transparent;color:#d8cbc1;border-radius:999px;padding:7px 11px;cursor:pointer}
+.main{min-width:0}
+.topbar{min-height:68px;border-bottom:1px solid var(--line);background:#12100f;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:0 26px;position:sticky;top:0;z-index:5}
+.topbar strong{font:500 1.08rem Georgia,serif}
+.actions{display:flex;gap:8px;flex-wrap:wrap}
+.btn{border:1px solid #5a493c;background:transparent;color:#eee4dc;border-radius:999px;padding:9px 14px;cursor:pointer;font-weight:750;font-size:.82rem;transition:.18s}
+.btn:hover,.btn:focus-visible{background:#28211d;border-color:var(--gold);color:#fff;transform:translateY(-1px);outline:none}
+.btn.gold{background:var(--gold);border-color:var(--gold);color:#17110d}
+.workspace{display:grid;grid-template-columns:minmax(0,1fr) minmax(360px,.82fr);min-height:calc(100vh - 68px)}
+.editor{padding:28px;border-right:1px solid var(--line);background:#141210}
+.preview{padding:28px;background:#191613;overflow:auto}
+.section-label{text-transform:uppercase;letter-spacing:.14em;color:var(--blush);font-size:.68rem;font-weight:800;margin-bottom:18px}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.field{display:grid;gap:7px;margin-bottom:15px}
+.field.full{grid-column:1/-1}
+.field label{font-size:.78rem;color:#cabdb4;font-weight:700}
+.field input,.field textarea{width:100%;border:1px solid #493c33;background:#1c1815;color:#fff;padding:11px 12px;border-radius:8px;outline:none}
+.field input:focus,.field textarea:focus{border-color:#9c7b4f}
+.field textarea{min-height:250px;resize:vertical;line-height:1.55}
+.help{font-size:.72rem;color:#8f8177}
+.upload{border:1px dashed #655044;border-radius:10px;padding:16px;background:#1a1614;display:grid;gap:10px}
+.upload input{border:0;background:transparent;padding:0}
+.upload-row{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.upload-status{font-size:.76rem;color:#b9aca1}
+.small-btn{border:1px solid #5a493c;background:transparent;color:#d8cbc1;border-radius:999px;padding:7px 10px;cursor:pointer;font-size:.76rem}
+.preview-card{background:var(--paper);color:var(--dark);border:1px solid #d8cec4;overflow:hidden}
+.preview-cover{aspect-ratio:16/9;background:linear-gradient(135deg,#1d1916,#3b2a24 60%,#8f6268);display:grid;place-items:center;color:#eadcd2;font-size:.82rem;background-size:cover;background-position:center}
+.preview-cover.has-image{color:transparent}
+.preview-body{padding:24px}
+.preview-meta{text-transform:uppercase;letter-spacing:.1em;color:#8a7467;font-size:.7rem;font-weight:800}
+.preview-title{font:500 2rem/1.05 Georgia,serif;margin:10px 0 12px}
+.preview-excerpt{color:#685c54;line-height:1.6;font-size:.92rem}
+.preview-article{margin-top:18px;padding-top:18px;border-top:1px solid #ded3c8;color:#51463f;line-height:1.7;white-space:pre-wrap}
+.notice{margin:0 0 18px;padding:12px 14px;border:1px solid #4c3e34;color:#b9aca1;background:#171412;font-size:.82rem}
+.notice.good{border-color:#49604a}
+.notice.bad{border-color:#754b4e}
+@media(max-width:1080px){.workspace{grid-template-columns:1fr}.editor{border-right:0;border-bottom:1px solid var(--line)}.sidebar{display:none}.shell{grid-template-columns:1fr}}
+@media(max-width:620px){.topbar{padding:12px 14px;align-items:flex-start;flex-direction:column}.actions{width:100%}.actions .btn{flex:1}.editor,.preview{padding:18px}.grid{grid-template-columns:1fr}.field.full{grid-column:auto}}
+</style>
+</head>
+<body>
+<div class="shell">
+<aside class="sidebar">
+  <div class="brand">The Rochelle Edit</div>
+  <div class="sub">Admin</div>
+  <nav class="nav">
+    <a class="active" href="/admin/editor">New article</a>
+    <a href="/admin/articles">Articles</a>
+    <a href="__SITE_ORIGIN__/blog/">View blog</a>
+    <a href="__SITE_ORIGIN__/">Main website</a>
+  </nav>
+  <div class="account">Signed in<br><strong>Rochelle V. Silvestre</strong><form method="post" action="/logout"><button class="signout" type="submit">Sign out</button></form></div>
+</aside>
+<main class="main">
+  <div class="topbar">
+    <strong id="heading">New article</strong>
+    <div class="actions">
+      <button class="btn" type="button" onclick="saveDraft()">Save draft</button>
+      <button class="btn" type="button" onclick="document.getElementById('previewPane').scrollIntoView({behavior:'smooth'})">Preview</button>
+      <button class="btn gold" type="button" onclick="publishArticle()">Publish</button>
+    </div>
+  </div>
+  <div class="workspace">
+    <section class="editor">
+      <div class="notice" id="notice">Checking publishing connection…</div>
+      <div class="section-label">Article details</div>
+      <div class="grid">
+        <div class="field full"><label for="title">Title</label><input id="title" oninput="syncPreview();suggestSlug()"></div>
+        <div class="field"><label for="category">Category</label><input id="category" placeholder="Add or create a category" oninput="syncPreview()"></div>
+        <div class="field"><label for="date">Publish date</label><input id="date" type="date" oninput="syncPreview()"></div>
+        <div class="field full"><label for="slug">URL slug</label><input id="slug"><div class="help">Used in the article URL.</div></div>
+        <div class="field full"><label for="excerpt">Excerpt</label><textarea id="excerpt" style="min-height:100px" oninput="syncPreview()"></textarea></div>
+        <div class="field full">
+          <label for="image">Cover image</label>
+          <div class="upload">
+            <input id="image" type="file" accept="image/jpeg,image/png,image/webp" onchange="chooseImage(event)">
+            <div class="upload-row">
+              <span class="upload-status" id="imageStatus">No cover image selected.</span>
+              <button class="small-btn" id="removeImageButton" type="button" onclick="removeImage()" hidden>Remove image</button>
+            </div>
+            <div class="help">JPEG, PNG, or WebP. Maximum file size: 5 MB. The image is uploaded when you publish.</div>
+          </div>
+        </div>
+        <div class="field full"><label for="body">Article body</label><textarea id="body" oninput="syncPreview()"></textarea><div class="help">Blank lines become separate paragraphs on the public article page.</div></div>
+      </div>
+    </section>
+    <aside class="preview" id="previewPane">
+      <div class="section-label">Live editor preview</div>
+      <article class="preview-card">
+        <div class="preview-cover" id="coverPreview">Cover image area</div>
+        <div class="preview-body">
+          <div class="preview-meta" id="metaPreview"></div>
+          <h1 class="preview-title" id="titlePreview">Untitled article</h1>
+          <p class="preview-excerpt" id="excerptPreview"></p>
+          <div class="preview-article" id="bodyPreview"></div>
+        </div>
+      </article>
+    </aside>
+  </div>
+</main>
+</div>
 <script>
-const CSRF='__CSRF__';let writeReady=false;let editingSlug=null;const DRAFT_KEY='theRochelleEditLocalDraft';const $=id=>document.getElementById(id);const fmt=d=>{if(!d)return'DRAFT';return new Date(d+'T00:00:00').toLocaleDateString('en-US',{month:'long',day:'numeric',year:'numeric'}).toUpperCase();};
-function syncPreview(){$('titlePreview').textContent=$('title').value||'Untitled article';$('excerptPreview').textContent=$('excerpt').value;$('bodyPreview').textContent=$('body').value;$('metaPreview').textContent=($('category').value||'Uncategorized').toUpperCase()+' · '+fmt($('date').value);}
-function suggestSlug(){if(editingSlug)return;const s=$('title').value.toLowerCase().normalize('NFKD').replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'');$('slug').value=s;}
-function payload(){return{slug:$('slug').value.trim(),title:$('title').value.trim(),category:$('category').value.trim(),publish_date:$('date').value,excerpt:$('excerpt').value.trim(),body:$('body').value.trim(),original_slug:editingSlug};}
-function saveDraft(){localStorage.setItem(DRAFT_KEY,JSON.stringify(payload()));const n=$('notice');n.className='notice good';n.textContent='Draft saved in this browser.';}
-async function publishArticle(){if(!writeReady){alert('Publishing is not connected yet.');return;}const p=payload();if(!p.title||!p.slug||!p.body){alert('Title, URL slug, and article body are required.');return;}const r=await fetch('/admin/api/articles/publish',{method:'POST',headers:{'Content-Type':'application/json','X-CSRF-Token':CSRF},body:JSON.stringify(p)});const d=await r.json().catch(()=>({}));if(!r.ok){alert(d.detail||'Publish failed.');return;}localStorage.removeItem(DRAFT_KEY);location.href='/admin/articles';}
-async function init(){const r=await fetch('/admin/api/articles',{cache:'no-store'});const d=await r.json().catch(()=>({}));writeReady=!!d.write_ready;const n=$('notice');n.className='notice '+(writeReady?'good':'bad');n.textContent=writeReady?'Publishing connection is ready.':'You can write and preview now. Publishing needs the GitHub publishing credential in Wasmer.';const edit=new URLSearchParams(location.search).get('edit');if(edit){const a=(d.articles||[]).find(x=>x.slug===edit);if(a){editingSlug=a.slug;$('heading').textContent='Edit article';$('title').value=a.title||'';$('category').value=a.category||'';$('date').value=a.publish_date||'';$('slug').value=a.slug||'';$('excerpt').value=a.excerpt||'';$('body').value=a.body||'';syncPreview();return;}}const saved=localStorage.getItem(DRAFT_KEY);if(saved){try{const p=JSON.parse(saved);$('title').value=p.title||'';$('category').value=p.category||'';$('date').value=p.publish_date||'';$('slug').value=p.slug||'';$('excerpt').value=p.excerpt||'';$('body').value=p.body||'';}catch(e){}}if(!$('date').value)$('date').value=new Date().toISOString().slice(0,10);syncPreview();}
+const CSRF='__CSRF__';
+const SITE_ORIGIN='__SITE_ORIGIN__';
+let writeReady=false;
+let editingSlug=null;
+let existingCoverImage='';
+let selectedImageFile=null;
+let removeCover=false;
+let previewObjectUrl='';
+const DRAFT_KEY='theRochelleEditLocalDraft';
+const $=id=>document.getElementById(id);
+const fmt=d=>{if(!d)return'DRAFT';return new Date(d+'T00:00:00').toLocaleDateString('en-US',{month:'long',day:'numeric',year:'numeric'}).toUpperCase();};
+
+function syncPreview(){
+  $('titlePreview').textContent=$('title').value||'Untitled article';
+  $('excerptPreview').textContent=$('excerpt').value;
+  $('bodyPreview').textContent=$('body').value;
+  $('metaPreview').textContent=($('category').value||'Uncategorized').toUpperCase()+' · '+fmt($('date').value);
+}
+
+function suggestSlug(){
+  if(editingSlug)return;
+  const s=$('title').value.toLowerCase().normalize('NFKD').replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'');
+  $('slug').value=s;
+}
+
+function coverUrl(path){
+  return path?SITE_ORIGIN+'/blog/'+path:'';
+}
+
+function setCoverPreview(url,label){
+  const box=$('coverPreview');
+  if(url){
+    box.style.backgroundImage=`url("${url.replace(/"/g,'%22')}")`;
+    box.classList.add('has-image');
+    box.textContent='';
+  }else{
+    box.style.backgroundImage='';
+    box.classList.remove('has-image');
+    box.textContent='Cover image area';
+  }
+  $('imageStatus').textContent=label||'No cover image selected.';
+  $('removeImageButton').hidden=!url;
+}
+
+function chooseImage(event){
+  const file=event.target.files&&event.target.files[0];
+  if(!file)return;
+  const allowed=['image/jpeg','image/png','image/webp'];
+  if(!allowed.includes(file.type)){alert('Please choose a JPEG, PNG, or WebP image.');event.target.value='';return;}
+  if(file.size>5*1024*1024){alert('Cover images must be 5 MB or smaller.');event.target.value='';return;}
+  if(previewObjectUrl)URL.revokeObjectURL(previewObjectUrl);
+  previewObjectUrl=URL.createObjectURL(file);
+  selectedImageFile=file;
+  removeCover=false;
+  setCoverPreview(previewObjectUrl,file.name+' · ready to upload');
+}
+
+function removeImage(){
+  if(previewObjectUrl){URL.revokeObjectURL(previewObjectUrl);previewObjectUrl='';}
+  selectedImageFile=null;
+  existingCoverImage='';
+  removeCover=true;
+  $('image').value='';
+  setCoverPreview('','No cover image selected.');
+}
+
+function payload(){
+  return{
+    slug:$('slug').value.trim(),
+    title:$('title').value.trim(),
+    category:$('category').value.trim(),
+    publish_date:$('date').value,
+    excerpt:$('excerpt').value.trim(),
+    body:$('body').value.trim(),
+    cover_image:removeCover?'':existingCoverImage,
+    original_slug:editingSlug
+  };
+}
+
+function saveDraft(){
+  const p=payload();
+  localStorage.setItem(DRAFT_KEY,JSON.stringify(p));
+  const n=$('notice');
+  n.className='notice good';
+  n.textContent=selectedImageFile?'Draft text saved in this browser. The selected image will still need to be re-selected if you leave this page.':'Draft saved in this browser.';
+}
+
+async function uploadSelectedImage(slug){
+  if(!selectedImageFile)return existingCoverImage;
+  const form=new FormData();
+  form.append('image',selectedImageFile);
+  form.append('slug',slug);
+  const r=await fetch('/admin/api/images/upload',{
+    method:'POST',
+    headers:{'X-CSRF-Token':CSRF},
+    body:form
+  });
+  const d=await r.json().catch(()=>({}));
+  if(!r.ok)throw new Error(d.detail||'Image upload failed.');
+  return d.path||'';
+}
+
+async function publishArticle(){
+  if(!writeReady){alert('Publishing is not connected yet.');return;}
+  const p=payload();
+  if(!p.title||!p.slug||!p.body){alert('Title, URL slug, and article body are required.');return;}
+  const n=$('notice');
+  try{
+    if(selectedImageFile){
+      n.className='notice';
+      n.textContent='Uploading cover image…';
+      p.cover_image=await uploadSelectedImage(p.slug);
+      existingCoverImage=p.cover_image;
+      selectedImageFile=null;
+      removeCover=false;
+    }
+    n.className='notice';
+    n.textContent='Publishing article…';
+    const r=await fetch('/admin/api/articles/publish',{
+      method:'POST',
+      headers:{'Content-Type':'application/json','X-CSRF-Token':CSRF},
+      body:JSON.stringify(p)
+    });
+    const d=await r.json().catch(()=>({}));
+    if(!r.ok)throw new Error(d.detail||'Publish failed.');
+    localStorage.removeItem(DRAFT_KEY);
+    location.href='/admin/articles';
+  }catch(err){
+    n.className='notice bad';
+    n.textContent=err.message||'Publish failed.';
+    alert(err.message||'Publish failed.');
+  }
+}
+
+async function init(){
+  const r=await fetch('/admin/api/articles',{cache:'no-store'});
+  const d=await r.json().catch(()=>({}));
+  writeReady=!!d.write_ready;
+  const n=$('notice');
+  n.className='notice '+(writeReady?'good':'bad');
+  n.textContent=writeReady?'Publishing connection is ready.':'You can write and preview now. Publishing needs the GitHub publishing credential in Wasmer.';
+
+  const edit=new URLSearchParams(location.search).get('edit');
+  if(edit){
+    const a=(d.articles||[]).find(x=>x.slug===edit);
+    if(a){
+      editingSlug=a.slug;
+      $('heading').textContent='Edit article';
+      $('title').value=a.title||'';
+      $('category').value=a.category||'';
+      $('date').value=a.publish_date||'';
+      $('slug').value=a.slug||'';
+      $('excerpt').value=a.excerpt||'';
+      $('body').value=a.body||'';
+      existingCoverImage=a.cover_image||'';
+      removeCover=false;
+      if(existingCoverImage)setCoverPreview(coverUrl(existingCoverImage),'Existing cover image');
+      syncPreview();
+      return;
+    }
+  }
+
+  const saved=localStorage.getItem(DRAFT_KEY);
+  if(saved){
+    try{
+      const p=JSON.parse(saved);
+      $('title').value=p.title||'';
+      $('category').value=p.category||'';
+      $('date').value=p.publish_date||'';
+      $('slug').value=p.slug||'';
+      $('excerpt').value=p.excerpt||'';
+      $('body').value=p.body||'';
+      existingCoverImage=p.cover_image||'';
+      if(existingCoverImage)setCoverPreview(coverUrl(existingCoverImage),'Saved cover image');
+    }catch(e){}
+  }
+  if(!$('date').value)$('date').value=new Date().toISOString().slice(0,10);
+  syncPreview();
+}
+
+window.addEventListener('beforeunload',()=>{if(previewObjectUrl)URL.revokeObjectURL(previewObjectUrl);});
 init();
-</script></body></html>
+</script>
+</body>
+</html>
