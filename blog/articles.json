@@ -37,6 +37,25 @@
       "article_photo": "uploads/the-bottom-line-photo-1788885188-5d85eb7f2699.png",
       "status": "published",
       "updated_at": "2026-09-08T16:33:12Z"
+    },
+    {
+      "slug": "cause-and-effect-when-a-simple-mistake-becomes-more-than-an-ordinary-mistake",
+      "title": "Cause and Effect: When a Simple “Mistake” Becomes More Than an Ordinary Mistake",
+      "category": "Uncategorized",
+      "publish_date": "2026-09-10",
+      "author": "Rochelle V. Silvestre",
+      "excerpt": "",
+      "body": "",
+      "cover_image": "",
+      "cover_position_x": 50.0,
+      "cover_position_y": 50.0,
+      "article_image": "",
+      "article_position_x": 50.0,
+      "article_position_y": 50.0,
+      "article_photo": "",
+      "status": "draft",
+      "updated_at": "2026-09-10T02:14:16Z",
+      "created_at": "2026-09-10T02:14:16Z"
     }
   ]
 }
